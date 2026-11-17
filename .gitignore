@@ -1,0 +1,10 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Claude Code: commit skills and agents, keep local settings and worktrees out
+.claude/*
+!.claude/skills/
+!.claude/agents/
+.claude/worktrees/

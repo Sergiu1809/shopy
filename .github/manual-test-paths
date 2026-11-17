@@ -1,0 +1,9 @@
+# Changes here need an MT- entry in docs/agents/MANUAL-TESTS.md, or "Manual test: not needed" in the PR.
+web/src/lib/audio/**
+web/src/lib/webauthn/**
+web/src/lib/ws/**
+backend/app/voice/**
+backend/app/auth/webauthn*
+backend/app/payments/**
+web/public/manifest*
+web/vite.config.*
