@@ -126,7 +126,6 @@ then.
 - **Why:** CI runs without real API calls; providers can be swapped (Mailpit/Resend, MinIO/R2).
 - **Source:** user (project brief) · confidence high
 - **Confirmed:** 2026-11-18
-- **Confirmed:** 2026-11-18
 
 ## PATTERN-013 · Secrets only in .env
 - **Status:** approved
