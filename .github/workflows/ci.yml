@@ -1,5 +1,6 @@
 # Every push: backend and web checks, ledger lint, gitleaks (brief §17).
-# No provider calls in CI (PATTERN-012).
+# No provider calls in CI (PATTERN-012). Backend DB tests start Postgres + pgvector
+# through testcontainers on the runner's Docker; no service container.
 name: ci
 
 on:
