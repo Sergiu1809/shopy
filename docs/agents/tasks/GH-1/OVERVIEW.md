@@ -5,14 +5,14 @@ parent:
 covers: []
 delivered_in:
 title: "P0 Setup: Docker Compose skeleton, CI, .env.example, gitleaks"
-status: in-progress
+status: in-review
 lane: fast
 branch: chore/p0-setup-GH-1
 pr: https://github.com/Sergiu1809/shopy/pull/2
 design_refs: []
 summary: "Project skeleton: Compose services, backend and web shells, CI, .env.example, gitleaks"
 created: 2026-11-18 13:16
-updated: 2026-11-18 13:40
+updated: 2026-11-18 15:30
 ---
 
 # GH-1 — P0 Setup: Docker Compose skeleton, CI, .env.example, gitleaks
@@ -39,12 +39,13 @@ Ticket: https://github.com/Sergiu1809/shopy/issues/1
   - CI: `ci.yml` green on the first push (after the user's go)
 
 ## Resume here ⏯
-Gate B adjusted 2026-11-18 (bitnamilegacy MinIO, pinned). Builder resumes step (4) docker-compose.yml from the scratchpad draft, then step (7) docs + MT-001. 14 local commits, not pushed.
+Build done and pushed (PR #2). Review round 1: code passed; record fixes done (PR body, journal, C-001 evidence). Next: gate C (user reviews, runs MT-001, merges). Nothing else in flight.
 
 
 ## Summary of work so far
 - 2026-11-18 — Ticket created, Q-012 answered, fast lane confirmed, branch created.
 - 2026-11-18 — Plan approved at gate B; entries confirmed; branch pushed; draft PR #2 opened.
+- 2026-11-18 — Built in 3 builder runs (stopped twice for user choices: oxlint, bitnamilegacy MinIO); all checks and the Compose smoke run pass; review round 1 → record fixes only. (log: `log_2026-11-18_1316.md`)
 
 ## Approach
 See `PLAN.md` (approved at gate B 2026-11-18).
@@ -52,8 +53,16 @@ See `PLAN.md` (approved at gate B 2026-11-18).
 ## Cumulative file manifest 📁
 | Action | Path | Purpose / what changed |
 |---|---|---|
-| modify | `.gitignore` | ignore `docs/explain.md` |
-| modify | `docs/agents/OPEN-QUESTIONS.md` | Q-012 answered |
+| modify | `.gitignore` | ignore `docs/explain.md`, Python/Node build output |
+| add | `backend/` (`app/main.py`, `worker/__main__.py`, `tests/test_health.py`, `pyproject.toml`, `uv.lock`, `.python-version`, `Dockerfile`, `.dockerignore`) | FastAPI `/health`, idle worker, test, uv project, dev image |
+| add | `web/` (`src/App.tsx`, `src/App.test.tsx`, `src/main.tsx`, `index.html`, `package.json`, `package-lock.json`, `tsconfig*.json`, `vite.config.ts`, `.oxlintrc.json`, `Dockerfile`, `.dockerignore`) | Vite React shell, oxlint `react/no-danger`, vitest |
+| add | `docker-compose.yml`, `docker/db/init/01-extensions.sql` | 7 local services; vector + unaccent |
+| add | `.env.example` | every brief §18 name, placeholders only |
+| add | `.pre-commit-config.yaml` | gitleaks hook |
+| add | `.github/workflows/ci.yml` | backend, web, ledger, gitleaks on every push |
+| modify | `AGENTS.md` | §2 real commands, §3 layout status |
+| modify | `docs/agents/ARCHITECTURE.md`, `TEAM.md`, `MANUAL-TESTS.md` (MT-001), `PATTERNS.md` (PATTERN-013 Example), `CONTRACTS.md` (C-001 Evidence), `OPEN-QUESTIONS.md` (Q-012), `decisions/platform-and-stack.md` (Confirmed) | docs follow the code |
+| add | `docs/agents/tasks/GH-1/` | journal, plan, log |
 
 ## Manual verification 🔧
 MT-001 (desktop): `docker compose up` on Windows; steps in `PLAN.md` → Manual test plan.

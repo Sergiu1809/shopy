@@ -28,9 +28,8 @@ the producer's `path:line` once it is written.
 - **Consumers:** the web client (`/app` and `/admin`).
 - **Shape:** routes listed in brief §14 (auth, me, payment methods, webauthn, proposals, orders, products, webhooks, health, admin). Errors: one consistent format; 422 for invalid input, 403 for a customer on `/admin`.
 - **Rules:** JWT access token (15 min) in the Authorization header; rotating refresh token in an httpOnly Secure cookie. CORS restricted to `APP_ORIGIN`. Auth routes are rate limited.
-- **Evidence:** `shopy_brief.md` §14, §16 (no code yet)
+- **Evidence:** `backend/app/main.py:6` (`GET /health`); other routes: `shopy_brief.md` §14, §16 (not built yet)
 - **Source:** user (project brief) · confidence high
-- **Confirmed:** 2026-11-18
 
 ### C-002 · WebSocket assistant protocol
 - **Status:** approved
