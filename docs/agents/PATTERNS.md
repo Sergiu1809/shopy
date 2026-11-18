@@ -128,7 +128,6 @@ then.
 - **Status:** approved
 - **Use when:** adding any configuration value.
 - **How:** read it from env; add the name to `.env.example` with no real value; never commit `.env`. Seed passwords come from `SEED_*` env vars. Stripe keys are test mode only.
-- **Example:** `shopy_brief.md` §8, §16, §18 (no code yet)
+- **Example:** `.env.example` (names, placeholders only), `docker-compose.yml` (credentials interpolated from `.env`)
 - **Why:** gitleaks runs in CI and pre-commit; no secret or real card data may enter the repo.
 - **Source:** user (project brief) · confidence high
-- **Confirmed:** 2026-11-18
