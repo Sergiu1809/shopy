@@ -91,22 +91,20 @@ React + Vite + TS PWA · Python 3.12 FastAPI + async SQLAlchemy + Alembic · Pos
 + pgvector · reindex worker · Docker Compose locally (Windows, Docker Desktop + WSL2).
 
 ```bash
-# Ledger (works now)
+cp .env.example .env                                # once; then fill in keys as phases need them
+docker compose up                                   # db, api (:8000/health), worker, web (:5173), minio (:9000, bucket via minio-init), mailpit (:8025)
+cd backend && uv sync && uv run ruff check . && uv run ruff format --check . && uv run mypy . && uv run pytest
+cd web && npm ci && npm run lint && npm run typecheck && npx vitest run   # lint = oxlint
 python3 docs/agents/tools/ledger-lint.py            # --fix rebuilds indexes, --next D
+uvx pre-commit install                              # once per clone: gitleaks on every commit
+uvx pre-commit run --all-files                      # gitleaks over the working tree
 PREFIX=GH python3 .github/scripts/team-checks.py --branch <branch> --base main
-# Planned in P0 (shopy_brief.md §17–§18) — not run: the code does not exist yet
-docker compose up                                   # db, api, worker, web, minio, mailpit
-make seed                                           # = docker compose run api python -m seed.seed
-cd backend && ruff check . && mypy . && pytest      # Postgres+pgvector via testcontainers
-cd web && npm run lint && npm run typecheck && npx vitest run
-gitleaks detect                                     # also a pre-commit hook
-python evals/run_evals.py                           # real LLM, manual only, never in CI
-# Screenshots: not defined yet (Q-009)
+# Planned: make seed (P1), python evals/run_evals.py (P3, manual only); screenshots: Q-009
 ```
-Replace the planned lines with the real ones when P0 lands; dependency tools: Q-012.
 
 ## 3. Layout
-Target layout (brief §6); only the docs exist so far.
+Layout from brief §6. P0 skeleton exists (`backend/` app, worker, tests; `web/` shell;
+`docker-compose.yml`, `docker/db/init/`); the other folders arrive with their phases.
 - `shopy_brief.md` — the project brief (the brief's §6 layout calls it `PROJECT_BRIEF.md`; this name is kept).
 - `backend/` — FastAPI app (`app/`), `worker/`, `migrations/`, `seed/`, `tests/`.
 - `web/` — React PWA: `/app` (customer) and `/admin`.

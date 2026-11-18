@@ -21,7 +21,7 @@
 | Manual-test waiver | the developer (repo owner) |
 | Manual-test baseline | 2026-11-17 (everything released before it counts as tested) |
 | Tracker access for agents | `gh` CLI, signed in (`gh auth status`): `gh issue view N --comments`, `gh issue create`, `gh issue comment` |
-| CI checks | `.github/workflows/team-checks.yml` on runner `ubuntu-latest` |
+| CI checks | `.github/workflows/ci.yml` (every push: backend, web, ledger, gitleaks) and `.github/workflows/team-checks.yml` (PRs to main), on runner `ubuntu-latest` |
 
 ## Ticket template (for new tickets)
 ```text

@@ -29,6 +29,7 @@
 ## Queue
 | MT | Ticket | What to verify | PR | Merged / released in | Needs (where) | Status | Steps |
 |---|---|---|---|---|---|---|---|
+| MT-001 | GH-1 | `docker compose up` on the desktop: every service starts; Vite HMR works through the bind mount (covers `web/vite.config.*`) | #2 | — | desktop (Windows, Docker Desktop + WSL2) | 🔴 | 1. `cp .env.example .env`. 2. `docker compose up`; wait until all services run and `minio-init` exits 0. 3. http://localhost:8000/health shows `{"status":"ok"}`. 4. http://localhost:5173 shows "Shopy". 5. `docker compose logs minio-init` ends with "Bucket created successfully `local/shopy-images`" (or the bucket already exists). 6. http://localhost:8025 opens Mailpit. 7. `docker compose exec db psql -U shopy -d shopy -c '\dx'` lists `vector` and `unaccent`. 8. `docker compose logs worker` shows "worker idle". 9. Edit the heading in `web/src/App.tsx`; the open page updates without a manual reload; revert the edit. Note: port clashes on 5432/8000/5173/9000 with local services stop a container. |
 
 ## History
 | MT | Ticket | What | Result | Tested by · date | Where | Evidence | Notes / waiver reason |

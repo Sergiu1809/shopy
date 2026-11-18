@@ -1,0 +1,86 @@
+# Local development: docker compose up (brief §18). Credentials come from .env (PATTERN-013).
+services:
+  db:
+    image: pgvector/pgvector:0.8.7-pg16
+    env_file: .env
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./docker/db/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build: ./backend
+    env_file: .env
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  worker:
+    build: ./backend
+    command: ["python", "-m", "worker"]
+    env_file: .env
+    depends_on:
+      db:
+        condition: service_healthy
+
+  web:
+    build: ./web
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./web:/app
+      - /app/node_modules
+
+  # Local S3 only (production uses R2). Archived Bitnami images, pinned: the official
+  # minio/minio and minio/mc images are no longer pullable. This build serves no web
+  # console, so only the S3 API port is published.
+  minio:
+    image: bitnamilegacy/minio:2025.7.23
+    environment:
+      MINIO_ROOT_USER: ${S3_ACCESS_KEY}
+      MINIO_ROOT_PASSWORD: ${S3_SECRET_KEY}
+    ports:
+      - "9000:9000"
+    volumes:
+      - minio-data:/bitnami/minio/data
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:9000/minio/health/live"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  minio-init:
+    image: bitnamilegacy/minio-client:2025.7.21
+    env_file: .env
+    depends_on:
+      minio:
+        condition: service_healthy
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        set -e
+        # The image's setup runs a temporary server first, so retry until the real one is up.
+        n=0
+        until mc --config-dir /tmp/mc alias set local http://minio:9000 "$${S3_ACCESS_KEY}" "$${S3_SECRET_KEY}" >/dev/null; do
+          n=$$((n + 1)); [ "$$n" -lt 30 ] || exit 1; sleep 1
+        done
+        mc --config-dir /tmp/mc mb --ignore-existing "local/$${S3_BUCKET}"
+
+  mailpit:
+    image: axllent/mailpit:v1.34.0
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+
+volumes:
+  db-data:
+  minio-data:

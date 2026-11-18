@@ -8,6 +8,7 @@
 - **Rejected:** Native iOS app (needs a Mac).
 - **Evidence:** shopy_brief.md §2, §4, §20
 - **Source:** user (project brief §20) · confidence high
+- **Confirmed:** 2026-11-18
 
 ## D-002 · Activation via in-app button and Action Button Shortcut
 - **Status:** approved
@@ -26,6 +27,7 @@
 - **Rejected:** none stated
 - **Evidence:** shopy_brief.md §5, §20
 - **Source:** user (project brief §20) · confidence high
+- **Confirmed:** 2026-11-18
 
 ## D-004 · Single Postgres database with pgvector
 - **Status:** approved
@@ -35,6 +37,7 @@
 - **Rejected:** Redis or a message broker for the queue (brief §5).
 - **Evidence:** shopy_brief.md §5, §20
 - **Source:** user (project brief §20) · confidence high
+- **Confirmed:** 2026-11-18
 
 ## D-007 · LLM is Claude Haiku 5.5 with tool use and streaming
 - **Status:** approved
@@ -44,6 +47,7 @@
 - **Rejected:** A larger model by default.
 - **Evidence:** shopy_brief.md §5, §10.1, §20
 - **Source:** user (project brief §20) · confidence high
+- **Confirmed:** 2026-11-18
 
 ## D-009 · Speech and embedding providers
 - **Status:** approved
@@ -53,6 +57,7 @@
 - **Rejected:** none stated
 - **Evidence:** shopy_brief.md §5, §20
 - **Source:** user (project brief §20) · confidence high
+- **Confirmed:** 2026-11-18
 
 ## D-021 · Language split: Romanian voice, English everything else
 - **Status:** approved
@@ -62,3 +67,4 @@
 - **Rejected:** none stated
 - **Evidence:** shopy_brief.md §1, §20
 - **Source:** user (project brief §20) · confidence high
+- **Confirmed:** 2026-11-18
