@@ -5,8 +5,9 @@
 > whoever changes the structure. The code wins: when this page is wrong, fix it.
 <!-- graffino-agentic:end -->
 
-> **Status 2026-11-17:** no code yet. This page is the target from `shopy_brief.md`
-> §5–§6, §11, §12. Update it as each phase lands.
+> **Status 2026-11-18:** P0 skeleton exists (GH-1): Compose services, `GET /health`,
+> an idle worker, an empty web shell, CI. Everything else on this page is still the
+> target from `shopy_brief.md` §5–§6, §11, §12. Update it as each phase lands.
 
 ## Overview
 A React PWA (customer `/app`, admin `/admin`) talks to one FastAPI service over REST
@@ -89,12 +90,13 @@ holds everything. Locally all runs in Docker Compose; production is Railway or F
 ## Configuration
 | Name | Where set | Used by | Notes |
 |---|---|---|---|
+| `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_DB` | `.env` | Compose `db` | local only, not in brief §18 |
 | `DATABASE_URL`, `JWT_SECRET`, `APP_ORIGIN` | `.env` | api, worker | |
 | `ANTHROPIC_API_KEY`, `LLM_MODEL` | `.env` | agent | |
 | `OPENAI_API_KEY`, `STT_MODEL`, `EMBEDDING_MODEL` | `.env` | voice, search, worker | |
 | `AZURE_SPEECH_KEY`, `AZURE_SPEECH_REGION`, `TTS_VOICE` | `.env` | voice | |
 | `STRIPE_SECRET_KEY`, `STRIPE_PUBLISHABLE_KEY`, `STRIPE_WEBHOOK_SECRET` | `.env` | payments, web | test mode only |
-| `S3_ENDPOINT`, `S3_ACCESS_KEY`, `S3_SECRET_KEY`, `S3_BUCKET` | `.env` | api | |
+| `S3_ENDPOINT`, `S3_ACCESS_KEY`, `S3_SECRET_KEY`, `S3_BUCKET` | `.env` | api; Compose `minio`, `minio-init` | access/secret key double as the local MinIO root user/password |
 | `MAIL_PROVIDER`, `RESEND_API_KEY`, `MAIL_FROM`, `SMTP_HOST`, `SMTP_PORT` | `.env` | orders | |
 | `WEBAUTHN_RP_ID`, `WEBAUTHN_RP_NAME`, `WEBAUTHN_ORIGIN` | `.env` | auth | tunnel host in dev |
 | `LANGFUSE_PUBLIC_KEY`, `LANGFUSE_SECRET_KEY`, `LANGFUSE_HOST` | `.env` | agent | |
@@ -102,9 +104,12 @@ holds everything. Locally all runs in Docker Compose; production is Railway or F
 | `SEED_ADMIN_PASSWORD`, `SEED_CUSTOMER_PASSWORD` | `.env` | seed | |
 
 ## Build, deploy, runtime
-Local: `docker compose up` (db, api, worker, web, minio, mailpit), then `make seed`;
-an HTTPS tunnel (e.g. `cloudflared`) for the iPhone. CI: GitHub Actions (tests, lint,
-types, ledger lint, gitleaks, team checks). Production: api, worker and static web on
+Local: `docker compose up` (db, api, worker, web, minio + one-shot `minio-init` bucket
+creation, mailpit; `docker-compose.yml`), then `make seed` (P1); an HTTPS tunnel (e.g.
+`cloudflared`) for the iPhone. Local S3 is the archived `bitnamilegacy/minio` image,
+pinned (no web console); production uses R2. CI: GitHub Actions — `ci.yml` on every
+push (backend ruff/mypy/pytest, web oxlint/typecheck/vitest, ledger lint, gitleaks)
+and `team-checks.yml`. Production: api, worker and static web on
 Railway or Fly.io; Neon, R2, Resend, Langfuse. Commands: AGENTS.md section 2; release:
 section 5.
 
