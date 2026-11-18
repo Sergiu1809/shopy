@@ -10,12 +10,12 @@ Updated 2026-11-18.
 
 ## The product
 Shopy: a Romanian voice shopping assistant (iPhone PWA + admin) for one demo store.
-Nothing built yet; next is P0 Setup (`shopy_brief.md` §19). Structure: `docs/agents/ARCHITECTURE.md`.
+P0 done (GH-1); P1a in review (GH-3); then P1b–P1d (GH-4 to GH-6). Structure: `docs/agents/ARCHITECTURE.md`.
 
 ## In flight
 | Ticket | Title | Status | Branch | PR | Folder |
 |---|---|---|---|---|---|
-| GH-3 | P1a: Database models and migrations | in progress (tests first) | feat/db-models-GH-3 | #7 | docs/agents/tasks/GH-3/ |
+| GH-3 | P1a: Database models and migrations | in review (gate C) | feat/db-models-GH-3 | #7 | docs/agents/tasks/GH-3/ |
 
 ## Recently done (last 10)
 | Ticket | Title | Done | PR |
@@ -23,5 +23,5 @@ Nothing built yet; next is P0 Setup (`shopy_brief.md` §19). Structure: `docs/ag
 | GH-1 | P0 Setup: Compose skeleton, CI, .env.example, gitleaks | 2026-11-18 | #2 |
 
 ## Knowledge
-- Ledger: 24 decisions (1 superseded) · 13 patterns (0 candidate) · 5 contracts · 13 open questions.
+- Ledger: 24 decisions (1 superseded) · 14 patterns (1 candidate) · 5 contracts · 13 open questions.
 - Backfill: none (new repo, seeded from the brief on 2026-11-17).

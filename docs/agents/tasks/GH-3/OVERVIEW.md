@@ -5,14 +5,14 @@ parent:
 covers: []
 delivered_in:
 title: "P1a: Database models and migrations"
-status: in-progress
+status: in-review
 lane: full
 branch: feat/db-models-GH-3
 pr: https://github.com/Sergiu1809/shopy/pull/7
 design_refs: []
 summary: "Async SQLAlchemy models and the first Alembic migration for the P1 tables, tested on real Postgres"
 created: 2026-11-18 15:48
-updated: 2026-11-18 15:48
+updated: 2026-11-18 19:30
 ---
 
 # GH-3 — P1a: Database models and migrations
@@ -128,14 +128,15 @@ Ticket: https://github.com/Sergiu1809/shopy/issues/3
   - CI `backend` job green after the push (with the user's go).
 
 ## Resume here ⏯
-Gate A passed on 2026-11-18. `PLAN.md` is written; next is **gate B** (approve the plan, the Knowledge used and Assumptions A1–A10).
-Nothing is built yet. Branch `feat/db-models-GH-3` is local and not pushed. D-023, D-024 and the gate A journal are committed (`75d25d4`). Not committed yet: `PLAN.md` and the planner's edits to this file.
+Built and pushed (PR #7); review round 1 passed with no code findings; records fixed. Next: gate C (the developer reviews PR #7 and merges). Nothing in flight.
 
 ## Summary of work so far
 - 2026-11-18 — Product owner coverage report; gate A answered (Q1–Q11, store_id, testcontainers); no new tickets and no Q- entries.
+- 2026-11-18 — D-024 approved; plan approved at gate B; branch pushed; draft PR #7.
+- 2026-11-18 — Test author: 92 failing tests (2fe1d4f) + TESTS.md. Builder: models, db.py, Alembic 0001, Compose migrate-on-start, docs; 93/93 green, 0 assertions changed. Review round 1: pass, records-only findings fixed. (log: `log_2026-11-18_1548.md`)
 
 ## Approach
-See `PLAN.md` (planner, 2026-11-18; awaiting gate B). It covers:
+See `PLAN.md` (approved at gate B 2026-11-18) and `TESTS.md`. It covers:
 - async SQLAlchemy models in `app/models/` with a naming convention
 - one hand-reviewed Alembic revision `0001` (extensions + 11 tables)
 - testcontainers tests for exact schema, constraints and delete rules, plus a round-trip and a drift test
@@ -146,7 +147,40 @@ See `PLAN.md` (planner, 2026-11-18; awaiting gate B). It covers:
 ## Cumulative file manifest 📁
 | Action | Path | Purpose / what changed |
 |---|---|---|
-| create | `docs/agents/tasks/GH-3/OVERVIEW.md` | journal and context brief |
+| modify | `.github/workflows/ci.yml` | comment: DB tests use testcontainers |
+| modify | `AGENTS.md` | migration commands, layout |
+| add | `backend/alembic.ini` | Alembic config, no URL |
+| add | `backend/app/db.py` | engine and sessionmaker from DATABASE_URL |
+| add | `backend/app/models/__init__.py` | SQLAlchemy models |
+| add | `backend/app/models/base.py` | SQLAlchemy models |
+| add | `backend/app/models/catalog.py` | SQLAlchemy models |
+| add | `backend/app/models/store.py` | SQLAlchemy models |
+| add | `backend/app/models/user.py` | SQLAlchemy models |
+| add | `backend/migrations/env.py` | Alembic async env / template |
+| add | `backend/migrations/script.py.mako` | Alembic async env / template |
+| add | `backend/migrations/versions/0001_initial_schema.py` | revision 0001: extensions + 11 tables |
+| modify | `backend/pyproject.toml` | runtime + test deps, pytest config |
+| add | `backend/tests/conftest.py` | failing-first tests (test author) |
+| add | `backend/tests/test_constraints.py` | failing-first tests (test author) |
+| add | `backend/tests/test_db_config.py` | failing-first tests (test author) |
+| add | `backend/tests/test_migrations.py` | failing-first tests (test author) |
+| add | `backend/tests/test_schema.py` | failing-first tests (test author) |
+| modify | `backend/uv.lock` | lockfile |
+| modify | `docker-compose.yml` | api migrates on start |
+| modify | `docs/agents/ARCHITECTURE.md` | status, seed row (D-023), DB layer |
+| modify | `docs/agents/DECISIONS-SUPERSEDED.md` | indexes |
+| modify | `docs/agents/DECISIONS.md` | indexes |
+| modify | `docs/agents/MANUAL-TESTS.md` | MT-001 to History (passed) |
+| modify | `docs/agents/OPEN-QUESTIONS.md` | Q-001 cites D-023 |
+| modify | `docs/agents/PATTERNS.md` | PATTERN-014 candidate, Examples, Confirmed |
+| modify | `docs/agents/STATE.md` | GH-1 done, GH-3 row |
+| modify | `docs/agents/decisions/agent-and-voice.md` | D-023, D-024, Confirmed dates |
+| modify | `docs/agents/decisions/platform-and-stack.md` | D-023, D-024, Confirmed dates |
+| modify | `docs/agents/decisions/search-and-indexing.md` | D-023, D-024, Confirmed dates |
+| modify | `docs/agents/tasks/GH-1/OVERVIEW.md` | GH-1 status done |
+| add | `docs/agents/tasks/GH-3/OVERVIEW.md` | journal, plan, tests map |
+| add | `docs/agents/tasks/GH-3/PLAN.md` | journal, plan, tests map |
+| add | `docs/agents/tasks/GH-3/TESTS.md` | journal, plan, tests map |
 
 ## Manual verification 🔧
 - No MT- entry is needed: no path in `.github/manual-test-paths` is touched. The PR says "Manual test: not needed".
@@ -164,4 +198,4 @@ See `PLAN.md` (planner, 2026-11-18; awaiting gate B). It covers:
 
 ## Links
 - Ticket: https://github.com/Sergiu1809/shopy/issues/3
-- PR:
+- PR: https://github.com/Sergiu1809/shopy/pull/7
