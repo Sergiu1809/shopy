@@ -93,7 +93,9 @@ React + Vite + TS PWA · Python 3.12 FastAPI + async SQLAlchemy + Alembic · Pos
 ```bash
 cp .env.example .env                                # once; then fill in keys as phases need them
 docker compose up                                   # db, api (:8000/health), worker, web (:5173), minio (:9000, bucket via minio-init), mailpit (:8025)
-cd backend && uv sync && uv run ruff check . && uv run ruff format --check . && uv run mypy . && uv run pytest
+docker compose up --build                           # after backend changes: the api runs `alembic upgrade head`, then uvicorn
+cd backend && uv sync && uv run ruff check . && uv run ruff format --check . && uv run mypy . && uv run pytest   # DB tests need Docker (testcontainers)
+cd backend && DATABASE_URL=… uv run alembic revision --autogenerate -m "<what>"   # then review the revision by hand
 cd web && npm ci && npm run lint && npm run typecheck && npx vitest run   # lint = oxlint
 python3 docs/agents/tools/ledger-lint.py            # --fix rebuilds indexes, --next D
 uvx pre-commit install                              # once per clone: gitleaks on every commit
@@ -104,9 +106,10 @@ PREFIX=GH python3 .github/scripts/team-checks.py --branch <branch> --base main
 
 ## 3. Layout
 Layout from brief §6. P0 skeleton exists (`backend/` app, worker, tests; `web/` shell;
-`docker-compose.yml`, `docker/db/init/`); the other folders arrive with their phases.
+`docker-compose.yml`, `docker/db/init/`); P1a adds the database layer (GH-3); the other
+folders arrive with their phases.
 - `shopy_brief.md` — the project brief (the brief's §6 layout calls it `PROJECT_BRIEF.md`; this name is kept).
-- `backend/` — FastAPI app (`app/`), `worker/`, `migrations/`, `seed/`, `tests/`.
+- `backend/` — FastAPI app (`app/`; models in `app/models/`, engine in `app/db.py`), `worker/`, Alembic `migrations/` (`alembic.ini`), `seed/`, `tests/`.
 - `web/` — React PWA: `/app` (customer) and `/admin`.
 - `evals/` — real-LLM scenarios (manual).
 - `docs/agents/` — the ledger; `docs/design/` — design rules and mocks; `docs/API.md` — REST and WebSocket examples.

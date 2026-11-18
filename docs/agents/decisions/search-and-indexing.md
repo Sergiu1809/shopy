@@ -17,12 +17,23 @@
 - **Rejected:** Full reindex on every change; a broker.
 - **Evidence:** shopy_brief.md §2, §11, §20
 - **Source:** user (project brief §20) · confidence high
+- **Confirmed:** 2026-11-18
 
 ## D-022 · Seed catalog generated once, committed, loaded deterministically
-- **Status:** approved
+- **Status:** superseded-by D-023
 - **Date:** 2026-11-17
 - **Rule:** `generate_catalog.py` calls the LLM once, offline, to write `backend/seed/catalog.json`, which is committed and reviewed. `seed.py` loads it without any LLM call. Real brands; no brand-owned product photos.
 - **Why:** Reproducible seeds and test fixtures; no cost or nondeterminism at seed time; no use of brand-owned images.
 - **Rejected:** Generating the catalog at seed time.
 - **Evidence:** shopy_brief.md §8, §20
 - **Source:** user (project brief §20) · confidence high
+
+## D-023 · Seed catalog written once by the coding assistant, committed, validated, loaded deterministically
+- **Status:** approved
+- **Date:** 2026-11-18
+- **Rule:** `backend/seed/catalog.json` is written once by the coding assistant (Claude Code) during development, committed and reviewed. A validator (`python -m seed.validate_catalog`: Pydantic schema plus fixture checks) runs in CI. `seed.py` loads the file deterministically without any LLM call. Real brands; no brand-owned product photos. No `generate_catalog.py`; seeding needs no API key.
+- **Why:** Same reproducible, reviewed seed as D-022 with no API key, no API spend and no extra script; the validator catches structural mistakes in a large hand-off file.
+- **Rejected:** `generate_catalog.py` with a real API key (D-022): extra code and a key for a one-off file.
+- **Evidence:** user decision 2026-11-18 (supersedes D-022); shopy_brief.md §8 (the brief still names `generate_catalog.py`; the ledger wins)
+- **Source:** user · confidence high
+- **Confirmed:** 2026-11-18

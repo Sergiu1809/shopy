@@ -29,7 +29,7 @@ Q-001 to Q-006 are the brief's OQ-01 to OQ-06 (`shopy_brief.md` §22), in order.
 
 ## Q-001 · Where do the product images come from?
 - **Status:** open
-- **Blocks:** P1 seed images. Brand-owned product photos are excluded (D-022).
+- **Blocks:** P1 seed images. Brand-owned product photos are excluded (D-023).
 - **Who answers:** the developer
 - **Proposed answer:** royalty-free stock photos per category, or generated neutral product images (brief OQ-01 lists both).
 

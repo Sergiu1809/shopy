@@ -4,7 +4,10 @@ version = "0.1.0"
 description = "Shopy API and reindex worker"
 requires-python = ">=3.12,<3.13"
 dependencies = [
+    "alembic>=1.20,<2",
+    "asyncpg>=0.32,<0.33",
     "fastapi>=0.115",
+    "sqlalchemy[asyncio]>=2.1,<2.2",
     "uvicorn[standard]>=0.32",
 ]
 
@@ -13,7 +16,9 @@ dev = [
     "httpx>=0.28",
     "mypy>=1.13",
     "pytest>=8.3",
+    "pytest-asyncio>=1.5,<2",
     "ruff>=0.8",
+    "testcontainers>=4.15,<5",
 ]
 
 [tool.ruff]
@@ -28,3 +33,5 @@ strict = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"

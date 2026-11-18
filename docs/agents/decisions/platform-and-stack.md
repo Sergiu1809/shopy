@@ -68,3 +68,13 @@
 - **Evidence:** shopy_brief.md §1, §20
 - **Source:** user (project brief §20) · confidence high
 - **Confirmed:** 2026-11-18
+
+## D-024 · Primary keys are bigint identity
+- **Status:** approved
+- **Date:** 2026-11-18
+- **Rule:** Every table's `id` is `bigint GENERATED ALWAYS AS IDENTITY`; tables keyed by another row (e.g. `user_preferences.user_id`) reuse that key. No UUIDs. IDs are never a security boundary: every route checks ownership (PATTERN-007, brief test 16).
+- **Why:** Short integer IDs are reliable and cheap for the LLM to copy (agent tools take IDs, PATTERN-002, C-003), readable in API paths and logs, and keep seeding deterministic.
+- **Rejected:** UUIDs everywhere (long for the LLM and logs); mixed UUID/bigint (two conventions).
+- **Evidence:** user decision at GH-3 gate A, 2026-11-18
+- **Source:** user · confidence high
+- **Confirmed:** 2026-11-18

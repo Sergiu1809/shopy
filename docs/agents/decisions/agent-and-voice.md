@@ -17,6 +17,7 @@
 - **Rejected:** Trusting model-generated numbers.
 - **Evidence:** shopy_brief.md §2, §10.2, §10.4, §20
 - **Source:** user (project brief §20) · confidence high
+- **Confirmed:** 2026-11-18
 
 ## D-018 · No memory across sessions
 - **Status:** approved

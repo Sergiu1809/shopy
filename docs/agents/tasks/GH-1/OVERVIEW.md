@@ -5,14 +5,14 @@ parent:
 covers: []
 delivered_in:
 title: "P0 Setup: Docker Compose skeleton, CI, .env.example, gitleaks"
-status: in-review
+status: done
 lane: fast
 branch: chore/p0-setup-GH-1
 pr: https://github.com/Sergiu1809/shopy/pull/2
 design_refs: []
 summary: "Project skeleton: Compose services, backend and web shells, CI, .env.example, gitleaks"
 created: 2026-11-18 13:16
-updated: 2026-11-18 15:30
+updated: 2026-11-18 18:30
 ---
 
 # GH-1 — P0 Setup: Docker Compose skeleton, CI, .env.example, gitleaks

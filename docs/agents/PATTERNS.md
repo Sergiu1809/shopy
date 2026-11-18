@@ -23,6 +23,7 @@ then.
 - PATTERN-011 · Paid calls go through the cost ledger · approved
 - PATTERN-012 · External providers sit behind interfaces · approved
 - PATTERN-013 · Secrets only in .env · approved
+- PATTERN-014 · Schema changes: models, one reviewed revision, drift test · candidate
 
 ---
 
@@ -30,7 +31,7 @@ then.
 - **Status:** approved
 - **Use when:** any price, subtotal, shipping, total or cost amount in RON.
 - **How:** store and pass integers in `bani`, columns and fields suffixed `_minor`; prices include VAT; never a float or Decimal string in the domain. Convert to text only in the speech normalizer and the UI formatter. Shipping: 1999, or 0 when the subtotal is ≥ 20000.
-- **Example:** `shopy_brief.md` §7, §8 (no code yet)
+- **Example:** `backend/app/models/catalog.py` (`ProductVariant.price_minor`)
 - **Why:** float rounding breaks totals, and the output guard compares exact amounts.
 - **Source:** user (project brief) · confidence high
 
@@ -73,6 +74,7 @@ then.
 - **Example:** `shopy_brief.md` §16, §17 test 17 (no code yet)
 - **Why:** server-side validation is the only trusted check.
 - **Source:** user (project brief) · confidence high
+- **Confirmed:** 2026-11-18
 
 ## PATTERN-007 · Authorization in FastAPI dependencies
 - **Status:** approved
@@ -81,12 +83,13 @@ then.
 - **Example:** `shopy_brief.md` §3, §16 (no code yet)
 - **Why:** customers must never reach admin data or another customer's data (tests 15, 16).
 - **Source:** user (project brief) · confidence high
+- **Confirmed:** 2026-11-18
 
 ## PATTERN-008 · SQL only through SQLAlchemy with bound parameters
 - **Status:** approved
 - **Use when:** any database query, including search filters and full-text queries.
 - **How:** SQLAlchemy expressions or `text()` with bound parameters; never string-built SQL. Schema changes only through Alembic migrations. Timestamps are UTC `timestamptz`; catalog tables carry `store_id`.
-- **Example:** `shopy_brief.md` §7, §16 (no code yet)
+- **Example:** `backend/migrations/versions/0001_initial_schema.py` (schema through Alembic, `timestamptz`), `backend/app/models/catalog.py` (`store_id`)
 - **Why:** SQL injection (test 18) and a schema that can grow to several stores.
 - **Source:** user (project brief) · confidence high
 
@@ -131,3 +134,12 @@ then.
 - **Example:** `.env.example` (names, placeholders only), `docker-compose.yml` (credentials interpolated from `.env`)
 - **Why:** gitleaks runs in CI and pre-commit; no secret or real card data may enter the repo.
 - **Source:** user (project brief) · confidence high
+- **Confirmed:** 2026-11-18
+
+## PATTERN-014 · Schema changes: models, one reviewed revision, drift test
+- **Status:** candidate
+- **Use when:** adding or changing a table, column, constraint or index.
+- **How:** change the models in `backend/app/models/` first; then `alembic revision --autogenerate` and review the revision by hand (extensions, constraint names, `server_default`, `ondelete`, downgrade order). `bigint` identity keys (D-024); `text` + a CHECK instead of native ENUMs; names come from the `Base` naming convention; every foreign key column leads an index. `tests/test_migrations.py::test_models_match_migration` (drift) must stay green.
+- **Example:** `backend/app/models/base.py`, `backend/migrations/versions/0001_initial_schema.py`, `backend/tests/test_migrations.py`
+- **Why:** deterministic names let tests and migrations target constraints; the drift test catches a model change that has no migration.
+- **Source:** GH-3 plan, assumption A9 (approved at gate B, 2026-11-18) · confidence medium

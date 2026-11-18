@@ -8,5 +8,7 @@
 <!-- graffino-agentic:end -->
 
 ## Index
+### [Search and indexing](decisions/search-and-indexing.md)
+- D-022 · Seed catalog generated once, committed, loaded deterministically · _superseded-by D-023_
 
 ---
