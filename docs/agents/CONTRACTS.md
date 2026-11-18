@@ -30,6 +30,7 @@ the producer's `path:line` once it is written.
 - **Rules:** JWT access token (15 min) in the Authorization header; rotating refresh token in an httpOnly Secure cookie. CORS restricted to `APP_ORIGIN`. Auth routes are rate limited.
 - **Evidence:** `shopy_brief.md` §14, §16 (no code yet)
 - **Source:** user (project brief) · confidence high
+- **Confirmed:** 2026-11-18
 
 ### C-002 · WebSocket assistant protocol
 - **Status:** approved

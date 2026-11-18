@@ -22,7 +22,7 @@ Q-001 to Q-006 are the brief's OQ-01 to OQ-06 (`shopy_brief.md` §22), in order.
 - Q-009 · How do we screenshot the web UI?
 - Q-010 · What is the exact canonical JSON for the proposal hash?
 - Q-011 · Railway or Fly.io?
-- Q-012 · Which package and dependency tools?
+- Q-012 · Which package and dependency tools? · _answered_
 - Q-013 · Does the 1 EUR daily cap fit the monthly budget?
 
 ---
@@ -92,10 +92,10 @@ Q-001 to Q-006 are the brief's OQ-01 to OQ-06 (`shopy_brief.md` §22), in order.
 - **Who answers:** the developer
 
 ## Q-012 · Which package and dependency tools?
-- **Status:** open
+- **Status:** answered 2026-11-18
 - **Blocks:** P0 skeleton (Dockerfiles, CI, commands in AGENTS.md section 2).
 - **Who answers:** the developer
-- **Proposed answer:** `uv` with `pyproject.toml` for the backend; `npm` for `web/`.
+- **Answer:** `uv` with `pyproject.toml` for the backend; `npm` for `web/` (GH-1).
 
 ## Q-013 · Does the 1 EUR daily cap fit the monthly budget?
 - **Status:** open

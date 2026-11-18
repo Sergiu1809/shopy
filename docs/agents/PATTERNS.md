@@ -97,6 +97,7 @@ then.
 - **Example:** `shopy_brief.md` §16, §17 test 19 (no code yet)
 - **Why:** the seed contains an XSS review fixture that must render harmlessly.
 - **Source:** user (project brief) · confidence high
+- **Confirmed:** 2026-11-18
 
 ## PATTERN-010 · Indexed changes enqueue in the same transaction
 - **Status:** approved
@@ -121,6 +122,7 @@ then.
 - **Example:** `shopy_brief.md` §5, §17 (no code yet)
 - **Why:** CI runs without real API calls; providers can be swapped (Mailpit/Resend, MinIO/R2).
 - **Source:** user (project brief) · confidence high
+- **Confirmed:** 2026-11-18
 
 ## PATTERN-013 · Secrets only in .env
 - **Status:** approved
@@ -129,3 +131,4 @@ then.
 - **Example:** `shopy_brief.md` §8, §16, §18 (no code yet)
 - **Why:** gitleaks runs in CI and pre-commit; no secret or real card data may enter the repo.
 - **Source:** user (project brief) · confidence high
+- **Confirmed:** 2026-11-18

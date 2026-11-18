@@ -8,3 +8,6 @@
 !.claude/skills/
 !.claude/agents/
 .claude/worktrees/
+
+# Personal learning notes (local only)
+docs/explain.md
