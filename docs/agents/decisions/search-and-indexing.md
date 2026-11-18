@@ -17,6 +17,7 @@
 - **Rejected:** Full reindex on every change; a broker.
 - **Evidence:** shopy_brief.md §2, §11, §20
 - **Source:** user (project brief §20) · confidence high
+- **Confirmed:** 2026-11-18
 
 ## D-022 · Seed catalog generated once, committed, loaded deterministically
 - **Status:** superseded-by D-023
@@ -35,3 +36,4 @@
 - **Rejected:** `generate_catalog.py` with a real API key (D-022): extra code and a key for a one-off file.
 - **Evidence:** user decision 2026-11-18 (supersedes D-022); shopy_brief.md §8 (the brief still names `generate_catalog.py`; the ledger wins)
 - **Source:** user · confidence high
+- **Confirmed:** 2026-11-18

@@ -33,6 +33,7 @@ then.
 - **Example:** `shopy_brief.md` §7, §8 (no code yet)
 - **Why:** float rounding breaks totals, and the output guard compares exact amounts.
 - **Source:** user (project brief) · confidence high
+- **Confirmed:** 2026-11-18
 
 ## PATTERN-002 · Agent tools take IDs and quantities only
 - **Status:** approved
@@ -73,6 +74,7 @@ then.
 - **Example:** `shopy_brief.md` §16, §17 test 17 (no code yet)
 - **Why:** server-side validation is the only trusted check.
 - **Source:** user (project brief) · confidence high
+- **Confirmed:** 2026-11-18
 
 ## PATTERN-007 · Authorization in FastAPI dependencies
 - **Status:** approved
@@ -81,6 +83,7 @@ then.
 - **Example:** `shopy_brief.md` §3, §16 (no code yet)
 - **Why:** customers must never reach admin data or another customer's data (tests 15, 16).
 - **Source:** user (project brief) · confidence high
+- **Confirmed:** 2026-11-18
 
 ## PATTERN-008 · SQL only through SQLAlchemy with bound parameters
 - **Status:** approved
@@ -89,6 +92,7 @@ then.
 - **Example:** `shopy_brief.md` §7, §16 (no code yet)
 - **Why:** SQL injection (test 18) and a schema that can grow to several stores.
 - **Source:** user (project brief) · confidence high
+- **Confirmed:** 2026-11-18
 
 ## PATTERN-009 · Untrusted text renders as plain text
 - **Status:** approved
@@ -123,6 +127,7 @@ then.
 - **Why:** CI runs without real API calls; providers can be swapped (Mailpit/Resend, MinIO/R2).
 - **Source:** user (project brief) · confidence high
 - **Confirmed:** 2026-11-18
+- **Confirmed:** 2026-11-18
 
 ## PATTERN-013 · Secrets only in .env
 - **Status:** approved
@@ -131,3 +136,4 @@ then.
 - **Example:** `.env.example` (names, placeholders only), `docker-compose.yml` (credentials interpolated from `.env`)
 - **Why:** gitleaks runs in CI and pre-commit; no secret or real card data may enter the repo.
 - **Source:** user (project brief) · confidence high
+- **Confirmed:** 2026-11-18

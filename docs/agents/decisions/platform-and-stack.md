@@ -28,6 +28,7 @@
 - **Evidence:** shopy_brief.md §5, §20
 - **Source:** user (project brief §20) · confidence high
 - **Confirmed:** 2026-11-18
+- **Confirmed:** 2026-11-18
 
 ## D-004 · Single Postgres database with pgvector
 - **Status:** approved
@@ -37,6 +38,7 @@
 - **Rejected:** Redis or a message broker for the queue (brief §5).
 - **Evidence:** shopy_brief.md §5, §20
 - **Source:** user (project brief §20) · confidence high
+- **Confirmed:** 2026-11-18
 - **Confirmed:** 2026-11-18
 
 ## D-007 · LLM is Claude Haiku 5.5 with tool use and streaming
@@ -77,3 +79,4 @@
 - **Rejected:** UUIDs everywhere (long for the LLM and logs); mixed UUID/bigint (two conventions).
 - **Evidence:** user decision at GH-3 gate A, 2026-11-18
 - **Source:** user · confidence high
+- **Confirmed:** 2026-11-18

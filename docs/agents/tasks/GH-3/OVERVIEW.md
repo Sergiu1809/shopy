@@ -109,19 +109,39 @@ Ticket: https://github.com/Sergiu1809/shopy/issues/3
   - PATTERN-008: SQLAlchemy with bound parameters; schema changes only through Alembic; `timestamptz` UTC.
   - PATTERN-012: CI makes no provider calls; testcontainers is not a provider.
   - PATTERN-013: `DATABASE_URL` comes from env; no credentials in files.
-- **Where the code is:** _(planner completes)_ existing: `backend/app/main.py`, `backend/tests/`, `backend/pyproject.toml`, `backend/Dockerfile`, `docker-compose.yml`, `docker/db/init/01-extensions.sql`, `.github/workflows/ci.yml`, `.env.example`.
-- **Ownership:** integration owner: conductor · _(planner completes)_
-- **Verify with:** _(planner completes)_
+- **Where the code is:**
+  - Existing: `backend/app/main.py`, `backend/tests/test_health.py`, `backend/pyproject.toml` + `uv.lock`, `backend/Dockerfile`, `docker-compose.yml` (`api`), `docker/db/init/01-extensions.sql` (copied into migration `0001`), `.github/workflows/ci.yml` (unchanged steps), `.env.example` (`DATABASE_URL` already `postgresql+asyncpg://`).
+  - New: `backend/app/db.py`, `backend/app/models/{__init__,base,store,user,catalog}.py`, `backend/alembic.ini`, `backend/migrations/{env.py,script.py.mako,versions/0001_initial_schema.py}`, `backend/tests/{conftest,test_db_config,test_schema,test_constraints,test_migrations}.py`.
+  - Docs: `AGENTS.md`, `ARCHITECTURE.md`, `PATTERNS.md`, `OPEN-QUESTIONS.md`, `MANUAL-TESTS.md`, `STATE.md`, `tasks/GH-1/OVERVIEW.md`.
+  - Full table: `PLAN.md`.
+- **Ownership:**
+  - Integration owner: the conductor.
+  - One builder for every part.
+  - A **test author** goes first. They add the `testcontainers` and `pytest-asyncio` dev dependencies and `backend/tests/*`, and the tests stay red until the models, `app/db.py` and `alembic.ini` exist.
+  - No parallel workers.
+- **Verify with** (from `backend/` unless noted):
+  - `uv sync && uv run ruff check . && uv run ruff format --check . && uv run mypy . && uv run pytest` (needs Docker; starts `pgvector/pgvector:0.8.7-pg16` through testcontainers)
+  - `DOCKER_HOST=unix:///nonexistent uv run pytest` must show DB tests as ERROR, never SKIPPED
+  - `uv run alembic heads` shows `0001`
+  - From the repo root: `docker compose up -d --build db api`, `docker compose logs api` (shows `Running upgrade  -> 0001` before uvicorn), `curl -fsS localhost:8000/health`, `docker compose exec db psql -U shopy -d shopy -c '\dt'` (11 tables + `alembic_version`), `docker compose restart api` (no new upgrade)
+  - `python3 docs/agents/tools/ledger-lint.py`
+  - CI `backend` job green after the push (with the user's go).
 
 ## Resume here ⏯
-Gate A passed on 2026-11-18. Next: `/plan` (the planner completes this context brief).
-Nothing is built yet. Branch `feat/db-models-GH-3` is local and not pushed. Not committed yet: this file and the D-023 working-tree changes.
+Gate A passed on 2026-11-18. `PLAN.md` is written; next is **gate B** (approve the plan, the Knowledge used and Assumptions A1–A10).
+Nothing is built yet. Branch `feat/db-models-GH-3` is local and not pushed. D-023, D-024 and the gate A journal are committed (`75d25d4`). Not committed yet: `PLAN.md` and the planner's edits to this file.
 
 ## Summary of work so far
 - 2026-11-18 — Product owner coverage report; gate A answered (Q1–Q11, store_id, testcontainers); no new tickets and no Q- entries.
 
 ## Approach
-_(planner: PLAN.md, TESTS.md)_
+See `PLAN.md` (planner, 2026-11-18; awaiting gate B). It covers:
+- async SQLAlchemy models in `app/models/` with a naming convention
+- one hand-reviewed Alembic revision `0001` (extensions + 11 tables)
+- testcontainers tests for exact schema, constraints and delete rules, plus a round-trip and a drift test
+- Compose `api` running `alembic upgrade head` before uvicorn.
+
+`TESTS.md` comes from the test author.
 
 ## Cumulative file manifest 📁
 | Action | Path | Purpose / what changed |
@@ -129,7 +149,10 @@ _(planner: PLAN.md, TESTS.md)_
 | create | `docs/agents/tasks/GH-3/OVERVIEW.md` | journal and context brief |
 
 ## Manual verification 🔧
-_(planner: whether `docker compose up` running migrations on api start needs an MT- entry)_
+- No MT- entry is needed: no path in `.github/manual-test-paths` is touched. The PR says "Manual test: not needed".
+- Docker is reachable from WSL, so the builder checks migration on start with Compose itself (PLAN #31).
+- Optional for the developer: on the Windows desktop, run `docker compose up --build`; `docker compose logs api` should show `Running upgrade  -> 0001`.
+- MT-001 (GH-1) moves to History as a carry-over.
 
 ## Decisions log 🧭
 - **2026-11-18 — bigint identity primary keys everywhere** — Why: short IDs the LLM copies reliably, cheap in tokens, easy to seed deterministically; enumeration is covered by ownership checks (PATTERN-007). Rejected: UUID everywhere, and a UUID/bigint mix. (D-024, approved 2026-11-18.)
