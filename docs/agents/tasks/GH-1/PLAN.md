@@ -210,3 +210,4 @@ Choices with no entry behind them; the user calls them at gate B.
 ## Gate B
 - Decision: approved — 2026-11-18 — plan and assumptions A1–A10 approved as written; user gave the go to push the branch and open a draft PR; Docker Desktop WSL integration enabled (docker 29.4.3, compose v5.1.4 reachable from WSL).
 - Adjusted — 2026-11-18 — build stopped at step (3): create-vite 9.3.4 ships oxlint + TypeScript 7, no ESLint. User chose option 1: keep oxlint; PATTERN-009 enforced by `react/no-danger`. Files: `web/eslint.config.js` → `web/.oxlintrc.json`; `src/vite-env.d.ts` dropped.
+- Adjusted — 2026-11-18 — build stopped at step (4): minio/minio and minio/mc no longer pullable (Docker Hub 404; quay.io needs login). User chose `bitnamilegacy/minio:2025.7.23` + `bitnamilegacy/minio-client`, pinned; local only (production uses R2). Rejected: Chainguard (`:latest` only, unpinnable), dropping MinIO (changes an approved AC), quay.io login.

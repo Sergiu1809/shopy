@@ -39,7 +39,7 @@ Ticket: https://github.com/Sergiu1809/shopy/issues/1
   - CI: `ci.yml` green on the first push (after the user's go)
 
 ## Resume here ⏯
-Gate B adjusted 2026-11-18 (oxlint instead of ESLint, A6). Backend done (5 local commits, not pushed). Builder resumes from plan step (3) web.
+Gate B adjusted 2026-11-18 (bitnamilegacy MinIO, pinned). Builder resumes step (4) docker-compose.yml from the scratchpad draft, then step (7) docs + MT-001. 14 local commits, not pushed.
 
 
 ## Summary of work so far
@@ -59,6 +59,7 @@ See `PLAN.md` (approved at gate B 2026-11-18).
 MT-001 (desktop): `docker compose up` on Windows; steps in `PLAN.md` → Manual test plan.
 
 ## Decisions log 🧭
+- **2026-11-18 — Local S3: bitnamilegacy MinIO, pinned** — Why: official MinIO images are gone; archived image is fine for local-only use (prod uses R2). Rejected: Chainguard (unpinnable `:latest`), dropping MinIO (changes AC), quay.io login.
 - **2026-11-18 — oxlint, not ESLint (A6)** — Why: create-vite 9.3.4 ships oxlint + TS 7; typescript-eslint doesn't support TS 7. `react/no-danger` covers PATTERN-009. Rejected: ESLint + TS 6 downgrade; older create-vite 8.x.
 - **2026-11-18 — Fast lane** — Why: clear, checkable criteria; no UI, migration, auth or contract change. Rejected: full lane (no unclear requirements to resolve).
 
