@@ -8,11 +8,11 @@ title: "P0 Setup: Docker Compose skeleton, CI, .env.example, gitleaks"
 status: in-progress
 lane: fast
 branch: chore/p0-setup-GH-1
-pr:
+pr: https://github.com/Sergiu1809/shopy/pull/2
 design_refs: []
 summary: "Project skeleton: Compose services, backend and web shells, CI, .env.example, gitleaks"
 created: 2026-11-18 13:16
-updated: 2026-11-18 13:16
+updated: 2026-11-18 13:40
 ---
 
 # GH-1 — P0 Setup: Docker Compose skeleton, CI, .env.example, gitleaks
@@ -39,14 +39,15 @@ Ticket: https://github.com/Sergiu1809/shopy/issues/1
   - CI: `ci.yml` green on the first push (after the user's go)
 
 ## Resume here ⏯
-Fast lane confirmed 2026-11-18. `PLAN.md` written; waiting on gate B (user's calls on A1–A10, go to push + draft PR).
-Branch `chore/p0-setup-GH-1` exists locally only (not pushed yet).
+Gate B approved 2026-11-18. Branch pushed, draft PR #2 open. Next: builder builds `PLAN.md` (tests first) on `chore/p0-setup-GH-1`.
+
 
 ## Summary of work so far
 - 2026-11-18 — Ticket created, Q-012 answered, fast lane confirmed, branch created.
+- 2026-11-18 — Plan approved at gate B; entries confirmed; branch pushed; draft PR #2 opened.
 
 ## Approach
-See `PLAN.md` (written 2026-11-18, awaiting gate B).
+See `PLAN.md` (approved at gate B 2026-11-18).
 
 ## Cumulative file manifest 📁
 | Action | Path | Purpose / what changed |
@@ -65,4 +66,4 @@ MT-001 (desktop): `docker compose up` on Windows; steps in `PLAN.md` → Manual 
 
 ## Links
 - Ticket: https://github.com/Sergiu1809/shopy/issues/1
-- PR: (not opened yet)
+- PR: https://github.com/Sergiu1809/shopy/pull/2
