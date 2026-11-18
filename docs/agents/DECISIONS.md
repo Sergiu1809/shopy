@@ -35,10 +35,11 @@ Entries live in topic files under `decisions/`; this file is the index.
 - D-007 · LLM is Claude Haiku 5.5 with tool use and streaming
 - D-009 · Speech and embedding providers
 - D-021 · Language split: Romanian voice, English everything else
+- D-024 · Primary keys are bigint identity
 
 ### [Search and indexing](decisions/search-and-indexing.md)
 - D-005 · Hybrid search with SQL filters
 - D-006 · Incremental reindexing through a transactional outbox
-- D-022 · Seed catalog generated once, committed, loaded deterministically
+- D-023 · Seed catalog written once by the coding assistant, committed, validated, loaded deterministically
 
 ---

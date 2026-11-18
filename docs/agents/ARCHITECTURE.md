@@ -53,7 +53,7 @@ holds everything. Locally all runs in Docker Compose; production is Railway or F
 | auth | `backend/app/auth/` | passwords, JWT, roles, WebAuthn | db |
 | usage | `backend/app/usage/` | cost ledger, caps | db |
 | worker | `backend/worker/` | polls the outbox, rebuilds chunks | db, embeddings |
-| seed | `backend/seed/` | `generate_catalog.py` (offline LLM), `catalog.json`, `seed.py` | db |
+| seed | `backend/seed/` | `catalog.json` (written once, D-023), `validate_catalog.py`, `seed.py` | db |
 | evals | `evals/` | real-LLM scenarios, manual | api / agent |
 
 ## Data flow
