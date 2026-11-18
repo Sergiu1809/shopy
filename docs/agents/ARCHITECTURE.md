@@ -6,7 +6,9 @@
 <!-- graffino-agentic:end -->
 
 > **Status 2026-11-18:** P0 skeleton exists (GH-1): Compose services, `GET /health`,
-> an idle worker, an empty web shell, CI. Everything else on this page is still the
+> an idle worker, an empty web shell, CI. P1a database layer (GH-3): async SQLAlchemy
+> models for 11 tables in `backend/app/models/`, Alembic revision `0001` in
+> `backend/migrations/`. Everything else on this page is still the
 > target from `shopy_brief.md` §5–§6, §11, §12. Update it as each phase lands.
 
 ## Overview
@@ -105,7 +107,8 @@ holds everything. Locally all runs in Docker Compose; production is Railway or F
 
 ## Build, deploy, runtime
 Local: `docker compose up` (db, api, worker, web, minio + one-shot `minio-init` bucket
-creation, mailpit; `docker-compose.yml`), then `make seed` (P1); an HTTPS tunnel (e.g.
+creation, mailpit; `docker-compose.yml`; the api runs `alembic upgrade head` before
+uvicorn), then `make seed` (P1); an HTTPS tunnel (e.g.
 `cloudflared`) for the iPhone. Local S3 is the archived `bitnamilegacy/minio` image,
 pinned (no web console); production uses R2. CI: GitHub Actions — `ci.yml` on every
 push (backend ruff/mypy/pytest, web oxlint/typecheck/vitest, ledger lint, gitleaks)
