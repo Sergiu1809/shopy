@@ -8,7 +8,7 @@ title: "P1a: Database models and migrations"
 status: in-progress
 lane: full
 branch: feat/db-models-GH-3
-pr:
+pr: https://github.com/Sergiu1809/shopy/pull/7
 design_refs: []
 summary: "Async SQLAlchemy models and the first Alembic migration for the P1 tables, tested on real Postgres"
 created: 2026-11-18 15:48

@@ -15,7 +15,7 @@ Nothing built yet; next is P0 Setup (`shopy_brief.md` §19). Structure: `docs/ag
 ## In flight
 | Ticket | Title | Status | Branch | PR | Folder |
 |---|---|---|---|---|---|
-| GH-3 | P1a: Database models and migrations | in progress (tests first) | feat/db-models-GH-3 | — | docs/agents/tasks/GH-3/ |
+| GH-3 | P1a: Database models and migrations | in progress (tests first) | feat/db-models-GH-3 | #7 | docs/agents/tasks/GH-3/ |
 
 ## Recently done (last 10)
 | Ticket | Title | Done | PR |
