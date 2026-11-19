@@ -15,6 +15,7 @@ from pydantic import (
     PlainValidator,
     TypeAdapter,
     ValidationError,
+    WithJsonSchema,
 )
 from pydantic_core import PydanticCustomError
 
@@ -49,7 +50,11 @@ def _password_rule(value: str) -> str:
     return value
 
 
-Email = Annotated[str, PlainValidator(_email, json_schema_input_type=str)]
+Email = Annotated[
+    str,
+    PlainValidator(_email),
+    WithJsonSchema({"type": "string", "format": "email"}),  # as EmailStr shows it
+]
 Password = Annotated[
     str, Field(min_length=8, max_length=128), AfterValidator(_password_rule)
 ]
