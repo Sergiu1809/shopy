@@ -4,6 +4,7 @@
 the submitted input is never sent back.
 """
 
+import secrets
 from collections.abc import Callable
 from typing import Any
 
@@ -11,7 +12,8 @@ from httpx import AsyncClient
 
 from tests.conftest import assert_error
 
-PROBE_PASSWORD = "Ecou-Parola-987"
+# Generated per run (no literal for gitleaks); "E" and "9" keep it valid for register.
+PROBE_PASSWORD = "Ecou" + secrets.token_hex(6) + "9"
 
 
 async def test_bad_email_gives_422_with_a_useful_message(client: AsyncClient) -> None:
