@@ -15,7 +15,7 @@ P0 done (GH-1); P1a done (GH-3); P1b in flight (GH-4); then P1c–P1d (GH-5, GH-
 ## In flight
 | Ticket | Title | Status | Branch | PR | Folder |
 |---|---|---|---|---|---|
-| GH-4 | P1b: Authentication and roles | gate B pending (paused for mockups) | feat/auth-GH-4 | TBD | docs/agents/tasks/GH-4/ |
+| GH-4 | P1b: Authentication and roles | gate A answered; planning next | feat/auth-GH-4 | TBD | docs/agents/tasks/GH-4/ |
 | GH-8 | Design: phone mockups, Assistant home and Settings | in review (gate C), mocks approved | chore/mockups-GH-8 | #9 | docs/agents/tasks/GH-8/ |
 
 ## Recently done (last 10)
@@ -25,5 +25,5 @@ P0 done (GH-1); P1a done (GH-3); P1b in flight (GH-4); then P1c–P1d (GH-5, GH-
 | GH-1 | P0 Setup: Compose skeleton, CI, .env.example, gitleaks | 2026-11-18 | #2 |
 
 ## Knowledge
-- Ledger: 24 decisions (1 superseded) · 14 patterns (1 candidate) · 5 contracts · 13 open questions.
+- Ledger: 24 decisions (1 superseded) · 14 patterns (1 candidate) · 5 contracts · 14 open questions.
 - Backfill: none (new repo, seeded from the brief on 2026-11-17).

@@ -26,10 +26,11 @@ the producer's `path:line` once it is written.
 - **Status:** approved
 - **Interface:** HTTP REST, OpenAPI at `/docs` and `/openapi.json`; examples in `docs/API.md`.
 - **Consumers:** the web client (`/app` and `/admin`).
-- **Shape:** routes listed in brief §14 (auth, me, payment methods, webauthn, proposals, orders, products, webhooks, health, admin). Errors: one consistent format; 422 for invalid input, 403 for a customer on `/admin`.
+- **Shape:** routes listed in brief §14 (auth, me, payment methods, webauthn, proposals, orders, products, webhooks, health, admin). Errors: every error response (422, other 4xx, 429) uses one envelope, `{"error": {"code": "<machine code>", "message": "<English text>", "fields": [{"field": "<name>", "message": "<text>"}]}}`, with `fields` only when relevant; the submitted input is never sent back. 422 for invalid input, 403 for a customer on `/admin`.
 - **Rules:** JWT access token (15 min) in the Authorization header; rotating refresh token in an httpOnly Secure cookie. CORS restricted to `APP_ORIGIN`. Auth routes are rate limited.
 - **Evidence:** `backend/app/main.py:6` (`GET /health`); other routes: `shopy_brief.md` §14, §16 (not built yet)
 - **Source:** user (project brief) · confidence high
+- **Confirmed:** 2026-11-19
 
 ### C-002 · WebSocket assistant protocol
 - **Status:** approved
