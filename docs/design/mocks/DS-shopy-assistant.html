@@ -105,6 +105,13 @@
                   padding: var(--space-4) var(--space-5); min-height: 60px; cursor: pointer; font-size: var(--text-md); }
   .cart summary::-webkit-details-marker { display: none; }
   .cart summary strong { font-weight: 600; }
+  .cart[open] { background: var(--color-surface); box-shadow: var(--shadow-2); }
+  .cart[open] summary .sum-total { display: none; }
+  .cart-close { display: none; position: absolute; top: var(--space-2); right: var(--space-3); width: 44px; height: 44px;
+                border: 0; border-radius: var(--radius-full); background: var(--color-surface-2); color: var(--color-text);
+                place-items: center; }
+  .cart[open] .cart-close { display: grid; }
+  .cart-close svg { width: 14px; height: 14px; }
   .cart-body { padding: 0 var(--space-5) var(--space-5); display: flex; flex-direction: column; gap: var(--space-4); }
   .line { display: flex; justify-content: space-between; align-items: center; gap: var(--space-3); font-size: var(--text-sm); }
   .qty { display: flex; align-items: center; gap: var(--space-1); }
@@ -187,7 +194,10 @@
   </div>
 
   <details class="cart">
-    <summary><strong>Cart · 3 items</strong><span>128,96 lei</span></summary>
+    <summary><strong>Cart · 3 items</strong><span class="sum-total">128,96 lei</span></summary>
+    <button class="cart-close" aria-label="Close cart" onclick="this.closest('details').open=false">
+      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M1 1l12 12M13 1 1 13"/></svg>
+    </button>
     <div class="cart-body">
       <div class="line">
         <span lang="ro">Ariel Color, 2,2 l<br><span class="muted">54,99 lei</span></span>
