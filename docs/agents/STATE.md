@@ -15,7 +15,7 @@ P0 done (GH-1); P1a done (GH-3); P1b in flight (GH-4); then P1c–P1d (GH-5, GH-
 ## In flight
 | Ticket | Title | Status | Branch | PR | Folder |
 |---|---|---|---|---|---|
-| GH-4 | P1b: Authentication and roles | gate B approved; tests first | feat/auth-GH-4 | TBD | docs/agents/tasks/GH-4/ |
+| GH-4 | P1b: Authentication and roles | gate B approved; tests first | feat/auth-GH-4 | #10 | docs/agents/tasks/GH-4/ |
 
 ## Recently done (last 10)
 | Ticket | Title | Done | PR |

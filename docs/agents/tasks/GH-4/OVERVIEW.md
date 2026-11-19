@@ -8,7 +8,7 @@ title: "P1b: Authentication and roles"
 status: in-progress
 lane: full
 branch: feat/auth-GH-4
-pr: TBD
+pr: https://github.com/Sergiu1809/shopy/pull/10
 design_refs: []
 summary: "Email + password auth (Argon2id, 15-min JWT, rotating refresh cookie), roles, rate limits, CORS, one error envelope"
 created: 2026-11-19 00:00
@@ -100,4 +100,4 @@ none: no manual-test path changed (Q18).
 
 ## Links
 - Ticket: https://github.com/Sergiu1809/shopy/issues/4
-- PR: TBD
+- PR: https://github.com/Sergiu1809/shopy/pull/10
