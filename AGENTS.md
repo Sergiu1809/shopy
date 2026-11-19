@@ -106,10 +106,10 @@ PREFIX=GH python3 .github/scripts/team-checks.py --branch <branch> --base main
 
 ## 3. Layout
 Layout from brief §6. P0 skeleton exists (`backend/` app, worker, tests; `web/` shell;
-`docker-compose.yml`, `docker/db/init/`); P1a adds the database layer (GH-3); the other
-folders arrive with their phases.
+`docker-compose.yml`, `docker/db/init/`); P1a adds the database layer (GH-3); P1b adds
+authentication and roles (GH-4); the other folders arrive with their phases.
 - `shopy_brief.md` — the project brief (the brief's §6 layout calls it `PROJECT_BRIEF.md`; this name is kept).
-- `backend/` — FastAPI app (`app/`; models in `app/models/`, engine in `app/db.py`), `worker/`, Alembic `migrations/` (`alembic.ini`), `seed/`, `tests/`.
+- `backend/` — FastAPI app (`app/`; models in `app/models/`, engine and `get_session` in `app/db.py`, routers in `app/api/`, auth in `app/auth/`, Pydantic bodies in `app/schemas/`, the error envelope in `app/errors.py`), `worker/`, Alembic `migrations/` (`alembic.ini`), `seed/`, `tests/`.
 - `web/` — React PWA: `/app` (customer) and `/admin`.
 - `evals/` — real-LLM scenarios (manual).
 - `docs/agents/` — the ledger; `docs/design/` — design rules and mocks; `docs/API.md` — REST and WebSocket examples.
