@@ -113,3 +113,62 @@ def test_buckets_are_distinct_objects() -> None:
     buckets = [getattr(rate_limit, n) for n in [*names, "LOGOUT_IP"]]
 
     assert len({id(b) for b in buckets}) == 5
+
+
+# --- Reproduction (GH-4 review round 1): a slot is taken before the awaited work ---
+# `check()` then `hit()` leaves a gap across an await; parallel logins all passed the
+# check. `reserve(key)` takes a slot at once (or raises), `release(key)` gives it back
+# when the attempt turns out not to count (a successful login, A4).
+
+
+def test_reserve_takes_a_slot_at_once(clock: list[float]) -> None:
+    limiter = FixedWindowLimiter(limit=3, window_s=60)
+
+    for _ in range(3):
+        limiter.reserve("a")  # no hit() in between: nothing has finished yet
+    with pytest.raises(RateLimited) as caught:
+        limiter.reserve("a")
+
+    assert caught.value.status_code == 429
+    assert 1 <= retry_after(caught.value) <= 60
+    limiter.reserve("b")  # per key
+
+
+def test_release_gives_the_slot_back(clock: list[float]) -> None:
+    limiter = FixedWindowLimiter(limit=2, window_s=60)
+    limiter.reserve("a")
+    limiter.reserve("a")
+
+    limiter.release("a")
+
+    limiter.reserve("a")
+    with pytest.raises(RateLimited):
+        limiter.reserve("a")
+
+
+def test_a_kept_reservation_counts_like_a_hit(clock: list[float]) -> None:
+    limiter = FixedWindowLimiter(limit=2, window_s=60)
+    limiter.reserve("a")
+    limiter.reserve("a")
+
+    with pytest.raises(RateLimited):
+        limiter.check("a")
+
+    clock[0] += 61
+    limiter.check("a")
+    limiter.reserve("a")
+
+
+def test_release_after_the_window_ended_does_not_go_below_zero(
+    clock: list[float],
+) -> None:
+    limiter = FixedWindowLimiter(limit=2, window_s=60)
+    limiter.reserve("a")
+    clock[0] += 61
+
+    limiter.release("a")  # the old window is gone: nothing to give back
+
+    limiter.reserve("a")
+    limiter.reserve("a")
+    with pytest.raises(RateLimited):
+        limiter.reserve("a")
