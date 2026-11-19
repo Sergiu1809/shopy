@@ -65,6 +65,34 @@ class FixedWindowLimiter:
         if count + 1 > self.limit:
             raise RateLimited(start + self.window_s - now)
 
+    def reserve(self, key: str) -> None:
+        """Take a slot at once, before any await (a parallel request sees it).
+
+        Raise `RateLimited` when `limit` slots are already taken in the key's window,
+        recorded or still in flight; a refused attempt is not recorded. The slot
+        counts like a hit until `release` gives it back.
+        """
+        now = _now()
+        start, count = self._current(key, now)
+        if count >= self.limit:
+            raise RateLimited(start + self.window_s - now)
+        self._windows[key] = (start, count + 1)
+        if len(self._windows) > _SWEEP_ABOVE:
+            self._sweep(now)
+
+    def release(self, key: str) -> None:
+        """Give one reserved slot back; never below zero; a no-op once its window ended.
+
+        A window that ended and was replaced by a new one is not told apart: a release
+        across the boundary gives back a slot of the new window (one extra attempt).
+        """
+        now = _now()
+        window = self._windows.get(key)
+        if window is None or now - window[0] >= self.window_s:
+            return
+        start, count = window
+        self._windows[key] = (start, max(0, count - 1))
+
     def reset(self) -> None:
         self._windows.clear()
 

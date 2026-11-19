@@ -53,7 +53,7 @@ locked: a limit ends with its window.
 
 | Route | Limit |
 |---|---|
-| `POST /auth/login` | 20 attempts per IP per 15 min, and 5 failed attempts per email per 15 min (the 6th attempt gets 429, even with the right password) |
+| `POST /auth/login` | 20 attempts per IP per 15 min, and 5 failed attempts per email per 15 min (the 6th attempt gets 429, even with the right password; attempts still in progress count, so parallel requests cannot get past the limit) |
 | `POST /auth/register` | 5 per IP per hour (invalid requests count) |
 | `POST /auth/refresh` | 60 per IP per minute |
 | `POST /auth/logout` | 60 per IP per minute (a bucket of its own) |

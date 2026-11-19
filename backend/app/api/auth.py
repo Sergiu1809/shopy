@@ -87,17 +87,27 @@ async def register(body: RegisterIn, response: Response, db: Session) -> TokenOu
 @router.post("/login", dependencies=[Depends(limit_by_ip(rate_limit.LOGIN_IP))])
 async def login(body: LoginIn, response: Response, db: Session) -> TokenOut:
     # A4: failures per submitted email, known or not; a success does not reset them.
-    rate_limit.LOGIN_ACCOUNT_FAILURES.check(body.email)
-    user = await db.scalar(select(User).where(func.lower(User.email) == body.email))
-    if user is None:
-        await run_in_threadpool(verify_dummy, body.password)
-        valid = False
-    else:
-        valid = await run_in_threadpool(
-            verify_password, body.password, user.password_hash
-        )
-    if user is None or not valid:
-        rate_limit.LOGIN_ACCOUNT_FAILURES.hit(body.email)
+    # The slot is taken before the first await, so parallel attempts see each other.
+    failures = rate_limit.LOGIN_ACCOUNT_FAILURES
+    failures.reserve(body.email)
+    failed = False
+    try:
+        user = await db.scalar(select(User).where(func.lower(User.email) == body.email))
+        if user is None:
+            await run_in_threadpool(verify_dummy, body.password)
+            valid = False
+        else:
+            valid = await run_in_threadpool(
+                verify_password, body.password, user.password_hash
+            )
+        failed = user is None or not valid
+    finally:
+        # Only a wrong email or password keeps the slot. A success gives it back, and
+        # so does an error or a cancelled request: a server fault never costs the user
+        # an attempt.
+        if not failed:
+            failures.release(body.email)
+    if failed or user is None:
         raise ApiError(401, "invalid_credentials", "Invalid email or password.")
     if needs_rehash(user.password_hash):
         user.password_hash = await run_in_threadpool(hash_password, body.password)
