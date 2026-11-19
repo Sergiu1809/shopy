@@ -68,14 +68,14 @@ Ticket: https://github.com/Sergiu1809/shopy/issues/4
   - D-024 — bigint identity keys; IDs are never a security boundary.
   - Q-014 — open: production same-site/cookie/proxy-IP (blocks P7, not GH-4).
 - **New dependencies to approve at gate B:** `argon2-cffi`, `PyJWT`, `email-validator`. A settings layer (`pydantic-settings`) only with a concrete reason; `backend/app/db.py` reads `os.environ` today.
-- **Where the code is:** `backend/app/models/user.py` (`User`, `RefreshToken`, from GH-3), `backend/app/main.py`, `backend/app/db.py`, `backend/tests/conftest.py`; new code in `backend/app/auth/` (ARCHITECTURE.md). <planner completes>
-- **Ownership:** integration owner: conductor · <planner completes>
-- **Verify with:** `cd backend && uv sync && uv run ruff check . && uv run ruff format --check . && uv run mypy . && uv run pytest`; `python3 docs/agents/tools/ledger-lint.py`
+- **Where the code is:** `backend/app/models/user.py` (`User`, `RefreshToken`, from GH-3), `backend/app/main.py`, `backend/app/db.py`, `backend/tests/conftest.py`; new: `backend/app/auth/` (passwords, tokens, rate_limit, dependencies), `backend/app/api/` (auth, me, admin), `backend/app/schemas/auth.py`, `backend/app/errors.py`, `docs/API.md`; tests `backend/tests/test_{passwords,tokens,rate_limit,startup,auth_register,auth_login,auth_refresh,me,admin_access,errors,cors}.py`.
+- **Ownership:** integration owner: conductor · one builder for the whole delivery (shared `main.py`, `errors.py`, `conftest.py`, auth dependency) · test author first · no worker branches.
+- **Verify with:** `cd backend && uv sync && uv run ruff check . && uv run ruff format --check . && uv run mypy . && uv run pytest`; `python3 docs/agents/tools/ledger-lint.py`; `uvx pre-commit run --all-files` (gitleaks). DB tests need Docker.
 
 ## Resume here ⏯
-Gate A done (2026-11-19). Next: `/plan` for GH-4 on `feat/auth-GH-4`. Q-014 recorded;
-C-001 error-envelope amendment approved by the user (conductor applies it if not yet in
-`docs/agents/CONTRACTS.md`).
+Plan written (`PLAN.md`), gate B pending: the user approves the plan, calls PATTERN-008 and Q-014,
+confirms assumptions A1–A15 and gives the go to push and open the draft PR. Paused 2026-11-19
+for an urgent mockup ticket. Branch `feat/auth-GH-4` is local only (not pushed).
 
 ## Summary of work so far
 - 2026-11-19 — Product owner: coverage report; gate A answered by the user (all recommendations accepted, password rule changed to 8–128 with one uppercase and one digit; C-001 envelope approved). Q-014 added.
