@@ -7,6 +7,7 @@ import os
 import secrets
 
 import pytest
+
 from app.auth.tokens import create_access_token, jwt_secret
 
 

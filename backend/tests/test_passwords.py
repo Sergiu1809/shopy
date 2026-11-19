@@ -1,6 +1,7 @@
 """Argon2id password hashing (Q11); sync functions the seed (GH-5) reuses. No Docker."""
 
 import pytest
+
 from app.auth.passwords import (
     hash_password,
     needs_rehash,
@@ -69,6 +70,6 @@ def test_verify_dummy_runs_a_real_argon2_verify(
 
     monkeypatch.setattr(PasswordHasher, "verify", spy)
 
-    assert verify_dummy(PASSWORD) is None
+    assert verify_dummy(PASSWORD) is None  # type: ignore[func-returns-value]
     assert len(calls) == 1
     assert calls[0].startswith("$argon2id$")

@@ -12,13 +12,13 @@ from collections.abc import Callable
 from typing import Any
 
 import pytest
-from app.api.admin import router as admin_router
-from app.auth.dependencies import require_admin
 from fastapi.routing import APIRoute
 from httpx import AsyncClient
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.api.admin import router as admin_router
+from app.auth.dependencies import require_admin
 from app.main import app
 from tests.conftest import assert_error
 

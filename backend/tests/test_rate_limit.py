@@ -4,9 +4,10 @@ The clock is `app.auth.rate_limit._now` (monotonic seconds), monkeypatched here.
 """
 
 import pytest
+from starlette.exceptions import HTTPException
+
 from app.auth import rate_limit
 from app.auth.rate_limit import FixedWindowLimiter, RateLimited, reset_all
-from starlette.exceptions import HTTPException
 
 
 @pytest.fixture
