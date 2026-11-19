@@ -74,8 +74,8 @@ Ticket: https://github.com/Sergiu1809/shopy/issues/4
 
 ## Resume here ⏯
 Plan written (`PLAN.md`), gate B pending: the user approves the plan, calls PATTERN-008 and Q-014,
-confirms assumptions A1–A15 and gives the go to push and open the draft PR. Paused 2026-11-19
-for an urgent mockup ticket. Branch `feat/auth-GH-4` is local only (not pushed).
+confirms assumptions A1–A15 and gives the go to push and open the draft PR. Resumed 2026-11-19
+after GH-8 (rebased on main). Branch `feat/auth-GH-4` is local only (not pushed).
 
 ## Summary of work so far
 - 2026-11-19 — Product owner: coverage report; gate A answered by the user (all recommendations accepted, password rule changed to 8–128 with one uppercase and one digit; C-001 envelope approved). Q-014 added.

@@ -5,14 +5,14 @@ parent:
 covers: []
 delivered_in:
 title: "Design: phone mockups for the Assistant home and Settings (addresses, cards)"
-status: in-review
+status: done
 lane: fast
 branch: chore/mockups-GH-8
 pr: https://github.com/Sergiu1809/shopy/pull/9
 design_refs: [DS-shopy-assistant, DS-shopy-settings]
 summary: "Two draft phone mocks with provisional Apple-site-inspired tokens, for the user to look at"
 created: 2026-11-19 16:43
-updated: 2026-11-19 16:50
+updated: 2026-11-19 16:55
 ---
 
 # GH-8 — Design: phone mockups for the Assistant home and Settings (addresses, cards)
@@ -35,8 +35,7 @@ Ticket: https://github.com/Sergiu1809/shopy/issues/8
 - **Verify with:** open the two HTML files in a browser at 390 px, toggle light/dark; `python3 docs/agents/tools/ledger-lint.py`.
 
 ## Resume here ⏯
-Mocks confirmed by the user (2026-11-19: "e perfect"); registry status `approved`. Next: the user
-reviews and merges the PR. Q-008 stays open (tokens are provisional, inside the mocks).
+Nothing to resume — completed on 2026-11-19 (PR #9 merged by the developer).
 
 ## Summary of work so far
 - 2026-11-19 — Ticket created with the user's OK; two mocks drawn, checked in light and dark at 390 px; registry updated. (log: `log_2026-11-19_1643.md`)
