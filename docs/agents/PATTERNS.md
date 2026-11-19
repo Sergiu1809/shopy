@@ -24,6 +24,7 @@ then.
 - PATTERN-012 · External providers sit behind interfaces · approved
 - PATTERN-013 · Secrets only in .env · approved
 - PATTERN-014 · Schema changes: models, one reviewed revision, drift test · candidate
+- PATTERN-015 · API tests with the DB: httpx AsyncClient + ASGITransport · candidate
 
 ---
 
@@ -71,19 +72,17 @@ then.
 - **Status:** approved
 - **Use when:** any REST body, query parameter, WebSocket message or tool argument.
 - **How:** a Pydantic v2 model with types, lengths, enums and ranges; invalid input returns 422 in the one consistent error format with a useful message.
-- **Example:** `shopy_brief.md` §16, §17 test 17 (no code yet)
+- **Example:** `backend/app/schemas/auth.py` (`extra="forbid"`, lengths, a fixed email message), `backend/app/errors.py` (the one envelope, no input echoed), `backend/tests/test_errors.py` (test 17)
 - **Why:** server-side validation is the only trusted check.
 - **Source:** user (project brief) · confidence high
-- **Confirmed:** 2026-11-18
 
 ## PATTERN-007 · Authorization in FastAPI dependencies
 - **Status:** approved
 - **Use when:** adding any route or WebSocket handler.
 - **How:** a role dependency on every `/admin` route (customer → 403); an ownership check on every customer resource; never rely on hiding UI.
-- **Example:** `shopy_brief.md` §3, §16 (no code yet)
+- **Example:** `backend/app/auth/dependencies.py` (`get_current_user`, `require_admin`), `backend/app/api/admin.py` (dependency at router level), `backend/tests/test_admin_access.py` (test 15 over every `/admin` route); ownership checks: no customer resource yet
 - **Why:** customers must never reach admin data or another customer's data (tests 15, 16).
 - **Source:** user (project brief) · confidence high
-- **Confirmed:** 2026-11-18
 
 ## PATTERN-008 · SQL only through SQLAlchemy with bound parameters
 - **Status:** approved
@@ -92,6 +91,7 @@ then.
 - **Example:** `backend/migrations/versions/0001_initial_schema.py` (schema through Alembic, `timestamptz`), `backend/app/models/catalog.py` (`store_id`)
 - **Why:** SQL injection (test 18) and a schema that can grow to several stores.
 - **Source:** user (project brief) · confidence high
+- **Confirmed:** 2026-11-19
 
 ## PATTERN-009 · Untrusted text renders as plain text
 - **Status:** approved
@@ -143,3 +143,11 @@ then.
 - **Example:** `backend/app/models/base.py`, `backend/migrations/versions/0001_initial_schema.py`, `backend/tests/test_migrations.py`
 - **Why:** deterministic names let tests and migrations target constraints; the drift test catches a model change that has no migration.
 - **Source:** GH-3 plan, assumption A9 (approved at gate B, 2026-11-18) · confidence medium
+
+## PATTERN-015 · API tests with the DB: httpx AsyncClient + ASGITransport
+- **Status:** candidate
+- **Use when:** a test calls a route that uses the database.
+- **How:** `httpx.AsyncClient(transport=ASGITransport(app=app, client=(ip, port)), base_url="https://test")`; override `get_session` with the rolled-back `session` fixture (savepoint per request); vary the client IP through `client=` for rate limits; `https` so `Secure` cookies come back; generate test secrets at run time. Never `TestClient` with DB fixtures (it runs the app on another event loop than asyncpg).
+- **Example:** `backend/tests/conftest.py` (`api_app`, `client_factory`, `make_user`, `auth_header`), `backend/tests/test_auth_refresh.py`
+- **Why:** one event loop for the app and asyncpg; nothing an API test writes survives it; cookie and rate-limit behaviour is testable.
+- **Source:** GH-4 plan, assumption A15 (approved at gate B, 2026-11-19) · confidence medium
