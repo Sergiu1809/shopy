@@ -16,7 +16,7 @@ P0 done (GH-1); P1a done (GH-3); P1b in flight (GH-4); then P1c–P1d (GH-5, GH-
 | Ticket | Title | Status | Branch | PR | Folder |
 |---|---|---|---|---|---|
 | GH-4 | P1b: Authentication and roles | gate B pending (paused for mockups) | feat/auth-GH-4 | TBD | docs/agents/tasks/GH-4/ |
-| GH-8 | Design: phone mockups, Assistant home and Settings | draft PR, user review | chore/mockups-GH-8 | TBD | docs/agents/tasks/GH-8/ |
+| GH-8 | Design: phone mockups, Assistant home and Settings | in review (gate C), mocks approved | chore/mockups-GH-8 | #9 | docs/agents/tasks/GH-8/ |
 
 ## Recently done (last 10)
 | Ticket | Title | Done | PR |

@@ -8,7 +8,7 @@ title: "Design: phone mockups for the Assistant home and Settings (addresses, ca
 status: in-review
 lane: fast
 branch: chore/mockups-GH-8
-pr: TBD
+pr: https://github.com/Sergiu1809/shopy/pull/9
 design_refs: [DS-shopy-assistant, DS-shopy-settings]
 summary: "Two draft phone mocks with provisional Apple-site-inspired tokens, for the user to look at"
 created: 2026-11-19 16:43
@@ -68,4 +68,4 @@ none: a design to look at; the user's confirmation is the check.
 
 ## Links
 - Ticket: https://github.com/Sergiu1809/shopy/issues/8
-- PR: TBD
+- PR: https://github.com/Sergiu1809/shopy/pull/9
