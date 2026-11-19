@@ -12,7 +12,7 @@ designs:
   - id: DS-shopy-assistant
     kind: screen
     name: Assistant (home)
-    status: draft
+    status: approved
     mock: docs/design/mocks/DS-shopy-assistant.html
     source: null
     brief: "§9.5 Assistant (home)"
@@ -20,7 +20,7 @@ designs:
   - id: DS-shopy-settings
     kind: screen
     name: Settings (addresses, cards)
-    status: draft
+    status: approved
     mock: docs/design/mocks/DS-shopy-settings.html
     source: null
     brief: "§9.5 Settings"

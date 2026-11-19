@@ -12,7 +12,7 @@ pr: TBD
 design_refs: [DS-shopy-assistant, DS-shopy-settings]
 summary: "Two draft phone mocks with provisional Apple-site-inspired tokens, for the user to look at"
 created: 2026-11-19 16:43
-updated: 2026-11-19 16:43
+updated: 2026-11-19 16:50
 ---
 
 # GH-8 — Design: phone mockups for the Assistant home and Settings (addresses, cards)
@@ -35,11 +35,13 @@ Ticket: https://github.com/Sergiu1809/shopy/issues/8
 - **Verify with:** open the two HTML files in a browser at 390 px, toggle light/dark; `python3 docs/agents/tools/ledger-lint.py`.
 
 ## Resume here ⏯
-Mocks drawn, pushed, draft PR open. Next: the user looks at them and confirms or asks for changes;
-on confirmation the registry status becomes `approved`. Q-008 stays open until the tokens are confirmed.
+Mocks confirmed by the user (2026-11-19: "e perfect"); registry status `approved`. Next: the user
+reviews and merges the PR. Q-008 stays open (tokens are provisional, inside the mocks).
 
 ## Summary of work so far
 - 2026-11-19 — Ticket created with the user's OK; two mocks drawn, checked in light and dark at 390 px; registry updated. (log: `log_2026-11-19_1643.md`)
+
+- 2026-11-19 — Close button on the cart sheet (user request); user confirmed both mocks.
 
 ## Approach
 Self-contained HTML per screen, one identical provisional token block (CSS custom properties, light + dark,
