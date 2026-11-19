@@ -12,7 +12,7 @@ pr: https://github.com/Sergiu1809/shopy/pull/10
 design_refs: []
 summary: "Email + password auth (Argon2id, 15-min JWT, rotating refresh cookie), roles, rate limits, CORS, one error envelope"
 created: 2026-11-19 00:00
-updated: 2026-11-19 00:00
+updated: 2026-11-19 20:55
 ---
 
 # GH-4 — P1b: Authentication and roles
@@ -73,12 +73,15 @@ Ticket: https://github.com/Sergiu1809/shopy/issues/4
 - **Verify with:** `cd backend && uv sync && uv run ruff check . && uv run ruff format --check . && uv run mypy . && uv run pytest`; `python3 docs/agents/tools/ledger-lint.py`; `uvx pre-commit run --all-files` (gitleaks). DB tests need Docker.
 
 ## Resume here ⏯
-Gate B approved 2026-11-19 (A6 changed: fixed email message "Invalid email address."). Branch pushed, draft PR open.
-Next: test author writes the failing tests on `feat/auth-GH-4`, then one builder.
+Built; review round 1 = fail (parallel bypass of the per-account login limit) → reproduced (81a1267) and fixed
+(a4d3f8c), OpenAPI email format restored (d0e91e0); 247/247 green, pushed. Waiting on the user: unknown-field
+names echoed in 422 `fields[].field` → (a) fixed label or (b) narrow C-001. Then review round 2 (the last), then gate C
+(re-confirm C-001, PATTERN-006, PATTERN-007; PR description with real results).
 
 ## Summary of work so far
 - 2026-11-19 — Product owner: coverage report; gate A answered by the user (all recommendations accepted, password rule changed to 8–128 with one uppercase and one digit; C-001 envelope approved). Q-014 added.
 - 2026-11-19 — Plan written (planner); paused for GH-8; gate B approved (A6: fixed email message); PATTERN-008 confirmed.
+- 2026-11-19 — Tests first: 147 failing tests (32ac83d; gitleaks false positive fixed by generating the probe password, 25f4bfc). Builder: 7 commits, 240/240 green, smoke OK. Review round 1: fail (login limit bypass under parallel requests) → reproduction + fix, 247/247. (log: `log_2026-11-19_2055.md`)
 
 ## Approach
 See `PLAN.md` (approved at gate B 2026-11-19) and `TESTS.md` (from the test author).
@@ -86,14 +89,31 @@ See `PLAN.md` (approved at gate B 2026-11-19) and `TESTS.md` (from the test auth
 ## Cumulative file manifest 📁
 | Action | Path | Purpose / what changed |
 |---|---|---|
-| add | `docs/agents/tasks/GH-4/OVERVIEW.md` | journal and context brief |
+| add | `docs/agents/tasks/GH-4/OVERVIEW.md`, `PLAN.md`, `TESTS.md`, `log_*.md` | journal, plan, test map |
 | edit | `docs/agents/OPEN-QUESTIONS.md` | Q-014 (production same-site/cookie/proxy IP) |
+| edit | `docs/agents/CONTRACTS.md` | C-001 error envelope (approved), Evidence → code |
+| edit | `docs/agents/PATTERNS.md` | PATTERN-006/007 Examples; candidate PATTERN-015; PATTERN-008 Confirmed |
+| edit | `docs/agents/ARCHITECTURE.md`, `AGENTS.md` §3 | P1b layout and config |
+| edit | `docs/agents/STATE.md`, `tasks/GH-3/OVERVIEW.md`, `tasks/GH-8/OVERVIEW.md` | GH-3 and GH-8 done, GH-4 row |
+| edit | `backend/pyproject.toml`, `backend/uv.lock` | argon2-cffi, PyJWT, email-validator |
+| edit | `backend/app/main.py`, `backend/app/db.py` | lifespan secret check, CORS, routers, error handlers; `get_session` |
+| add | `backend/app/errors.py` | one error envelope |
+| add | `backend/app/auth/` (`passwords`, `tokens`, `rate_limit`, `dependencies`) | hashing, JWT + refresh, limits (reserve/release), role dependencies |
+| add | `backend/app/schemas/auth.py` | Email (fixed message), Password rules, bodies |
+| add | `backend/app/api/` (`auth`, `me`, `admin`) | routes; `/admin` router with `require_admin` |
+| edit | `backend/tests/conftest.py` | env, AsyncClient fixtures, make_user, limiter reset |
+| add | `backend/tests/test_{passwords,tokens,rate_limit,startup,auth_register,auth_login,auth_refresh,me,admin_access,errors,cors,login_concurrency}.py` | 154 tests |
+| edit | `.env.example` | JWT_SECRET ≥32 bytes comment |
+| add | `docs/API.md` | REST examples for auth, /me, errors, limits, CORS |
 
 ## Manual verification 🔧
+none: no manual-test path touched (Q18). Smoke run by the builder: register 201 + cookie; `change-me` secret stops startup.
 none: no manual-test path changed (Q18).
 
 ## Decisions log 🧭
 - **2026-11-19 — Gate A answers Q1–Q18 as listed in the context brief** — Why: user accepted the product owner's recommendations; Q8 changed by the user. Rejected: FastAPI default errors (echo input, two shapes); a Postgres rate-limit table (not needed for one process); access-only logout.
+- **2026-11-19 — Gate B approved; A6 changed to a fixed email message** — Why: zero echo of input. Rejected: Pydantic's email messages.
+- **2026-11-19 — Login limit reserves the slot before any await (review round 1 defect)** — Why: check-then-hit across an await let parallel guesses pass. Rejected: a lock (unneeded on one event loop once the slot is taken synchronously). A server error releases the slot.
 
 ## Open questions / blockers
 - [ ] Q-014 — production site/cookie/proxy topology (blocks P7 only).
