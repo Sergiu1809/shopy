@@ -120,7 +120,7 @@ None (no UI).
 - Strict rotation: two tabs refreshing at once log out every device (approved Q3); `FOR UPDATE` makes it deterministic.
 - Test 15 sends no body (a malformed body would give 422 before 403); GH-6 keeps it so.
 - `APP_ORIGIN` is read at import (middleware built once): a missing value fails at import (A2).
-- email-validator messages can quote one stray character of the email (A6).
+- ~~email-validator messages can quote one stray character of the email~~ resolved at gate B: fixed message (A6).
 - Updating C-001 and PATTERN-006/007 removes their Confirmed lines (ledger rule); re-confirm at gate C.
 - Hard to reverse: nothing (no migration).
 
@@ -132,9 +132,9 @@ Passkeys/WebAuthn (P4), password reset, email verification, any UI, real `/admin
 ## Knowledge used
 | Entry | What it says | Why it applies here | Call (confirm / wrong / outdated / answered) | Date |
 |---|---|---|---|---|
-| D-003, D-004, D-021, D-024, PATTERN-006, PATTERN-007, PATTERN-013, C-001 | confirmed before, unchanged | stack; no Redis → in-memory limits; English messages; bigint IDs; Pydantic + 422 envelope; role dependency on `/admin`; secrets in `.env`; REST/JWT/cookie/CORS/envelope (consumer: web client, not built yet) | | |
-| PATTERN-008 | SQL only through SQLAlchemy with bound params; schema only via Alembic; UTC `timestamptz` | every query (user lookup, token `FOR UPDATE`, bulk revoke) and UTC-aware `revoked_at`/`expires_at` | | |
-| Q-014 | open: production same-site, cookie, proxy IP | keeps production topology out of scope; local key is `request.client.host` | | |
+| D-003, D-004, D-021, D-024, PATTERN-006, PATTERN-007, PATTERN-013, C-001 | confirmed before, unchanged | stack; no Redis → in-memory limits; English messages; bigint IDs; Pydantic + 422 envelope; role dependency on `/admin`; secrets in `.env`; REST/JWT/cookie/CORS/envelope (consumer: web client, not built yet) | confirm | 2026-11-19 |
+| PATTERN-008 | SQL only through SQLAlchemy with bound params; schema only via Alembic; UTC `timestamptz` | every query (user lookup, token `FOR UPDATE`, bulk revoke) and UTC-aware `revoked_at`/`expires_at` | confirm | 2026-11-19 |
+| Q-014 | open: production same-site, cookie, proxy IP | keeps production topology out of scope; local key is `request.client.host` | confirm (stays open) | 2026-11-19 |
 
 ### Considered, not applied
 - PATTERN-014 (candidate): no schema change; drift test untouched and stays green.
@@ -149,7 +149,7 @@ Passkeys/WebAuthn (P4), password reset, email verification, any UI, real `/admin
 - **A3** Refresh and logout have separate 60/IP/min buckets.
 - **A4** The login failure bucket is keyed by the normalized submitted email whether or not the account exists; success does not reset it; the 20/IP bucket counts every attempt.
 - **A5** IP limits run as dependencies, so requests that fail validation still count.
-- **A6** `extra="forbid"` on `LoginIn` too; login password `str` 1–128, no composition rule; malformed login email → 422; email messages are Pydantic's.
+- **A6** `extra="forbid"` on `LoginIn` too; login password `str` 1–128, no composition rule; malformed login email → 422. **Changed at gate B:** every email validation error uses one fixed message, "Invalid email address." (no part of the input echoed).
 - **A7** "Uppercase" = any `str.isupper()` character (Romanian diacritics count); "digit" = ASCII 0–9; length in characters.
 - **A8** Logout with an already revoked token → 204, no reuse revocation (only refresh does that).
 - **A9** Refresh without a cookie → 401 `unauthorized`, cookie cleared.
@@ -161,4 +161,4 @@ Passkeys/WebAuthn (P4), password reset, email verification, any UI, real `/admin
 - **A15** Candidate a new candidate pattern (next free PATTERN- ID): API tests with the DB use httpx `AsyncClient` + `ASGITransport` (`https://test`, `get_session` override, vary IP via `client=`), never `TestClient` with DB fixtures. Example: `backend/tests/conftest.py`.
 
 ## Gate B
-- Decision: pending
+- Decision: approved — 2026-11-19 — user: "da la toate, A6 mesaj fix, go". Plan, the three dependencies (argon2-cffi, PyJWT, email-validator), knowledge calls and assumptions A1–A15 approved; A6 changed to a fixed email message "Invalid email address.". Go to push and open the draft PR.

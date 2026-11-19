@@ -92,6 +92,7 @@ then.
 - **Example:** `backend/migrations/versions/0001_initial_schema.py` (schema through Alembic, `timestamptz`), `backend/app/models/catalog.py` (`store_id`)
 - **Why:** SQL injection (test 18) and a schema that can grow to several stores.
 - **Source:** user (project brief) · confidence high
+- **Confirmed:** 2026-11-19
 
 ## PATTERN-009 · Untrusted text renders as plain text
 - **Status:** approved

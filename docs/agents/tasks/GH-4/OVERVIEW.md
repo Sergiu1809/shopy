@@ -73,15 +73,15 @@ Ticket: https://github.com/Sergiu1809/shopy/issues/4
 - **Verify with:** `cd backend && uv sync && uv run ruff check . && uv run ruff format --check . && uv run mypy . && uv run pytest`; `python3 docs/agents/tools/ledger-lint.py`; `uvx pre-commit run --all-files` (gitleaks). DB tests need Docker.
 
 ## Resume here ⏯
-Plan written (`PLAN.md`), gate B pending: the user approves the plan, calls PATTERN-008 and Q-014,
-confirms assumptions A1–A15 and gives the go to push and open the draft PR. Resumed 2026-11-19
-after GH-8 (rebased on main). Branch `feat/auth-GH-4` is local only (not pushed).
+Gate B approved 2026-11-19 (A6 changed: fixed email message "Invalid email address."). Branch pushed, draft PR open.
+Next: test author writes the failing tests on `feat/auth-GH-4`, then one builder.
 
 ## Summary of work so far
 - 2026-11-19 — Product owner: coverage report; gate A answered by the user (all recommendations accepted, password rule changed to 8–128 with one uppercase and one digit; C-001 envelope approved). Q-014 added.
+- 2026-11-19 — Plan written (planner); paused for GH-8; gate B approved (A6: fixed email message); PATTERN-008 confirmed.
 
 ## Approach
-<planner: link PLAN.md and TESTS.md>
+See `PLAN.md` (approved at gate B 2026-11-19) and `TESTS.md` (from the test author).
 
 ## Cumulative file manifest 📁
 | Action | Path | Purpose / what changed |
