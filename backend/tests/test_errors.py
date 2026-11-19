@@ -11,7 +11,7 @@ from httpx import AsyncClient
 
 from tests.conftest import assert_error
 
-SECRET_PASSWORD = "Secret-Parola-987"
+PROBE_PASSWORD = "Ecou-Parola-987"
 
 
 async def test_bad_email_gives_422_with_a_useful_message(client: AsyncClient) -> None:
@@ -26,7 +26,7 @@ async def test_bad_email_gives_422_with_a_useful_message(client: AsyncClient) ->
 
 
 async def test_422_never_echoes_the_password(client: AsyncClient) -> None:
-    bad = "x" + SECRET_PASSWORD.lower()  # no uppercase letter: invalid
+    bad = "x" + PROBE_PASSWORD.lower()  # no uppercase letter: invalid
     response = await client.post(
         "/auth/register", json={"email": "ana@example.ro", "password": bad}
     )
@@ -40,23 +40,23 @@ async def test_422_for_a_wrong_type_does_not_echo_the_value(
     client: AsyncClient,
 ) -> None:
     response = await client.post(
-        "/auth/login", json={"email": "ana@example.ro", "password": [SECRET_PASSWORD]}
+        "/auth/login", json={"email": "ana@example.ro", "password": [PROBE_PASSWORD]}
     )
 
     error = assert_error(response, 422, "validation_error", fields=True)
     assert [f["field"] for f in error["fields"]] == ["password"]
-    assert SECRET_PASSWORD not in response.text
+    assert PROBE_PASSWORD not in response.text
 
 
 async def test_malformed_json_gives_the_envelope(client: AsyncClient) -> None:
     response = await client.post(
         "/auth/login",
-        content=b'{"email": "ana@example.ro", "password": "' + SECRET_PASSWORD.encode(),
+        content=b'{"email": "ana@example.ro", "password": "' + PROBE_PASSWORD.encode(),
         headers={"Content-Type": "application/json"},
     )
 
     assert_error(response, 422, "validation_error", fields=True)
-    assert SECRET_PASSWORD not in response.text
+    assert PROBE_PASSWORD not in response.text
 
 
 async def test_every_field_error_is_listed(client: AsyncClient) -> None:
