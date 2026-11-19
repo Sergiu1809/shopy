@@ -2,10 +2,26 @@
 # Plans, commits, mocks and board files use the ID (tickets don't). kind: foundation | component | screen
 # status: draft (mock drawn) | approved (confirmed on the board) | implemented | deprecated (never delete an entry)
 #
-# No screen exists yet. Planned screens (shopy_brief.md §9.5) get an entry when their
+# Planned screens (shopy_brief.md §9.5) get an entry when their
 # mock is drawn: DS-shopy-auth-signup, DS-shopy-auth-login, DS-shopy-onboarding-passkey,
 # DS-shopy-assistant, DS-shopy-confirm-sheet, DS-shopy-orders, DS-shopy-order-detail,
 # DS-shopy-settings, DS-shopy-admin-products, DS-shopy-admin-index,
 # DS-shopy-admin-conversations, DS-shopy-admin-orders, DS-shopy-admin-confirmations,
 # DS-shopy-admin-usage.
-designs: []
+designs:
+  - id: DS-shopy-assistant
+    kind: screen
+    name: Assistant (home)
+    status: draft
+    mock: docs/design/mocks/DS-shopy-assistant.html
+    source: null
+    brief: "§9.5 Assistant (home)"
+    notes: "Phone mock (390 px), light/dark, provisional tokens (Q-008). GH-8."
+  - id: DS-shopy-settings
+    kind: screen
+    name: Settings (addresses, cards)
+    status: draft
+    mock: docs/design/mocks/DS-shopy-settings.html
+    source: null
+    brief: "§9.5 Settings"
+    notes: "Addresses and cards only; preferences and passkeys not drawn yet. Fake card display data. GH-8."

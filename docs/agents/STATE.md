@@ -6,20 +6,22 @@
 > Updated by every session that starts, pauses or finishes a ticket.
 <!-- graffino-agentic:team:end -->
 
-Updated 2026-11-18.
+Updated 2026-11-19.
 
 ## The product
 Shopy: a Romanian voice shopping assistant (iPhone PWA + admin) for one demo store.
-P0 done (GH-1); P1a in review (GH-3); then P1b–P1d (GH-4 to GH-6). Structure: `docs/agents/ARCHITECTURE.md`.
+P0 done (GH-1); P1a done (GH-3); P1b in flight (GH-4); then P1c–P1d (GH-5, GH-6). Structure: `docs/agents/ARCHITECTURE.md`.
 
 ## In flight
 | Ticket | Title | Status | Branch | PR | Folder |
 |---|---|---|---|---|---|
-| GH-3 | P1a: Database models and migrations | in review (gate C) | feat/db-models-GH-3 | #7 | docs/agents/tasks/GH-3/ |
+| GH-4 | P1b: Authentication and roles | gate B pending (paused for mockups) | feat/auth-GH-4 | TBD | docs/agents/tasks/GH-4/ |
+| GH-8 | Design: phone mockups, Assistant home and Settings | draft PR, user review | chore/mockups-GH-8 | TBD | docs/agents/tasks/GH-8/ |
 
 ## Recently done (last 10)
 | Ticket | Title | Done | PR |
 |---|---|---|---|
+| GH-3 | P1a: Database models and migrations | 2026-11-18 | #7 |
 | GH-1 | P0 Setup: Compose skeleton, CI, .env.example, gitleaks | 2026-11-18 | #2 |
 
 ## Knowledge

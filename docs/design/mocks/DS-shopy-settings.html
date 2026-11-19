@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shopy settings</title>
+<!-- DS-shopy-settings · draft mock (GH-8). Tokens are PROVISIONAL (Q-008 open); same token block as DS-shopy-assistant. -->
+<!-- Card data is fake display data only (brand + last4). Real cards are added through the Stripe Payment Element; no card number ever touches Shopy. -->
+<style>
+  /* ---- Provisional tokens (same block in every mock) ---- */
+  :root {
+    --color-bg: #ffffff; --color-surface: #ffffff; --color-surface-2: #f5f5f7; --color-glass: rgb(255 255 255 / .72);
+    --color-text: #1d1d1f; --color-text-muted: #6e6e73; --color-border: #d2d2d7;
+    --color-accent: #0071e3; --color-on-accent: #ffffff; --color-accent-soft: #e8f1fc;
+    --color-success: #1a7f37; --color-warning: #b64400; --color-danger: #d70015; --color-focus: #0071e3;
+    --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --text-xs: 12px; --text-sm: 14px; --text-md: 17px; --text-lg: 21px; --text-xl: 28px; --text-2xl: 40px;
+    --tracking-tight: -0.02em;
+    --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-5: 24px; --space-6: 32px; --space-7: 48px;
+    --radius-sm: 10px; --radius-md: 18px; --radius-lg: 28px; --radius-full: 980px;
+    --shadow-1: 0 2px 12px rgb(0 0 0 / .06); --shadow-2: 0 -8px 32px rgb(0 0 0 / .10);
+    --duration-fast: 150ms; --duration-base: 300ms; --ease: cubic-bezier(.25,.1,.25,1);
+  }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+    --color-bg: #000000; --color-surface: #1c1c1e; --color-surface-2: #161617; --color-glass: rgb(22 22 23 / .72);
+    --color-text: #f5f5f7; --color-text-muted: #a1a1a6; --color-border: #424245;
+    --color-accent: #2997ff; --color-on-accent: #000000; --color-accent-soft: #0b2a4a;
+    --color-success: #30d158; --color-warning: #ff9f0a; --color-danger: #ff453a; --color-focus: #2997ff;
+    --shadow-1: 0 2px 12px rgb(0 0 0 / .6); --shadow-2: 0 -8px 32px rgb(0 0 0 / .6);
+  } }
+  :root[data-theme="dark"] {
+    --color-bg: #000000; --color-surface: #1c1c1e; --color-surface-2: #161617; --color-glass: rgb(22 22 23 / .72);
+    --color-text: #f5f5f7; --color-text-muted: #a1a1a6; --color-border: #424245;
+    --color-accent: #2997ff; --color-on-accent: #000000; --color-accent-soft: #0b2a4a;
+    --color-success: #30d158; --color-warning: #ff9f0a; --color-danger: #ff453a; --color-focus: #2997ff;
+    --shadow-1: 0 2px 12px rgb(0 0 0 / .6); --shadow-2: 0 -8px 32px rgb(0 0 0 / .6);
+  }
+  @media (prefers-reduced-motion: reduce) { :root { --duration-fast: 0ms; --duration-base: 0ms; } }
+
+  /* ---- Base ---- */
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--color-surface-2); font-family: var(--font-sans); color: var(--color-text);
+         -webkit-font-smoothing: antialiased; }
+  .phone { max-width: 390px; min-height: 100vh; margin: 0 auto; background: var(--color-bg); position: relative; }
+  :focus-visible { outline: 3px solid var(--color-focus); outline-offset: 2px; border-radius: var(--radius-sm); }
+  button { font: inherit; color: inherit; cursor: pointer; }
+
+  /* ---- Glass nav ---- */
+  .nav { position: sticky; top: 0; z-index: 5; display: flex; align-items: center; justify-content: space-between;
+         padding: var(--space-2) var(--space-4); background: var(--color-glass);
+         -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px);
+         border-bottom: 1px solid var(--color-border); }
+  .wordmark { font-size: var(--text-md); font-weight: 600; letter-spacing: var(--tracking-tight); }
+  .icon-btn { width: 44px; height: 44px; display: grid; place-items: center; color: var(--color-text); border-radius: var(--radius-full); }
+
+
+  .back { display: flex; align-items: center; gap: var(--space-1); color: var(--color-accent); text-decoration: none;
+          min-height: 44px; font-size: var(--text-md); }
+  main { padding: var(--space-6) var(--space-4) var(--space-7); display: flex; flex-direction: column; gap: var(--space-6); }
+  h1 { font-size: var(--text-2xl); line-height: 1.1; letter-spacing: var(--tracking-tight); font-weight: 700; margin: 0; }
+  h2 { font-size: var(--text-lg); font-weight: 600; letter-spacing: var(--tracking-tight); margin: 0 0 var(--space-3); }
+  .hint { font-size: var(--text-sm); color: var(--color-text-muted); margin: var(--space-2) var(--space-1) 0; line-height: 1.4; }
+
+  /* Grouped list */
+  .group { list-style: none; margin: 0; padding: 0; background: var(--color-surface-2); border-radius: var(--radius-md); overflow: hidden; }
+  .group li { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-4); min-height: 60px; }
+  .group li + li { border-top: 1px solid var(--color-border); }
+  .group .main { flex: 1; min-width: 0; }
+  .group .title { font-size: var(--text-md); display: flex; align-items: center; gap: var(--space-2); }
+  .group .sub { font-size: var(--text-sm); color: var(--color-text-muted); margin-top: 2px; line-height: 1.35; }
+  .badge { font-size: var(--text-xs); padding: 2px var(--space-2); border-radius: var(--radius-full);
+           background: var(--color-accent-soft); color: var(--color-accent); font-weight: 600; }
+  .row-btn { min-height: 44px; min-width: 44px; padding: 0 var(--space-2); border: 0; background: none;
+             color: var(--color-accent); font-size: var(--text-sm); border-radius: var(--radius-sm); }
+  .row-btn.danger { color: var(--color-danger); }
+  .card-icon { width: 46px; height: 32px; border-radius: 6px; background: var(--color-surface); border: 1px solid var(--color-border);
+               display: grid; place-items: center; font-size: 10px; font-weight: 700; letter-spacing: .04em; }
+  .add-row { width: 100%; display: flex; align-items: center; gap: var(--space-3); min-height: 56px; padding: 0 var(--space-4);
+             border: 0; background: none; color: var(--color-accent); font-size: var(--text-md); text-align: left; }
+  .add-row + .add-row, .group + .add-row { border-top: 1px solid var(--color-border); }
+  .group-wrap { background: var(--color-surface-2); border-radius: var(--radius-md); overflow: hidden; }
+  .group-wrap .group { border-radius: 0; }
+  .plus { width: 24px; height: 24px; border-radius: 50%; background: var(--color-accent); color: var(--color-on-accent);
+          display: grid; place-items: center; font-size: 18px; line-height: 1; }
+
+  /* Form */
+  form { display: grid; gap: var(--space-3); }
+  .field { display: grid; gap: var(--space-1); }
+  .field label { font-size: var(--text-sm); color: var(--color-text-muted); padding-left: var(--space-1); }
+  .field input { width: 100%; min-width: 0; font: inherit; font-size: var(--text-md); color: var(--color-text); min-height: 50px; padding: 0 var(--space-4);
+                 border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-surface); }
+  .field input:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 0; }
+  .two { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: var(--space-3); }
+  .check { display: flex; align-items: center; gap: var(--space-3); min-height: 44px; font-size: var(--text-md); }
+  .check input { width: 22px; height: 22px; accent-color: var(--color-accent); }
+  .actions { display: flex; gap: var(--space-3); margin-top: var(--space-2); }
+  .primary-btn { flex: 1; min-height: 50px; border: 0; border-radius: var(--radius-full); background: var(--color-accent);
+                 color: var(--color-on-accent); font-size: var(--text-md); }
+  .secondary-btn { flex: 1; min-height: 50px; border: 1px solid var(--color-border); border-radius: var(--radius-full);
+                   background: transparent; color: var(--color-accent); font-size: var(--text-md); }
+  .stripe { border: 1px dashed var(--color-border); border-radius: var(--radius-md); padding: var(--space-5) var(--space-4);
+            text-align: center; color: var(--color-text-muted); font-size: var(--text-sm); line-height: 1.5; }
+  .stripe strong { color: var(--color-text); display: block; font-size: var(--text-md); margin-bottom: var(--space-1); }
+  .lock { display: flex; align-items: center; justify-content: center; gap: var(--space-2); font-size: var(--text-xs);
+          color: var(--color-text-muted); margin-top: var(--space-3); }
+  .mockbar { display: flex; justify-content: space-between; align-items: center; padding: var(--space-1) var(--space-4);
+             font-size: var(--text-xs); color: var(--color-text-muted); background: var(--color-surface-2); }
+  .mockbar button { min-height: 32px; padding: 0 var(--space-3); border-radius: var(--radius-full); border: 1px solid var(--color-border);
+                    background: var(--color-surface); font-size: var(--text-xs); }
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="mockbar"><span>Draft mock · provisional tokens</span><button onclick="const r=document.documentElement;r.dataset.theme=(r.dataset.theme==='dark'||(!r.dataset.theme&&matchMedia('(prefers-color-scheme: dark)').matches))?'light':'dark'">Light / dark</button></div>
+  <nav class="nav" aria-label="Main">
+    <a class="back" href="DS-shopy-assistant.html">
+      <svg width="12" height="20" viewBox="0 0 12 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2 2 10l8 8"/></svg>
+      Assistant
+    </a>
+    <span class="wordmark">Settings</span>
+    <span style="width:44px" aria-hidden="true"></span>
+  </nav>
+
+  <main>
+    <h1>Settings</h1>
+
+    <section aria-labelledby="addr-title">
+      <h2 id="addr-title">Delivery addresses</h2>
+      <div class="group-wrap">
+        <ul class="group">
+          <li>
+            <div class="main">
+              <div class="title">Home <span class="badge">Default</span></div>
+              <div class="sub">Str. Lalelelor 12, ap. 4<br>Cluj-Napoca, Cluj 400123</div>
+            </div>
+            <button class="row-btn" aria-label="Edit Home address">Edit</button>
+          </li>
+          <li>
+            <div class="main">
+              <div class="title">Office</div>
+              <div class="sub">Bd. Eroilor 3, et. 2<br>Cluj-Napoca, Cluj 400129</div>
+            </div>
+            <button class="row-btn" aria-label="Edit Office address">Edit</button>
+          </li>
+        </ul>
+        <button class="add-row" aria-expanded="true" aria-controls="addr-form"><span class="plus" aria-hidden="true">+</span>Add address</button>
+      </div>
+      <p class="hint">The default address is used for every order unless you choose another one.</p>
+    </section>
+
+    <section aria-labelledby="new-addr-title">
+      <h2 id="new-addr-title">New address</h2>
+      <form id="addr-form" onsubmit="return false">
+        <div class="field"><label for="a-label">Label (optional)</label><input id="a-label" placeholder="e.g. Parents"></div>
+        <div class="field"><label for="a-name">Full name</label><input id="a-name" autocomplete="name"></div>
+        <div class="field"><label for="a-phone">Phone</label><input id="a-phone" type="tel" autocomplete="tel"></div>
+        <div class="field"><label for="a-street">Street and number</label><input id="a-street" autocomplete="address-line1"></div>
+        <div class="two">
+          <div class="field"><label for="a-city">City</label><input id="a-city" autocomplete="address-level2"></div>
+          <div class="field"><label for="a-county">County</label><input id="a-county" autocomplete="address-level1"></div>
+        </div>
+        <div class="field"><label for="a-zip">Postal code</label><input id="a-zip" inputmode="numeric" autocomplete="postal-code"></div>
+        <label class="check"><input type="checkbox"> Make this my default address</label>
+        <div class="actions">
+          <button type="button" class="secondary-btn">Cancel</button>
+          <button type="submit" class="primary-btn">Save address</button>
+        </div>
+      </form>
+    </section>
+
+    <section aria-labelledby="cards-title">
+      <h2 id="cards-title">Cards</h2>
+      <div class="group-wrap">
+        <ul class="group">
+          <li>
+            <span class="card-icon" aria-hidden="true">VISA</span>
+            <div class="main">
+              <div class="title">Visa •••• 4242 <span class="badge">Primary</span></div>
+              <div class="sub">Expires 12/28</div>
+            </div>
+            <button class="row-btn danger" aria-label="Remove Visa ending 4242">Remove</button>
+          </li>
+          <li>
+            <span class="card-icon" aria-hidden="true">MC</span>
+            <div class="main">
+              <div class="title">Mastercard •••• 4444</div>
+              <div class="sub">Expires 03/27</div>
+            </div>
+            <button class="row-btn" aria-label="Make Mastercard ending 4444 primary">Make primary</button>
+          </li>
+        </ul>
+        <button class="add-row"><span class="plus" aria-hidden="true">+</span>Add card</button>
+      </div>
+      <p class="hint">The assistant always tells you which card it will charge before you confirm with Face ID.</p>
+    </section>
+
+    <section aria-labelledby="new-card-title">
+      <h2 id="new-card-title">Add card</h2>
+      <div class="stripe" role="note">
+        <strong>Secure card form</strong>
+        The Stripe Payment Element appears here. Card details go straight to Stripe and are never stored by Shopy.
+      </div>
+      <div class="actions">
+        <button type="button" class="secondary-btn">Cancel</button>
+        <button type="button" class="primary-btn">Save card</button>
+      </div>
+      <div class="lock">
+        <svg width="12" height="14" viewBox="0 0 12 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1" y="6" width="10" height="7" rx="1.5"/><path d="M3 6V4a3 3 0 0 1 6 0v2"/></svg>
+        Test mode · payments by Stripe
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>
