@@ -9,7 +9,7 @@ exists with its admin dependency; its routes arrive with GH-6.
 ## Conventions
 
 - JSON bodies only (`Content-Type: application/json`); unknown fields are rejected
-  with 422.
+  with 422, reported as `"field": "body"` (the unknown name is not echoed).
 - **Access token:** a JWT (HS256, 15 min) in `Authorization: Bearer <token>`. It
   carries only the user ID; the role is read from the database on every request.
 - **Refresh token:** an opaque token in the `refresh_token` cookie, sent only to

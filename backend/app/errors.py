@@ -1,7 +1,8 @@
 """One error envelope for every error (C-001, PATTERN-006).
 
 `{"error": {"code": "...", "message": "...", "fields": [{"field", "message"}]}}`,
-with `fields` only for validation errors. The submitted input is never sent back:
+with `fields` only for validation errors. The submitted input is never sent back
+(an unknown field is reported under its location, e.g. `body`, not its name):
 validation errors keep pydantic's `msg` and drop its `input` and `ctx`.
 """
 
@@ -57,6 +58,9 @@ def _field(error: Mapping[str, Any]) -> str:
     if error.get("type") == "json_invalid":
         return "body"  # the location is a character offset, not a field
     loc = [str(part) for part in error.get("loc", ())]
+    if error.get("type") == "extra_forbidden":
+        # The unknown field's name is client input: name only where it was sent.
+        return loc[0] if loc else "body"
     if loc and loc[0] == "body" and len(loc) > 1:
         loc = loc[1:]
     return ".".join(loc)
