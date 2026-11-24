@@ -6,7 +6,7 @@
 > Updated by every session that starts, pauses or finishes a ticket.
 <!-- graffino-agentic:team:end -->
 
-Updated 2026-11-19.
+Updated 2026-11-24.
 
 ## The product
 Shopy: a Romanian voice shopping assistant (iPhone PWA + admin) for one demo store.
@@ -15,7 +15,7 @@ P0 done (GH-1); P1a done (GH-3); P1b in flight (GH-4); then P1c–P1d (GH-5, GH-
 ## In flight
 | Ticket | Title | Status | Branch | PR | Folder |
 |---|---|---|---|---|---|
-| GH-4 | P1b: Authentication and roles | built; review round 1 fix done; round 2 next | feat/auth-GH-4 | #10 | docs/agents/tasks/GH-4/ |
+| GH-4 | P1b: Authentication and roles | built; all review round 1 findings fixed; round 2 next | feat/auth-GH-4 | #10 | docs/agents/tasks/GH-4/ |
 
 ## Recently done (last 10)
 | Ticket | Title | Done | PR |
