@@ -169,7 +169,8 @@ async def test_login_rejects_unknown_fields(
     )
 
     error = assert_error(response, 422, "validation_error", fields=True)
-    assert "role" in [f["field"] for f in error["fields"]]
+    assert "body" in [f["field"] for f in error["fields"]]
+    assert "role" not in response.text  # the unknown name is not echoed (C-001)
 
 
 async def test_login_malformed_email_is_422_with_the_fixed_message(

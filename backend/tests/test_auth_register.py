@@ -75,7 +75,8 @@ async def test_register_rejects_a_role_field(
     response = await register(client, role=role)
 
     error = assert_error(response, 422, "validation_error", fields=True)
-    assert "role" in [f["field"] for f in error["fields"]]
+    assert "body" in [f["field"] for f in error["fields"]]
+    assert "role" not in response.text  # the unknown name is not echoed (C-001)
     assert await users_with_email(session, EMAIL) == []
 
 
@@ -85,7 +86,8 @@ async def test_register_rejects_any_unknown_field(
     response = await register(client, stripe_customer_id="cus_x")
 
     error = assert_error(response, 422, "validation_error", fields=True)
-    assert "stripe_customer_id" in [f["field"] for f in error["fields"]]
+    assert "body" in [f["field"] for f in error["fields"]]
+    assert "stripe_customer_id" not in response.text  # not echoed (C-001)
     assert await users_with_email(session, EMAIL) == []
 
 
