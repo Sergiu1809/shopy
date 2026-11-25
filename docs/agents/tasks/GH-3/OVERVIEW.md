@@ -5,14 +5,14 @@ parent:
 covers: []
 delivered_in:
 title: "P1a: Database models and migrations"
-status: in-review
+status: done
 lane: full
 branch: feat/db-models-GH-3
 pr: https://github.com/Sergiu1809/shopy/pull/7
 design_refs: []
 summary: "Async SQLAlchemy models and the first Alembic migration for the P1 tables, tested on real Postgres"
 created: 2026-11-18 15:48
-updated: 2026-11-18 19:30
+updated: 2026-11-19 13:38
 ---
 
 # GH-3 — P1a: Database models and migrations
@@ -128,12 +128,13 @@ Ticket: https://github.com/Sergiu1809/shopy/issues/3
   - CI `backend` job green after the push (with the user's go).
 
 ## Resume here ⏯
-Built and pushed (PR #7); review round 1 passed with no code findings; records fixed. Next: gate C (the developer reviews PR #7 and merges). Nothing in flight.
+Done. PR #7 merged and the issue closed (2026-11-18). Status recorded on the GH-4 branch. Nothing in flight.
 
 ## Summary of work so far
 - 2026-11-18 — Product owner coverage report; gate A answered (Q1–Q11, store_id, testcontainers); no new tickets and no Q- entries.
 - 2026-11-18 — D-024 approved; plan approved at gate B; branch pushed; draft PR #7.
 - 2026-11-18 — Test author: 92 failing tests (2fe1d4f) + TESTS.md. Builder: models, db.py, Alembic 0001, Compose migrate-on-start, docs; 93/93 green, 0 assertions changed. Review round 1: pass, records-only findings fixed. (log: `log_2026-11-18_1548.md`)
+- 2026-11-18 — Gate C: the developer merged PR #7; issue closed.
 
 ## Approach
 See `PLAN.md` (approved at gate B 2026-11-18) and `TESTS.md`. It covers:

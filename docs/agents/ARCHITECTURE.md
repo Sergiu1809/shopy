@@ -5,10 +5,14 @@
 > whoever changes the structure. The code wins: when this page is wrong, fix it.
 <!-- graffino-agentic:end -->
 
-> **Status 2026-11-18:** P0 skeleton exists (GH-1): Compose services, `GET /health`,
+> **Status 2026-11-19:** P0 skeleton exists (GH-1): Compose services, `GET /health`,
 > an idle worker, an empty web shell, CI. P1a database layer (GH-3): async SQLAlchemy
 > models for 11 tables in `backend/app/models/`, Alembic revision `0001` in
-> `backend/migrations/`. Everything else on this page is still the
+> `backend/migrations/`. P1b authentication and roles (GH-4): `/auth/*` and `GET /me`
+> in `backend/app/api/`, the empty `/admin` router with its admin dependency,
+> `backend/app/auth/` (Argon2id, JWT, refresh cookie, in-process rate limits, role
+> dependencies), `backend/app/schemas/`, one error envelope in `backend/app/errors.py`,
+> CORS to `APP_ORIGIN`. Everything else on this page is still the
 > target from `shopy_brief.md` §5–§6, §11, §12. Update it as each phase lands.
 
 ## Overview
@@ -45,14 +49,16 @@ holds everything. Locally all runs in Docker Compose; production is Railway or F
 | Part | Path | Responsibility | Talks to |
 |---|---|---|---|
 | web | `web/` | PWA: assistant screen, cart, confirmation sheet, settings, admin | api (REST, WS), Stripe.js |
-| api | `backend/app/` | REST, WebSocket, Stripe webhook, agent, search, orders | db, all external services |
+| api | `backend/app/` | REST, WebSocket, Stripe webhook, agent, search, orders; `main.py` (lifespan, CORS, routers), `errors.py` (C-001 envelope) | db, all external services |
+| routers | `backend/app/api/` | REST routers: `auth.py`, `me.py`, `admin.py` (router-level admin dependency) | auth, schemas, db |
+| schemas | `backend/app/schemas/` | Pydantic request and response bodies (PATTERN-006) | — |
 | agent | `backend/app/agent/` | orchestrator, tools, prompts, output guard, confirmation classifier | LLM, search, orders, usage |
 | orders | `backend/app/orders/` | state machine, proposals, pricing | db, payments, mail |
 | search | `backend/app/search/` | hybrid search with RRF | db, embeddings |
 | indexing | `backend/app/indexing/` | chunking, embedding client | embeddings |
 | voice | `backend/app/voice/` | STT, TTS, sentence splitter, number normalizer | OpenAI, Azure |
 | payments | `backend/app/payments/` | Stripe service | Stripe |
-| auth | `backend/app/auth/` | passwords, JWT, roles, WebAuthn | db |
+| auth | `backend/app/auth/` | passwords (Argon2id), tokens (JWT, refresh cookie), rate limits (in-process, one api process: Q-014), dependencies (current user, admin); WebAuthn (P4) | db |
 | usage | `backend/app/usage/` | cost ledger, caps | db |
 | worker | `backend/worker/` | polls the outbox, rebuilds chunks | db, embeddings |
 | seed | `backend/seed/` | `catalog.json` (written once, D-023), `validate_catalog.py`, `seed.py` | db |
@@ -93,7 +99,7 @@ holds everything. Locally all runs in Docker Compose; production is Railway or F
 | Name | Where set | Used by | Notes |
 |---|---|---|---|
 | `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_DB` | `.env` | Compose `db` | local only, not in brief §18 |
-| `DATABASE_URL`, `JWT_SECRET`, `APP_ORIGIN` | `.env` | api, worker | |
+| `DATABASE_URL`, `JWT_SECRET`, `APP_ORIGIN` | `.env` | api, worker | `JWT_SECRET` ≥ 32 bytes or the api won't start; `APP_ORIGIN` required (the one CORS origin) |
 | `ANTHROPIC_API_KEY`, `LLM_MODEL` | `.env` | agent | |
 | `OPENAI_API_KEY`, `STT_MODEL`, `EMBEDDING_MODEL` | `.env` | voice, search, worker | |
 | `AZURE_SPEECH_KEY`, `AZURE_SPEECH_REGION`, `TTS_VOICE` | `.env` | voice | |
@@ -119,7 +125,7 @@ section 5.
 ## Boundaries
 - **LLM ↔ data:** the model only calls tools with IDs and quantities (PATTERN-002); every reply passes the output guard (D-010); tool results are quoted data (PATTERN-003).
 - **Order placement:** only the confirmation endpoint after a clear yes and a WebAuthn assertion bound to the proposal hash (D-011, D-012, D-013).
-- **Roles:** FastAPI dependencies on every route (PATTERN-007).
+- **Roles:** FastAPI dependencies on every route (PATTERN-007); the role is read from the DB on every request, never from the token.
 - **Card data:** never reaches the server (D-016).
 - **Budget:** every paid call through the cost ledger (D-019, PATTERN-011).
 - **Browser:** untrusted text as plain text, strict CSP (PATTERN-009).

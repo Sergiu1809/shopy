@@ -24,6 +24,7 @@ Q-001 to Q-006 are the brief's OQ-01 to OQ-06 (`shopy_brief.md` §22), in order.
 - Q-011 · Railway or Fly.io?
 - Q-012 · Which package and dependency tools? · _answered_
 - Q-013 · Does the 1 EUR daily cap fit the monthly budget?
+- Q-014 · Will the web app and the API share one site in production?
 
 ---
 
@@ -102,3 +103,9 @@ Q-001 to Q-006 are the brief's OQ-01 to OQ-06 (`shopy_brief.md` §22), in order.
 - **Blocks:** the default `DAILY_COST_CAP_EUR`. 1 EUR × 30 days = 30 EUR, above the 10–20 EUR monthly budget (brief §4 vs §15, D-019).
 - **Who answers:** the developer
 - **Proposed answer:** keep 1 EUR per day and add a monthly cap (e.g. 20 EUR), or lower the daily cap to about 0.60 EUR.
+
+## Q-014 · Will the web app and the API share one site in production?
+- **Status:** open
+- **Blocks:** P7 deploy (with Q-011). The refresh cookie is `SameSite=Strict; Path=/auth` (GH-4): if web and api are on different sites it needs `SameSite=None`, and Safari's tracking prevention may block it, breaking refresh. Per-IP auth rate limits (GH-4, in-process) also need the real client IP behind the host's proxy (uvicorn `--proxy-headers`, trusted forwarders), and a single api process.
+- **Who answers:** the developer, when choosing the host (Q-011)
+- **Proposed answer:** serve the api under the web app's site (same domain via a path prefix or reverse proxy, or a subdomain of it), trust only the platform proxy's forwarded headers, and run one api instance; revisit the cookie path if a prefix is added.
