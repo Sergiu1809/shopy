@@ -77,6 +77,7 @@ they are exercised through the API only.
 ## Changes after a logic change
 | Date | Test | What changed | Why (trigger) |
 |---|---|---|---|
+| 2026-11-24 | `test_auth_register.py` (role field, any unknown field), `test_auth_login.py` (unknown fields) | 3 assertions: an unknown field is reported as `"field": "body"`, never by its name; commit 153fbda (red), fix cd7561a | user decision (a): C-001, a response never echoes input |
 
 ## Reproductions for in-delivery fixes
 | Date | Defect | Test | Red reason before the fix |
@@ -85,9 +86,10 @@ they are exercised through the API only.
 | 2026-11-19 | same | `test_login_concurrency.py::test_the_right_password_is_refused_while_5_failures_are_in_flight` | `assert 200 == 429`: the right password sent while 5 failures were in flight got a token |
 | 2026-11-19 | same (guard, A4 kept) | `test_login_concurrency.py::test_a_parallel_success_does_not_count_as_a_failure` | not red: passes on the current code; it guards the fix (a success must give its slot back) |
 | 2026-11-19 | same (limiter) | `test_rate_limit.py::test_reserve_takes_a_slot_at_once`, `test_release_gives_the_slot_back`, `test_a_kept_reservation_counts_like_a_hit`, `test_release_after_the_window_ended_does_not_go_below_zero` | `AttributeError: 'FixedWindowLimiter' object has no attribute 'reserve'` |
+| 2026-11-25 | Review round 2, finding 1: no test showed that a login failing with a server error (lookup or verify raises, or the request is cancelled) gives the account's A4 slot back | `test_login_concurrency.py::test_a_server_error_during_login_gives_the_slot_back[lookup]`, `[verify]` | not red: guards existing behaviour (slot released in `finally` unless the password was wrong). Mutation check: with the slot kept on error it fails `assert [401, 401, 401, 401, 429] == [401] * 5` |
 
 ## Mechanical fixes by the builder
 | Date | Test | Fix | Checked by reviewer |
 |---|---|---|---|
-| 2026-11-19 | `test_admin_access.py`, `test_passwords.py`, `test_rate_limit.py`, `test_tokens.py` | import order (ruff `I001`) now that `app.auth` exists; commit da6aa81; no assertion changed | pending (round 2) |
-| 2026-11-19 | `test_passwords.py:73` | one `# type: ignore[func-returns-value]` on `assert verify_dummy(PASSWORD) is None` (mypy); commit da6aa81; no assertion changed | pending (round 2) |
+| 2026-11-19 | `test_admin_access.py`, `test_passwords.py`, `test_rate_limit.py`, `test_tokens.py` | import order (ruff `I001`) now that `app.auth` exists; commit da6aa81; no assertion changed | yes (round 2, 2026-11-25) |
+| 2026-11-19 | `test_passwords.py:73` | one `# type: ignore[func-returns-value]` on `assert verify_dummy(PASSWORD) is None` (mypy); commit da6aa81; no assertion changed | yes (round 2, 2026-11-25) |

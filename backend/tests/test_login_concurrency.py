@@ -167,3 +167,43 @@ async def test_a_parallel_success_does_not_count_as_a_failure(
     assert codes == [401] * (LIMIT - 1) + [200]
     assert (await post_login(gated_app, 60, "Wrong9")).status_code == 401  # 5th
     assert_error(await post_login(gated_app, 61, PASSWORD), 429, "rate_limited")
+
+
+@pytest.mark.parametrize("fault", ["lookup", "verify"])
+async def test_a_server_error_during_login_gives_the_slot_back(
+    gated_app: Any, db: GatedSession, monkeypatch: pytest.MonkeyPatch, fault: str
+) -> None:
+    """A4 counts wrong passwords only: an attempt that errors keeps no slot.
+
+    Guard (review round 2, finding 1; passes on the current code): the user lookup
+    or the password verify raises once, then the account still has all 5 failures.
+    """
+    import app.api.auth as auth_module
+    from app.auth.passwords import verify_password
+
+    db.gate.set()
+    if fault == "lookup":
+        original_scalar = db.scalar
+
+        async def broken_scalar(*args: Any, **kwargs: Any) -> Any:
+            monkeypatch.setattr(db, "scalar", original_scalar)
+            raise RuntimeError("database down")
+
+        monkeypatch.setattr(db, "scalar", broken_scalar)
+    else:
+
+        def broken_verify(password: str, password_hash: str) -> bool:
+            monkeypatch.setattr(auth_module, "verify_password", verify_password)
+            raise RuntimeError("hasher failed")
+
+        monkeypatch.setattr(auth_module, "verify_password", broken_verify)
+
+    with pytest.raises(RuntimeError):  # no 500 handler: the error reaches the client
+        await post_login(gated_app, 1, "Wrong0")
+
+    codes = [
+        (await post_login(gated_app, 10 + i, f"Wrong{i}")).status_code
+        for i in range(LIMIT)
+    ]
+    assert codes == [401] * LIMIT  # the errored attempt did not use one of the 5
+    assert_error(await post_login(gated_app, 20, PASSWORD), 429, "rate_limited")
