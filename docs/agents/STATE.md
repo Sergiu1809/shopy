@@ -6,7 +6,7 @@
 > Updated by every session that starts, pauses or finishes a ticket.
 <!-- graffino-agentic:team:end -->
 
-Updated 2026-11-24.
+Updated 2026-11-25.
 
 ## The product
 Shopy: a Romanian voice shopping assistant (iPhone PWA + admin) for one demo store.
@@ -15,7 +15,7 @@ P0 done (GH-1); P1a done (GH-3); P1b in flight (GH-4); then P1c–P1d (GH-5, GH-
 ## In flight
 | Ticket | Title | Status | Branch | PR | Folder |
 |---|---|---|---|---|---|
-| GH-4 | P1b: Authentication and roles | built; all review round 1 findings fixed; round 2 next | feat/auth-GH-4 | #10 | docs/agents/tasks/GH-4/ |
+| GH-4 | P1b: Authentication and roles | review round 2 passed, findings handled; 249 green; gate C next | feat/auth-GH-4 | #10 | docs/agents/tasks/GH-4/ |
 
 ## Recently done (last 10)
 | Ticket | Title | Done | PR |
@@ -25,5 +25,5 @@ P0 done (GH-1); P1a done (GH-3); P1b in flight (GH-4); then P1c–P1d (GH-5, GH-
 | GH-1 | P0 Setup: Compose skeleton, CI, .env.example, gitleaks | 2026-11-18 | #2 |
 
 ## Knowledge
-- Ledger: 24 decisions (1 superseded) · 14 patterns (1 candidate) · 5 contracts · 14 open questions.
+- Ledger: 24 decisions (1 superseded) · 15 patterns (2 candidates) · 5 contracts · 14 open questions.
 - Backfill: none (new repo, seeded from the brief on 2026-11-17).

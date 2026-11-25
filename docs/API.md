@@ -27,7 +27,9 @@ exists with its admin dependency; its routes arrive with GH-6.
 
 ### Errors
 Every error uses one envelope. `fields` appears only on validation errors (422); the
-submitted input is never sent back.
+submitted input is never sent back. One exception: a CORS preflight that is not
+allowed gets Starlette's `400` with a plain-text body such as `Disallowed CORS origin`
+(no input echoed; the browser never shows that body to the page).
 
 ```json
 {"error": {"code": "validation_error", "message": "Invalid input.",

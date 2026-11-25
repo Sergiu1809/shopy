@@ -12,7 +12,7 @@ pr: https://github.com/Sergiu1809/shopy/pull/10
 design_refs: []
 summary: "Email + password auth (Argon2id, 15-min JWT, rotating refresh cookie), roles, rate limits, CORS, one error envelope"
 created: 2026-11-19 00:00
-updated: 2026-11-24 10:45
+updated: 2026-11-25 15:35
 ---
 
 # GH-4 — P1b: Authentication and roles
@@ -73,15 +73,15 @@ Ticket: https://github.com/Sergiu1809/shopy/issues/4
 - **Verify with:** `cd backend && uv sync && uv run ruff check . && uv run ruff format --check . && uv run mypy . && uv run pytest`; `python3 docs/agents/tools/ledger-lint.py`; `uvx pre-commit run --all-files` (gitleaks). DB tests need Docker.
 
 ## Resume here ⏯
-Review round 1 findings all fixed: login limit race (a4d3f8c), OpenAPI email format (d0e91e0), unknown-field
-names no longer echoed in 422 (user chose (a): reported as `body`; 153fbda, cd7561a). 247/247 green.
-Next: review round 2 (the last), then gate C (re-confirm C-001, PATTERN-006, PATTERN-007; PR description with real results).
+Review round 2 (last): pass with findings, all handled (F1 test 2c93055; F3–F6 records; F4 CORS exception in
+`docs/API.md`). 249/249 green. Next: gate C — re-confirm C-001, PATTERN-006, PATTERN-007; push; PR description.
 
 ## Summary of work so far
 - 2026-11-19 — Product owner: coverage report; gate A answered by the user (all recommendations accepted, password rule changed to 8–128 with one uppercase and one digit; C-001 envelope approved). Q-014 added.
 - 2026-11-19 — Plan written (planner); paused for GH-8; gate B approved (A6: fixed email message); PATTERN-008 confirmed.
 - 2026-11-19 — Tests first: 147 failing tests (32ac83d; gitleaks false positive fixed by generating the probe password, 25f4bfc). Builder: 7 commits, 240/240 green, smoke OK. Review round 1: fail (login limit bypass under parallel requests) → reproduction + fix, 247/247. (log: `log_2026-11-19_2055.md`)
 - 2026-11-24 — User chose (a): an unknown field is reported as `body` in the 422, never by name; 3 assertions updated (red first), fix, 247/247. (log: `log_2026-11-24_1041.md`)
+- 2026-11-25 — Review round 2: pass with findings; F1 slot-release test added (green, mutation-checked), CORS exception documented, records fixed. 249/249. (log: `log_2026-11-25_1533.md`)
 
 ## Approach
 See `PLAN.md` (approved at gate B 2026-11-19) and `TESTS.md` (from the test author).
@@ -102,19 +102,19 @@ See `PLAN.md` (approved at gate B 2026-11-19) and `TESTS.md` (from the test auth
 | add | `backend/app/schemas/auth.py` | Email (fixed message), Password rules, bodies |
 | add | `backend/app/api/` (`auth`, `me`, `admin`) | routes; `/admin` router with `require_admin` |
 | edit | `backend/tests/conftest.py` | env, AsyncClient fixtures, make_user, limiter reset |
-| add | `backend/tests/test_{passwords,tokens,rate_limit,startup,auth_register,auth_login,auth_refresh,me,admin_access,errors,cors,login_concurrency}.py` | 154 tests |
+| add | `backend/tests/test_{passwords,tokens,rate_limit,startup,auth_register,auth_login,auth_refresh,me,admin_access,errors,cors,login_concurrency}.py` | 156 tests |
 | edit | `.env.example` | JWT_SECRET ≥32 bytes comment |
 | add | `docs/API.md` | REST examples for auth, /me, errors, limits, CORS |
 
 ## Manual verification 🔧
 none: no manual-test path touched (Q18). Smoke run by the builder: register 201 + cookie; `change-me` secret stops startup.
-none: no manual-test path changed (Q18).
 
 ## Decisions log 🧭
 - **2026-11-19 — Gate A answers Q1–Q18 as listed in the context brief** — Why: user accepted the product owner's recommendations; Q8 changed by the user. Rejected: FastAPI default errors (echo input, two shapes); a Postgres rate-limit table (not needed for one process); access-only logout.
 - **2026-11-19 — Gate B approved; A6 changed to a fixed email message** — Why: zero echo of input. Rejected: Pydantic's email messages.
 - **2026-11-19 — Login limit reserves the slot before any await (review round 1 defect)** — Why: check-then-hit across an await let parallel guesses pass. Rejected: a lock (unneeded on one event loop once the slot is taken synchronously). A server error releases the slot.
 - **2026-11-24 — Unknown field reported as its location (`body`), not its name** — Why: C-001, no input echoed; user chose (a). Rejected: (b) narrowing C-001.
+- **2026-11-25 — Review round 2 F1: test added now; F4: CORS preflight 400 documented as an exception in `docs/API.md`** — Why: user's choices. Rejected: follow-up ticket for F1; amending C-001 wording for F4.
 
 ## Open questions / blockers
 - [ ] Q-014 — production site/cookie/proxy topology (blocks P7 only).
