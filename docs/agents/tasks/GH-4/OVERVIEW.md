@@ -5,7 +5,7 @@ parent:
 covers: []
 delivered_in:
 title: "P1b: Authentication and roles"
-status: in-progress
+status: done
 lane: full
 branch: feat/auth-GH-4
 pr: https://github.com/Sergiu1809/shopy/pull/10
@@ -73,14 +73,14 @@ Ticket: https://github.com/Sergiu1809/shopy/issues/4
 - **Verify with:** `cd backend && uv sync && uv run ruff check . && uv run ruff format --check . && uv run mypy . && uv run pytest`; `python3 docs/agents/tools/ledger-lint.py`; `uvx pre-commit run --all-files` (gitleaks). DB tests need Docker.
 
 ## Resume here ⏯
-Review round 2 (last): pass with findings, all handled (F1 test 2c93055; F3–F6 records; F4 CORS exception in
-`docs/API.md`). 249/249 green. Gate C 2026-11-25: C-001, PATTERN-006, PATTERN-007 re-confirmed; pushed; PR description updated. Next: user's word to mark ready + move GH-4 to in review; merge is the user's.
+Done. PR #10 merged by the developer 2026-11-25 (c9ac73d); GH-4 closed. Nothing to resume.
 
 ## Summary of work so far
 - 2026-11-19 — Product owner: coverage report; gate A answered by the user (all recommendations accepted, password rule changed to 8–128 with one uppercase and one digit; C-001 envelope approved). Q-014 added.
 - 2026-11-19 — Plan written (planner); paused for GH-8; gate B approved (A6: fixed email message); PATTERN-008 confirmed.
 - 2026-11-19 — Tests first: 147 failing tests (32ac83d; gitleaks false positive fixed by generating the probe password, 25f4bfc). Builder: 7 commits, 240/240 green, smoke OK. Review round 1: fail (login limit bypass under parallel requests) → reproduction + fix, 247/247. (log: `log_2026-11-19_2055.md`)
 - 2026-11-24 — User chose (a): an unknown field is reported as `body` in the 422, never by name; 3 assertions updated (red first), fix, 247/247. (log: `log_2026-11-24_1041.md`)
+- 2026-11-25 — PR #10 marked ready, GH-4 commented in review; the developer merged (c9ac73d) and deleted the branch.
 - 2026-11-25 — Gate C: user re-confirmed C-001, PATTERN-006, PATTERN-007 and gave the go to push.
 - 2026-11-25 — Review round 2: pass with findings; F1 slot-release test added (green, mutation-checked), CORS exception documented, records fixed. 249/249. (log: `log_2026-11-25_1533.md`)
 
