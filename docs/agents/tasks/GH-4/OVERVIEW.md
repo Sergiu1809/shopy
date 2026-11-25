@@ -74,13 +74,14 @@ Ticket: https://github.com/Sergiu1809/shopy/issues/4
 
 ## Resume here ⏯
 Review round 2 (last): pass with findings, all handled (F1 test 2c93055; F3–F6 records; F4 CORS exception in
-`docs/API.md`). 249/249 green. Next: gate C — re-confirm C-001, PATTERN-006, PATTERN-007; push; PR description.
+`docs/API.md`). 249/249 green. Gate C 2026-11-25: C-001, PATTERN-006, PATTERN-007 re-confirmed; pushed; PR description updated. Next: user's word to mark ready + move GH-4 to in review; merge is the user's.
 
 ## Summary of work so far
 - 2026-11-19 — Product owner: coverage report; gate A answered by the user (all recommendations accepted, password rule changed to 8–128 with one uppercase and one digit; C-001 envelope approved). Q-014 added.
 - 2026-11-19 — Plan written (planner); paused for GH-8; gate B approved (A6: fixed email message); PATTERN-008 confirmed.
 - 2026-11-19 — Tests first: 147 failing tests (32ac83d; gitleaks false positive fixed by generating the probe password, 25f4bfc). Builder: 7 commits, 240/240 green, smoke OK. Review round 1: fail (login limit bypass under parallel requests) → reproduction + fix, 247/247. (log: `log_2026-11-19_2055.md`)
 - 2026-11-24 — User chose (a): an unknown field is reported as `body` in the 422, never by name; 3 assertions updated (red first), fix, 247/247. (log: `log_2026-11-24_1041.md`)
+- 2026-11-25 — Gate C: user re-confirmed C-001, PATTERN-006, PATTERN-007 and gave the go to push.
 - 2026-11-25 — Review round 2: pass with findings; F1 slot-release test added (green, mutation-checked), CORS exception documented, records fixed. 249/249. (log: `log_2026-11-25_1533.md`)
 
 ## Approach

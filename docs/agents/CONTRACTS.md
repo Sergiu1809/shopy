@@ -30,6 +30,7 @@ the producer's `path:line` once it is written.
 - **Rules:** JWT access token (15 min) in the Authorization header; rotating refresh token in an httpOnly Secure cookie. CORS restricted to `APP_ORIGIN`. Auth routes are rate limited.
 - **Evidence:** `backend/app/main.py` (`GET /health`, CORS, lifespan `JWT_SECRET` check), `backend/app/api/auth.py` and `backend/app/api/me.py` (auth routes, `GET /me`), `backend/app/api/admin.py` (`/admin` router), `backend/app/auth/` (tokens, cookie, rate limits, role dependencies), `backend/app/errors.py` (envelope), `docs/API.md` (examples); other routes: `shopy_brief.md` §14, §16 (not built yet)
 - **Source:** user (project brief) · confidence high
+- **Confirmed:** 2026-11-25
 
 ### C-002 · WebSocket assistant protocol
 - **Status:** approved

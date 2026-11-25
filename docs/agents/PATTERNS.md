@@ -75,6 +75,7 @@ then.
 - **Example:** `backend/app/schemas/auth.py` (`extra="forbid"`, lengths, a fixed email message), `backend/app/errors.py` (the one envelope, no input echoed), `backend/tests/test_errors.py` (test 17)
 - **Why:** server-side validation is the only trusted check.
 - **Source:** user (project brief) · confidence high
+- **Confirmed:** 2026-11-25
 
 ## PATTERN-007 · Authorization in FastAPI dependencies
 - **Status:** approved
@@ -83,6 +84,7 @@ then.
 - **Example:** `backend/app/auth/dependencies.py` (`get_current_user`, `require_admin`), `backend/app/api/admin.py` (dependency at router level), `backend/tests/test_admin_access.py` (test 15 over every `/admin` route); ownership checks: no customer resource yet
 - **Why:** customers must never reach admin data or another customer's data (tests 15, 16).
 - **Source:** user (project brief) · confidence high
+- **Confirmed:** 2026-11-25
 
 ## PATTERN-008 · SQL only through SQLAlchemy with bound parameters
 - **Status:** approved
