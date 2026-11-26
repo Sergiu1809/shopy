@@ -5,7 +5,7 @@ parent:
 covers: []
 delivered_in:
 title: "P1d: Admin product CRUD API"
-status: in-progress
+status: in-review
 lane: full
 branch: feat/admin-products-GH-6
 pr: https://github.com/Sergiu1809/shopy/pull/12
@@ -69,7 +69,7 @@ Ticket: https://github.com/Sergiu1809/shopy/issues/6
 - **Verify with:** `cd backend && uv run ruff check . && uv run ruff format --check . && uv run mypy . && uv run pytest` (Docker needed; quick loop: `uv run pytest tests/test_admin_products.py tests/test_admin_access.py tests/test_seed_validate.py`); `cd backend && uv run python -m seed.validate_catalog` (the type move touches `seed/schema.py`); `python3 docs/agents/tools/ledger-lint.py`
 
 ## Resume here ⏯
-Built and reviewed (1 round, pass; the nit fixed in 57903ca); 541 passed. At gate C: the user re-confirms C-001 (Evidence edited) and says when to mark PR #12 ready. See `log_2026-11-26_1900.md`.
+Gate C done: C-001 re-confirmed, PR #12 marked ready (checks green). Waiting on the user to merge; then GH-6 moves to done in STATE.
 
 ## Summary of work so far
 - 2026-11-26 — Product owner coverage report; gate A answered (all recommendations accepted); Q-017 recorded.
@@ -77,6 +77,7 @@ Built and reviewed (1 round, pass; the nit fixed in 57903ca); 541 passed. At gat
 - 2026-11-26 — tests first: 48 tests, 171 cases, all red on the missing routes (e1d4a0a).
 - 2026-11-26 — builder: types moved, schemas, 9 routes, docs, candidate PATTERN-017 (7862bb4..0d40555); 541 passed; 0 assertions changed.
 - 2026-11-26 — review round 1: pass, one nit (docs/API.md SKU uniqueness wording) fixed in 57903ca.
+- 2026-11-26 — gate C: the user said go ("mai departe"); C-001 re-confirmed; PR #12 ready for review.
 
 ## Approach
 See `PLAN.md` (approved at gate B): routes on the existing `/admin` router; shared field types moved from `seed/schema.py` to `app/schemas/catalog.py`; versions by row lock + diff + `version = version + 1`; SKU 409 from the unique constraint. TESTS.md maps every point to tests.

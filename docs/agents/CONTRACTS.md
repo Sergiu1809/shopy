@@ -24,6 +24,7 @@ the producer's `path:line` once it is written.
 
 ### C-001 · REST API
 - **Status:** approved
+- **Confirmed:** 2026-11-26
 - **Interface:** HTTP REST, OpenAPI at `/docs` and `/openapi.json`; examples in `docs/API.md`.
 - **Consumers:** the web client (`/app` and `/admin`).
 - **Shape:** routes listed in brief §14 (auth, me, payment methods, webauthn, proposals, orders, products, webhooks, health, admin). Errors: every error response (422, other 4xx, 429) uses one envelope, `{"error": {"code": "<machine code>", "message": "<English text>", "fields": [{"field": "<name>", "message": "<text>"}]}}`, with `fields` only when relevant; the submitted input is never sent back. 422 for invalid input, 403 for a customer on `/admin`.
