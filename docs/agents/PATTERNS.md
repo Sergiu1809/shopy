@@ -26,6 +26,7 @@ then.
 - PATTERN-014 · Schema changes: models, one reviewed revision, drift test · candidate
 - PATTERN-015 · API tests with the DB: httpx AsyncClient + ASGITransport · candidate
 - PATTERN-016 · Catalog attributes: one JSON type per key, whole units · candidate
+- PATTERN-017 · Row versions: lock, diff, increment in SQL · candidate
 
 ---
 
@@ -168,3 +169,11 @@ then.
 - **Example:** `backend/seed/catalog.json` (ELE-001 `capacity_ml`, HOM-038 `width_min_cm`/`width_max_cm`, LAU-017 `surface` + `washing_method`)
 - **Why:** P2 chunking and P3 tool filters read attributes by key; one type per key means no per-product parsing (GH-5 review round 1, F4).
 - **Source:** GH-5 review round 1, finding F4 (user chose to fix it, 2026-11-26) · confidence medium
+
+## PATTERN-017 · Row versions: lock, diff, increment in SQL
+- **Status:** candidate
+- **Use when:** a write changes a row that has a `version` column.
+- **How:** lock the row `FOR UPDATE` (parent before child, so the lock order is the same everywhere); compare each submitted value with the row, JSON-dumped with sorted keys (so `1` ≠ `true` and key order does not count); write only what differs; if anything differs, set `obj.version = <Model>.version + 1` (a SQL expression: `version = version + 1`); `refresh` the row before building the response. An empty or unchanged body writes nothing.
+- **Example:** `backend/app/api/admin.py` (`update_product`, `update_variant`, `_changes`)
+- **Why:** D-014 and the P2 index status rely on versions moving exactly when the value moves; the row lock makes the comparison exact.
+- **Source:** GH-6 plan (approved at gate B, 2026-11-26) · confidence medium

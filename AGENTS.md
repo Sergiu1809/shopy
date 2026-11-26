@@ -109,8 +109,8 @@ make seed                                           # loads the demo store and a
 ## 3. Layout
 Layout from brief §6. P0 skeleton exists (`backend/` app, worker, tests; `web/` shell;
 `docker-compose.yml`, `docker/db/init/`); P1a adds the database layer (GH-3); P1b adds
-authentication and roles (GH-4); P1c adds the catalog and seed (GH-5); the other
-folders arrive with their phases.
+authentication and roles (GH-4); P1c adds the catalog and seed (GH-5); P1d adds the admin product
+routes (GH-6); the other folders arrive with their phases.
 - `shopy_brief.md` — the project brief (the brief's §6 layout calls it `PROJECT_BRIEF.md`; this name is kept).
 - `backend/` — FastAPI app (`app/`; models in `app/models/`, engine and `get_session` in `app/db.py`, routers in `app/api/`, auth in `app/auth/`, Pydantic bodies in `app/schemas/`, the error envelope in `app/errors.py`), `worker/`, Alembic `migrations/` (`alembic.ini`), `seed/` (`catalog.json` and `users.json`, their Pydantic formats in `schema.py`, `validate_catalog.py`, the loader `seed.py`), `tests/`.
 - `web/` — React PWA: `/app` (customer) and `/admin`.
