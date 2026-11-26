@@ -12,7 +12,7 @@ pr: https://github.com/Sergiu1809/shopy/pull/12
 design_refs: []
 summary: "Admin CRUD for products and their variants under /admin, with version bumps, validation and docs/API.md examples"
 created: 2026-11-26 17:27
-updated: 2026-11-26 17:27
+updated: 2026-11-26 19:00
 ---
 
 # GH-6 — P1d: Admin product CRUD API
@@ -69,20 +69,34 @@ Ticket: https://github.com/Sergiu1809/shopy/issues/6
 - **Verify with:** `cd backend && uv run ruff check . && uv run ruff format --check . && uv run mypy . && uv run pytest` (Docker needed; quick loop: `uv run pytest tests/test_admin_products.py tests/test_admin_access.py tests/test_seed_validate.py`); `cd backend && uv run python -m seed.validate_catalog` (the type move touches `seed/schema.py`); `python3 docs/agents/tools/ledger-lint.py`
 
 ## Resume here ⏯
-Gate B approved (2026-11-26, plan as written, A1–A8). Next: test author writes `test_admin_products.py` (red), then one builder.
+Built and reviewed (1 round, pass; the nit fixed in 57903ca); 541 passed. At gate C: the user re-confirms C-001 (Evidence edited) and says when to mark PR #12 ready. See `log_2026-11-26_1900.md`.
 
 ## Summary of work so far
 - 2026-11-26 — Product owner coverage report; gate A answered (all recommendations accepted); Q-017 recorded.
+- 2026-11-26 — planner: PLAN.md; gate B approved as written (A1–A8); D-014, PATTERN-010, PATTERN-014, PATTERN-016 confirmed.
+- 2026-11-26 — tests first: 48 tests, 171 cases, all red on the missing routes (e1d4a0a).
+- 2026-11-26 — builder: types moved, schemas, 9 routes, docs, candidate PATTERN-017 (7862bb4..0d40555); 541 passed; 0 assertions changed.
+- 2026-11-26 — review round 1: pass, one nit (docs/API.md SKU uniqueness wording) fixed in 57903ca.
 
 ## Approach
-See `PLAN.md` (awaiting gate B): routes on the existing `/admin` router; shared field types moved from `seed/schema.py` to `app/schemas/catalog.py`; versions by row lock + diff + `version = version + 1`; SKU 409 from the unique constraint. TESTS.md: test author, after gate B.
+See `PLAN.md` (approved at gate B): routes on the existing `/admin` router; shared field types moved from `seed/schema.py` to `app/schemas/catalog.py`; versions by row lock + diff + `version = version + 1`; SKU 409 from the unique constraint. TESTS.md maps every point to tests.
 
 ## Cumulative file manifest 📁
 | Action | Path | Purpose / what changed |
 |---|---|---|
 | modified | docs/agents/OPEN-QUESTIONS.md | Q-017 (archive or 409 once P4 references variants) |
 | added | docs/agents/tasks/GH-6/OVERVIEW.md | this file |
-| added | docs/agents/tasks/GH-6/PLAN.md | the plan for gate B |
+| added | docs/agents/tasks/GH-6/PLAN.md | the plan, approved at gate B |
+| added | docs/agents/tasks/GH-6/TESTS.md | acceptance points → tests |
+| added | backend/tests/test_admin_products.py | 48 tests (171 cases), written first |
+| added | backend/app/schemas/catalog.py | shared field types (moved from the seed), admin bodies and responses |
+| modified | backend/seed/schema.py | imports the moved types |
+| modified | backend/app/api/admin.py | the 9 product and variant routes |
+| modified | docs/API.md | Admin · products section, error codes |
+| modified | docs/agents/CONTRACTS.md | C-001 Evidence (Confirmed line dropped; re-confirm at gate C) |
+| modified | docs/agents/PATTERNS.md | PATTERN-017 candidate; Confirmed dates from gate B |
+| modified | docs/agents/decisions/orders-and-confirmation.md | D-014 Confirmed (gate B) |
+| modified | docs/agents/ARCHITECTURE.md, AGENTS.md | P1d notes |
 
 ## Manual verification 🔧
 none: API only, no manual-test path; every point is automated except the `docs/API.md` review at gate C.

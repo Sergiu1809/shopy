@@ -15,7 +15,7 @@ P0 done (GH-1); P1a done (GH-3); P1b done (GH-4); P1c done (GH-5); P1d in flight
 ## In flight
 | Ticket | Title | Status | Branch | PR | Folder |
 |---|---|---|---|---|---|
-| GH-6 | P1d: Admin product CRUD API | full lane; gate B approved (plan, A1–A8); next: tests first, then one builder | feat/admin-products-GH-6 | #12 | docs/agents/tasks/GH-6/ |
+| GH-6 | P1d: Admin product CRUD API | built, review passed (541 passed); at gate C | feat/admin-products-GH-6 | #12 | docs/agents/tasks/GH-6/ |
 
 ## Recently done (last 10)
 | Ticket | Title | Done | PR |
