@@ -10,16 +10,17 @@ Updated 2026-11-26.
 
 ## The product
 Shopy: a Romanian voice shopping assistant (iPhone PWA + admin) for one demo store.
-P0 done (GH-1); P1a done (GH-3); P1b done (GH-4); P1c done (GH-5); P1d in flight (GH-6). Structure: `docs/agents/ARCHITECTURE.md`.
+P0 done (GH-1); P1a done (GH-3); P1b done (GH-4); P1c done (GH-5); P1d done (GH-6); P2 in flight: GH-13 (P2a), then GH-14 (P2b) and GH-15 (P2c). Structure: `docs/agents/ARCHITECTURE.md`.
 
 ## In flight
 | Ticket | Title | Status | Branch | PR | Folder |
 |---|---|---|---|---|---|
-| GH-6 | P1d: Admin product CRUD API | in review: gate C done (541 passed, C-001 re-confirmed); waiting on the merge | feat/admin-products-GH-6 | #12 | docs/agents/tasks/GH-6/ |
+| GH-13 | P2a: Reindex outbox, worker, chunking and embeddings | full lane; gate A answered (B1–B6, N1–N14); next /plan | feat/reindex-worker-GH-13 | #16 | docs/agents/tasks/GH-13/ |
 
 ## Recently done (last 10)
 | Ticket | Title | Done | PR |
 |---|---|---|---|
+| GH-6 | P1d: Admin product CRUD API | 2026-11-26 | #12 |
 | GH-5 | P1c: Catalog and seed | 2026-11-26 | #11 |
 | GH-4 | P1b: Authentication and roles | 2026-11-25 | #10 |
 | GH-8 | Design: phone mockups, Assistant home and Settings | 2026-11-19 | #9 |
