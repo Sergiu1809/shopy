@@ -6,6 +6,10 @@ App, SQLAlchemy and Alembic imports stay inside the fixtures, so tests that need
 database (test_health, the unit tests in test_db_config) still run on their own.
 
 GH-4: the auth settings are force-set below, before any test module imports the app.
+GH-13: `OPENAI_API_KEY` is removed at import and an autouse guard fails any test that
+builds the real `AsyncOpenAI` client (N12); worker tests use `indexing_db`, a committed
+database per test cloned from a migrated template (the worker opens its own
+transactions, so the rolled-back `session` cannot serve it).
 API tests call the app through httpx `AsyncClient` + `ASGITransport` (same event loop
 as asyncpg), never `TestClient` with DB fixtures; `get_session` is overridden with the
 rolled-back `session`, so nothing an API test writes survives it.
@@ -30,13 +34,15 @@ if TYPE_CHECKING:
     from alembic.config import Config
     from fastapi import FastAPI
     from httpx import AsyncClient
-    from sqlalchemy.ext.asyncio import AsyncSession
+    from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
 
 # GH-4 (A12): a generated secret (no literal for gitleaks; a developer's `change-me`
 # can never leak into a test run) and the one CORS origin. Force-set, not setdefault.
 os.environ["JWT_SECRET"] = secrets.token_urlsafe(48)
 os.environ["APP_ORIGIN"] = "https://app.test"
+# GH-13 (N12): no test run ever holds a real OpenAI key, whatever the shell exports.
+os.environ.pop("OPENAI_API_KEY", None)
 APP_ORIGIN = "https://app.test"
 BASE_URL = "https://test"  # https, so httpx sends the Secure refresh cookie back
 DEFAULT_PASSWORD = "Parola123"
@@ -356,3 +362,80 @@ def assert_error(
     else:
         assert set(error) == {"code", "message"}
     return error
+
+
+# --- GH-13: no real OpenAI client; committed databases for the worker ----------
+
+
+def _forbidden_openai_client(*args: Any, **kwargs: Any) -> Any:
+    pytest.fail("real OpenAI client constructed in a test")
+
+
+@pytest.fixture(autouse=True)
+def _no_real_openai_client(monkeypatch: pytest.MonkeyPatch) -> Iterator[None]:
+    """N12: building the real client in any test fails it (A5); tests inject a stub."""
+    try:
+        import openai
+        from app.indexing import embeddings
+    except ModuleNotFoundError as exc:
+        # Only before GH-13 is built: the earlier tests must keep running on their own.
+        if not (exc.name or "").startswith(("app.indexing", "openai")):
+            raise
+        yield
+        return
+    monkeypatch.setattr(embeddings, "AsyncOpenAI", _forbidden_openai_client)
+    monkeypatch.setattr(openai, "AsyncOpenAI", _forbidden_openai_client)
+    yield
+
+
+INDEXING_TEMPLATE = "indexing_template"
+
+
+@pytest.fixture(scope="session")
+def indexing_template(pg: PostgresContainer) -> Iterator[str]:
+    """A database migrated to head once, cloned by `indexing_db` for every test."""
+    from alembic import command
+
+    admin_url = pg.get_connection_url()
+    fetch(admin_url, f'CREATE DATABASE "{INDEXING_TEMPLATE}"', autocommit=True)
+    url = with_database(admin_url, INDEXING_TEMPLATE)
+    previous = os.environ.get("DATABASE_URL")
+    os.environ["DATABASE_URL"] = url
+    try:
+        command.upgrade(alembic_config(), "head")
+    finally:
+        if previous is None:
+            os.environ.pop("DATABASE_URL", None)
+        else:
+            os.environ["DATABASE_URL"] = previous
+    yield url
+
+
+@pytest.fixture
+def indexing_db(pg: PostgresContainer, indexing_template: str) -> Iterator[str]:
+    """A committed, migrated database of its own, dropped after the test."""
+    admin_url = pg.get_connection_url()
+    name = f"t_{uuid.uuid4().hex[:12]}"
+    fetch(
+        admin_url,
+        f'CREATE DATABASE "{name}" TEMPLATE "{INDEXING_TEMPLATE}"',
+        autocommit=True,
+    )
+    try:
+        yield with_database(admin_url, name)
+    finally:
+        fetch(admin_url, f'DROP DATABASE "{name}" WITH (FORCE)', autocommit=True)
+
+
+@pytest.fixture
+async def indexing_sessionmaker(
+    indexing_db: str,
+) -> AsyncIterator[async_sessionmaker[AsyncSession]]:
+    """The app's engine and sessionmaker on `indexing_db`; every commit is real."""
+    from app.db import create_engine, create_sessionmaker
+
+    engine = create_engine(indexing_db)
+    try:
+        yield create_sessionmaker(engine)
+    finally:
+        await engine.dispose()

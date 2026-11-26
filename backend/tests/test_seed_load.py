@@ -588,3 +588,54 @@ async def test_seeded_accounts_log_in(
         assert me.status_code == 200, me.text
         assert me.json()["email"] == user["email"].lower()
         assert me.json()["role"] == user["role"]
+
+
+# --- GH-13 (B4): the first run enqueues a full reindex in its transaction ------------
+
+
+def outbox(url: str) -> list[tuple[str, int, str]]:
+    rows = fetch(
+        url, "SELECT source_type, source_id, reason FROM reindex_outbox ORDER BY id"
+    )
+    return [tuple(r) for r in rows]
+
+
+def test_first_run_enqueues_a_full_reindex(seeded_url: str) -> None:
+    products = range(1, len(file_products()) + 1)
+    policies = range(1, len(catalog_json()["policies"]) + 1)
+
+    rows = outbox(seeded_url)
+
+    assert sorted(rows) == sorted(
+        [("product", n, "full") for n in products]
+        + [("reviews", n, "full") for n in products]
+        + [("policy", n, "full") for n in policies]
+    )
+
+
+def test_a_rerun_enqueues_nothing(seeded_url: str) -> None:
+    before = outbox(seeded_url)
+    assert before
+
+    assert seed_main() == 0
+
+    assert outbox(seeded_url) == before
+
+
+def test_a_failed_seed_enqueues_nothing(db_url: str) -> None:
+    # The catalog goes in first; the users after it fail: the enqueue rolls back too.
+    fetch(
+        db_url,
+        "CREATE FUNCTION fail_users() RETURNS trigger LANGUAGE plpgsql AS $$"
+        " BEGIN RAISE EXCEPTION 'test: users fail'; END $$",
+    )
+    fetch(
+        db_url,
+        "CREATE TRIGGER fail_users BEFORE INSERT ON users"
+        " FOR EACH ROW EXECUTE FUNCTION fail_users()",
+    )
+
+    with pytest.raises(DBAPIError, match="users fail"):
+        seed_main()
+
+    assert outbox(db_url) == []
