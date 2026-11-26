@@ -26,6 +26,7 @@ Q-001 to Q-006 are the brief's OQ-01 to OQ-06 (`shopy_brief.md` §22), in order.
 - Q-013 · Does the 1 EUR daily cap fit the monthly budget?
 - Q-014 · Will the web app and the API share one site in production?
 - Q-015 · Who seeds the demo customers' Stripe test cards, and how?
+- Q-016 · How should the attribute values the seed schema keeps as text become typed? · _deferred_
 
 ---
 
@@ -116,3 +117,9 @@ Q-001 to Q-006 are the brief's OQ-01 to OQ-06 (`shopy_brief.md` §22), in order.
 - **Blocks:** P4 checkout demo. Brief §8 gives each seeded customer a saved Stripe test card (`pm_card_visa` style, attached to a test Customer); GH-5 left it out (gate A, 2026-11-25), so seeded customers have `stripe_customer_id` NULL and no `payment_methods` row. No ticket holds this yet.
 - **Who answers:** the developer, when the P4 tickets are written
 - **Proposed answer:** the P4 payments ticket extends the seed (insert only what is missing, as GH-5) to create a test-mode Stripe Customer and attach a test payment method per demo customer, behind the payments provider interface (PATTERN-012), skipped with a clear message when no Stripe test key is set.
+
+## Q-016 · How should the attribute values the seed schema keeps as text become typed?
+- **Status:** deferred (to P2; the developer, 2026-11-26, GH-5 gate C)
+- **Blocks:** nothing today. P2/P3 structured filters on these attributes. Under the approved GH-5 schema some values cannot follow PATTERN-016: `capacities_l` and comb lengths are `list[str]`; variant attributes are text only (`spf` is "SPF 30" at variant level, an int at product level); `dimensions_cm` is free text on 10 home products. Related: the same measure under different unit keys (`battery_hours` / `battery_days`, `charge_time_hours` / `_minutes`, `burn_time_h`).
+- **Who answers:** the developer, when the P2 search ticket is planned
+- **Proposed answer:** the P2 ticket allows typed variant attributes and numeric lists in `seed/schema.py`, converts these values to whole units (one key per measure), and adds validator checks for them.

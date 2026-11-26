@@ -5,14 +5,14 @@ parent:
 covers: []
 delivered_in:
 title: "P1c: Catalog and seed"
-status: in-progress
+status: in-review
 lane: full
 branch: feat/catalog-seed-GH-5
 pr: https://github.com/Sergiu1809/shopy/pull/11
 design_refs: []
 summary: "Romanian demo catalog (catalog.json, validator in CI), store policies and demo accounts, loaded by make seed"
 created: 2026-11-25 00:00
-updated: 2026-11-26 16:30
+updated: 2026-11-26 17:15
 ---
 
 # GH-5 — P1c: Catalog and seed
@@ -70,7 +70,7 @@ Ticket: https://github.com/Sergiu1809/shopy/issues/5
   - When Docker Compose and a real `.env` are available: `docker compose up --build -d api`, then `make seed` twice. The second run prints "already seeded".
 
 ## Resume here ⏯
-Review done (2 rounds, pass with findings; every fix in, 159620d). At gate C: the user decides the PATTERN-016 leftovers that need a schema change, runs point 26 (`make seed` twice with real `SEED_*` passwords), and says when to mark PR #11 ready. See `log_2026-11-26_1409.md`.
+Gate C done: point 26 passed (seed twice, logins 200), PATTERN-016 leftovers deferred as Q-016, PR #11 ready for review. Waiting on the user to merge it; then GH-6. See `log_2026-11-26_1706.md`.
 
 ## Summary of work so far
 - 2026-11-25 — product owner: coverage report, gate A answered by the user (Q1–Q11); Q-015 recorded for the P4 Stripe test cards.
@@ -80,6 +80,7 @@ Review done (2 rounds, pass with findings; every fix in, 159620d). At gate C: th
 - 2026-11-26 — review round 1: pass with findings (F1 PR draft/body, F2 journal, F3 author names; nits F4–F8).
 - 2026-11-26 — PR back to draft; F3 (2b89fd1) and F4–F7 (2ed6c12, b4694be) fixed; candidate PATTERN-016 (c399ca8).
 - 2026-11-26 — review round 2: pass with findings; key naming and leftovers fixed (159620d). Final: 200 products, 744 variants, 1406 reviews; 370 passed.
+- 2026-11-26 — gate C: point 26 passed (seed twice; three logins 200); PATTERN-016 leftovers deferred (Q-016); PR #11 marked ready.
 
 ## Approach
 See `PLAN.md`. In short:
@@ -108,6 +109,7 @@ See `PLAN.md`. In short:
 | modify | `docs/agents/ARCHITECTURE.md` | seed row, CI line |
 
 ## Manual verification 🔧
+Point 26 run by the user on 2026-11-26: first `make seed` inserted everything, the second printed "already seeded"; the three seeded accounts log in (200).
 No manual-test path changes, so no MT- entry ("Manual test: not needed"). The conductor runs `make seed` twice on local Compose if Docker is available; otherwise the PR's Testing done names it as skipped.
 
 ## Decisions log 🧭
@@ -116,6 +118,7 @@ No manual-test path changes, so no MT- entry ("Manual test: not needed"). The co
 
 ## Open questions / blockers
 - [ ] Q-015 — Stripe test cards for the demo customers (P4; out of scope here).
+- [ ] Q-016 — attribute values kept as text by the schema (deferred to P2).
 
 ## Links
 - Ticket: https://github.com/Sergiu1809/shopy/issues/5
