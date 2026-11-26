@@ -17,6 +17,7 @@ from typing import Annotated, Any
 from fastapi import APIRouter, Depends, Path, Query, Response
 from fastapi.exceptions import RequestValidationError
 from sqlalchemy import delete, func, select
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.auth.dependencies import require_admin
@@ -30,7 +31,9 @@ from app.schemas.catalog import (
     ProductOut,
     ProductPage,
     ProductUpdate,
+    VariantCreate,
     VariantOut,
+    VariantUpdate,
 )
 
 router = APIRouter(
@@ -39,8 +42,14 @@ router = APIRouter(
 
 Session = Annotated[AsyncSession, Depends(get_session)]
 ProductId = Annotated[int, Path(ge=1, le=BIGINT_MAX)]
+VariantId = Annotated[int, Path(ge=1, le=BIGINT_MAX)]
 
 PRODUCT_NOT_FOUND = "Product not found."
+VARIANT_NOT_FOUND = "Variant not found."
+# Fields the product's index chunk holds (P2): a change bumps the product version.
+DESCRIPTIVE_VARIANT_FIELDS = {"sku", "attributes"}
+# Read live, never indexed (D-006): a change bumps the variant version (D-014).
+LIVE_VARIANT_FIELDS = {"price_minor", "stock"}
 
 
 async def _store_id(db: AsyncSession) -> int | None:
@@ -79,6 +88,33 @@ async def _product(db: AsyncSession, product_id: int, *, lock: bool = False) -> 
     if product is None:
         raise ApiError(404, "not_found", PRODUCT_NOT_FOUND)
     return product
+
+
+async def _locked_variant(
+    db: AsyncSession, product_id: int, variant_id: int
+) -> ProductVariant:
+    """Only a variant of this product; lock it after its product (one lock order)."""
+    variant = await db.scalar(
+        select(ProductVariant)
+        .where(ProductVariant.id == variant_id)
+        .where(ProductVariant.product_id == product_id)
+        .with_for_update()
+        .execution_options(populate_existing=True)
+    )
+    if variant is None:
+        raise ApiError(404, "not_found", VARIANT_NOT_FOUND)
+    return variant
+
+
+async def _flush_sku(db: AsyncSession) -> None:
+    """Flush; a SKU that exists is a 409 (the unique constraint decides, race-safe)."""
+    try:
+        await db.flush()
+    except IntegrityError as exc:
+        await db.rollback()
+        if "uq_product_variants_sku" not in str(exc.orig):
+            raise
+        raise ApiError(409, "sku_taken", "This SKU is already in use.") from None
 
 
 def _dump(value: Any) -> str:
@@ -174,5 +210,70 @@ async def delete_product(product_id: ProductId, db: Session) -> Response:
     )
     if deleted is None:
         raise ApiError(404, "not_found", PRODUCT_NOT_FOUND)
+    await db.commit()
+    return Response(status_code=204)
+
+
+@router.get("/products/{product_id}/variants")
+async def list_variants(product_id: ProductId, db: Session) -> list[VariantOut]:
+    product = await _product(db, product_id)
+    return await _variants(db, product.id)
+
+
+@router.post("/products/{product_id}/variants", status_code=201)
+async def create_variant(
+    product_id: ProductId, body: VariantCreate, db: Session
+) -> VariantOut:
+    product = await _product(db, product_id, lock=True)
+    variant = ProductVariant(product_id=product.id, **body.model_dump())
+    db.add(variant)
+    product.version = Product.version + 1
+    await _flush_sku(db)
+    await db.refresh(variant)
+    out = VariantOut.model_validate(variant)
+    await db.commit()
+    return out
+
+
+@router.patch("/products/{product_id}/variants/{variant_id}")
+async def update_variant(
+    product_id: ProductId, variant_id: VariantId, body: VariantUpdate, db: Session
+) -> VariantOut:
+    product = await _product(db, product_id, lock=True)
+    variant = await _locked_variant(db, product.id, variant_id)
+    changes = _changes(variant, body.model_dump(exclude_unset=True))
+    if changes:
+        for name, value in changes.items():
+            setattr(variant, name, value)
+        if changes.keys() & DESCRIPTIVE_VARIANT_FIELDS:
+            product.version = Product.version + 1
+        if changes.keys() & LIVE_VARIANT_FIELDS:
+            variant.version = ProductVariant.version + 1
+        await _flush_sku(db)
+        await db.refresh(variant)
+    out = VariantOut.model_validate(variant)
+    await db.commit()
+    return out
+
+
+@router.delete(
+    "/products/{product_id}/variants/{variant_id}",
+    status_code=204,
+    response_class=Response,
+)
+async def delete_variant(
+    product_id: ProductId, variant_id: VariantId, db: Session
+) -> Response:
+    """Hard delete; the last variant of a product may go too (Q-017)."""
+    product = await _product(db, product_id, lock=True)
+    deleted = await db.scalar(
+        delete(ProductVariant)
+        .where(ProductVariant.id == variant_id)
+        .where(ProductVariant.product_id == product.id)
+        .returning(ProductVariant.id)
+    )
+    if deleted is None:
+        raise ApiError(404, "not_found", VARIANT_NOT_FOUND)
+    product.version = Product.version + 1
     await db.commit()
     return Response(status_code=204)
