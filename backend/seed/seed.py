@@ -4,6 +4,8 @@ Inserts only what is missing, in file order, in one transaction (GH-5 Q2, Q9):
 - a store row means the catalog is already seeded, so it is skipped whole;
 - a user is skipped when their email exists (case-insensitive), with their addresses
   and preferences untouched.
+Inserting the catalog also enqueues a full reindex in the same transaction (GH-13 B4,
+PATTERN-010); the reindex worker embeds it.
 Passwords come only from SEED_ADMIN_PASSWORD / SEED_CUSTOMER_PASSWORD (PATTERN-013)
 and must meet the register rule; they are checked before any connection.
 """
@@ -21,6 +23,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.auth.passwords import hash_password
 from app.db import create_engine, create_sessionmaker
+from app.indexing.outbox import enqueue_full_reindex
 from app.models import (
     Address,
     Category,
@@ -176,6 +179,7 @@ async def _insert_catalog(
         for p in catalog.policies
     )
     await session.flush()
+    await enqueue_full_reindex(session)
 
     report.catalog_inserted = True
     report.categories = len(categories)
