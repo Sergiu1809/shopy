@@ -30,6 +30,7 @@
 
 ## D-019 · Cost control with a usage ledger and caps
 - **Status:** approved
+- **Confirmed:** 2026-11-26
 - **Date:** 2026-11-17
 - **Rule:** Every paid external call writes to `usage_ledger`. Global cap 1 EUR per day; per-user cap 100 messages per day. At a cap, no paid call is made and a fixed limit message is returned.
 - **Why:** The external API budget is 10 to 20 EUR per month.

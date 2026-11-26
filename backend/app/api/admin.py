@@ -9,6 +9,8 @@ and bumps a counter with `version = version + 1` in SQL only when something chan
 - `products.version`: any product field; a variant created, deleted, or with a new
   `sku` or `attributes` (what the product's index chunk holds, P2).
 - `product_variants.version`: `price_minor` or `stock` (D-014).
+Every `products.version` bump, a new product and a deleted one enqueue the product
+for the reindex worker in the same transaction (P2, PATTERN-010, GH-13).
 """
 
 import json
@@ -23,6 +25,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.auth.dependencies import require_admin
 from app.db import get_session
 from app.errors import ApiError
+from app.indexing.outbox import enqueue
 from app.models import Category, Product, ProductVariant, Store
 from app.schemas.catalog import (
     BIGINT_MAX,
@@ -170,6 +173,7 @@ async def create_product(body: ProductCreate, db: Session) -> ProductDetailOut:
     product = Product(store_id=store_id, **body.model_dump())
     db.add(product)
     await db.flush()
+    await enqueue(db, "product", product.id, "create")
     await db.refresh(product)
     detail = await _detail(db, product)
     await db.commit()
@@ -195,6 +199,7 @@ async def update_product(
         for name, value in changes.items():
             setattr(product, name, value)
         product.version = Product.version + 1
+        await enqueue(db, "product", product.id, "update")
         await db.flush()
         await db.refresh(product)
     detail = await _detail(db, product)
@@ -210,6 +215,7 @@ async def delete_product(product_id: ProductId, db: Session) -> Response:
     )
     if deleted is None:
         raise ApiError(404, "not_found", PRODUCT_NOT_FOUND)
+    await enqueue(db, "product", deleted, "delete")
     await db.commit()
     return Response(status_code=204)
 
@@ -228,6 +234,7 @@ async def create_variant(
     variant = ProductVariant(product_id=product.id, **body.model_dump())
     db.add(variant)
     product.version = Product.version + 1
+    await enqueue(db, "product", product.id, "update")
     await _flush_sku(db)
     await db.refresh(variant)
     out = VariantOut.model_validate(variant)
@@ -247,6 +254,7 @@ async def update_variant(
             setattr(variant, name, value)
         if changes.keys() & DESCRIPTIVE_VARIANT_FIELDS:
             product.version = Product.version + 1
+            await enqueue(db, "product", product.id, "update")
         if changes.keys() & LIVE_VARIANT_FIELDS:
             variant.version = ProductVariant.version + 1
         await _flush_sku(db)
@@ -275,5 +283,6 @@ async def delete_variant(
     if deleted is None:
         raise ApiError(404, "not_found", VARIANT_NOT_FOUND)
     product.version = Product.version + 1
+    await enqueue(db, "product", product.id, "update")
     await db.commit()
     return Response(status_code=204)

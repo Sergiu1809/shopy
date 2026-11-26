@@ -14,8 +14,12 @@
 > dependencies), `backend/app/schemas/`, one error envelope in `backend/app/errors.py`,
 > CORS to `APP_ORIGIN`. P1d admin product routes (GH-6): products and their variants
 > on the `/admin` router (`backend/app/api/admin.py`), bodies and responses in
-> `backend/app/schemas/catalog.py`. Everything else on this page is still the
-> target from `shopy_brief.md` §5–§6, §11, §12. Update it as each phase lands.
+> `backend/app/schemas/catalog.py`. P2a reindex outbox, worker, chunking and
+> embeddings (GH-13, 2026-11-26): `kb_chunks`, `reindex_outbox`, `usage_ledger`
+> (revision `0002`), `backend/app/indexing/`, `backend/app/usage/`, the real worker
+> in `backend/worker/` and `make reindex`; no search yet (GH-14). Everything else on
+> this page is still the target from `shopy_brief.md` §5–§6, §11, §12. Update it as
+> each phase lands.
 
 ## Overview
 A React PWA (customer `/app`, admin `/admin`) talks to one FastAPI service over REST
@@ -57,12 +61,12 @@ holds everything. Locally all runs in Docker Compose; production is Railway or F
 | agent | `backend/app/agent/` | orchestrator, tools, prompts, output guard, confirmation classifier | LLM, search, orders, usage |
 | orders | `backend/app/orders/` | state machine, proposals, pricing | db, payments, mail |
 | search | `backend/app/search/` | hybrid search with RRF | db, embeddings |
-| indexing | `backend/app/indexing/` | chunking, embedding client | embeddings |
+| indexing | `backend/app/indexing/` | `outbox.py` (enqueue one source or a full reindex, in the caller's transaction), `chunking.py` (pure chunk text rules and `content_hash`), `embeddings.py` (provider interface, OpenAI provider, vector checks) | db, OpenAI embeddings |
 | voice | `backend/app/voice/` | STT, TTS, sentence splitter, number normalizer | OpenAI, Azure |
 | payments | `backend/app/payments/` | Stripe service | Stripe |
 | auth | `backend/app/auth/` | passwords (Argon2id), tokens (JWT, refresh cookie), rate limits (in-process, one api process: Q-014), dependencies (current user, admin); WebAuthn (P4) | db |
-| usage | `backend/app/usage/` | cost ledger, caps | db |
-| worker | `backend/worker/` | polls the outbox, rebuilds chunks | db, embeddings |
+| usage | `backend/app/usage/` | `ledger.py`: daily cost cap, `PRICE_*` unit prices, cost estimate, the usage_ledger row; per-user caps in P3 | db |
+| worker | `backend/worker/` | `process.py` (claim one row with SKIP LOCKED, rebuild one source, cost gate, retries), `__main__.py` (the loop, signals, provider from env), `reindex_all.py` (`make reindex`) | db, indexing, usage |
 | seed | `backend/seed/` | `catalog.json` (written once, D-023) and `users.json` (demo accounts), their Pydantic formats in `schema.py`, `validate_catalog.py` (CI), `seed.py` (`make seed`: inserts only what is missing, one transaction) | db |
 | evals | `evals/` | real-LLM scenarios, manual | api / agent |
 
@@ -83,15 +87,16 @@ holds everything. Locally all runs in Docker Compose; production is Railway or F
 
 **Reindex** (brief §11)
 1. Catalog change + outbox row in one transaction.
-2. Worker claims the row (`FOR UPDATE SKIP LOCKED`), rebuilds that source's chunks, skips unchanged hashes, swaps chunks atomically, marks done.
+2. Worker claims the oldest due row (`FOR UPDATE SKIP LOCKED`) and holds it through one embedding call per source; it rebuilds that source's chunks, reuses vectors of unchanged hashes (no call), swaps chunks atomically, marks done. A missing source loses its chunks.
+3. Before a paid call: model, key, price and the global daily cap (no call: the row stays pending, no attempt counted). After it: one `usage_ledger` row in its own transaction. Failures count an attempt in their own transaction; backoff 30 s × 2^(attempts−1), given up after 5.
 
 ## State and storage
 | What | Where | Owner | Notes |
 |---|---|---|---|
 | Catalog, users, carts, proposals, orders, confirmations | Postgres | api | money in minor units (PATTERN-001); Alembic only |
-| Chunks and embeddings | Postgres `kb_chunks` | worker | vector(1536), HNSW; no prices or stock |
-| Reindex jobs | Postgres `reindex_outbox` | api writes, worker consumes | |
-| Usage and cost | Postgres `usage_ledger` | api, worker | |
+| Chunks and embeddings | Postgres `kb_chunks` | worker | vector(1536); no prices or stock; HNSW index and `tsv` fill come with GH-14 |
+| Reindex jobs | Postgres `reindex_outbox` | api and seed write, worker consumes | done rows stay; duplicates allowed |
+| Usage and cost | Postgres `usage_ledger` | worker (embeddings); api from P3 | EUR `numeric(12,8)` |
 | Product images | MinIO (local) / R2 (prod) | api | by `storage_key` |
 | Transcripts | Postgres `messages` | api | 90 days, no audio (D-020) |
 | Card data | Stripe only | Stripe | we store ID, brand, last4, expiry (D-016) |
@@ -110,13 +115,14 @@ holds everything. Locally all runs in Docker Compose; production is Railway or F
 | `MAIL_PROVIDER`, `RESEND_API_KEY`, `MAIL_FROM`, `SMTP_HOST`, `SMTP_PORT` | `.env` | orders | |
 | `WEBAUTHN_RP_ID`, `WEBAUTHN_RP_NAME`, `WEBAUTHN_ORIGIN` | `.env` | auth | tunnel host in dev |
 | `LANGFUSE_PUBLIC_KEY`, `LANGFUSE_SECRET_KEY`, `LANGFUSE_HOST` | `.env` | agent | |
-| `DAILY_COST_CAP_EUR`, `USER_DAILY_MESSAGE_CAP`, `PRICE_*` | `.env` | usage | Q-013 |
+| `DAILY_COST_CAP_EUR`, `USER_DAILY_MESSAGE_CAP`, `PRICE_*` | `.env` | usage, worker | cap: 1 EUR per UTC day when unset (Q-013); `PRICE_OPENAI_EMBEDDING_EUR_PER_1M_TOKENS` never defaulted: unset means no embedding call |
 | `SEED_ADMIN_PASSWORD`, `SEED_CUSTOMER_PASSWORD` | `.env` | seed | |
 
 ## Build, deploy, runtime
 Local: `docker compose up` (db, api, worker, web, minio + one-shot `minio-init` bucket
 creation, mailpit; `docker-compose.yml`; the api runs `alembic upgrade head` before
-uvicorn), then `make seed` (P1); an HTTPS tunnel (e.g.
+uvicorn), then `make seed` (P1; it also enqueues a full reindex), and `make reindex`
+for a database seeded before P2a; an HTTPS tunnel (e.g.
 `cloudflared`) for the iPhone. Local S3 is the archived `bitnamilegacy/minio` image,
 pinned (no web console); production uses R2. CI: GitHub Actions — `ci.yml` on every
 push (backend ruff/mypy/catalog validator/pytest, web oxlint/typecheck/vitest, ledger lint, gitleaks)

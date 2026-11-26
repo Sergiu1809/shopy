@@ -29,6 +29,9 @@ TABLES = {
     "product_images",
     "reviews",
     "store_policies",
+    "kb_chunks",
+    "reindex_outbox",
+    "usage_ledger",
 }
 EXTENSIONS = {"vector", "unaccent"}
 
@@ -58,7 +61,7 @@ def test_upgrade_head_creates_all_tables(
 
     assert public_tables(fresh_db_url) == TABLES | {"alembic_version"}
     versions = fetch(fresh_db_url, "SELECT version_num FROM alembic_version")
-    assert [row.version_num for row in versions] == ["0001"]
+    assert [row.version_num for row in versions] == ["0002"]
 
 
 def test_upgrade_creates_extensions(

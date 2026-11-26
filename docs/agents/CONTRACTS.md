@@ -83,8 +83,8 @@ _None: no other repo._
 ### OpenAI · transcription and embeddings
 - **Interface:** transcription API with `language=ro` (model from `STT_MODEL`, Q-004); embeddings `text-embedding-3-small` (1536 dimensions, `EMBEDDING_MODEL`).
 - **We rely on:** Romanian transcripts; a fixed vector size matching `kb_chunks.embedding vector(1536)`.
-- **Known quirks:** Safari records `audio/mp4`.
-- **Evidence:** `shopy_brief.md` §5, §7, §9.1 (no code yet)
+- **Known quirks:** Safari records `audio/mp4`. The `openai` SDK (3.x) is built on `httpx2`, not `httpx`; its errors carry the request/response of that library. SDK error messages can quote a masked key: we keep only the class and status.
+- **Evidence:** `backend/app/indexing/embeddings.py` (embeddings: one request per source, no `dimensions`, vectors checked against 1536); transcription: `shopy_brief.md` §5, §9.1 (no code yet)
 
 ### Azure AI Speech · Romanian neural TTS
 - **Interface:** TTS with a Romanian neural voice (`TTS_VOICE`, Q-003), key and region from env.

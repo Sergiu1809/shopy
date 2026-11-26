@@ -102,7 +102,8 @@ uvx pre-commit install                              # once per clone: gitleaks o
 uvx pre-commit run --all-files                      # gitleaks over the working tree
 PREFIX=GH python3 .github/scripts/team-checks.py --branch <branch> --base main
 cd backend && uv run python -m seed.validate_catalog    # checks seed/catalog.json and seed/users.json (also in CI)
-make seed                                           # loads the demo store and accounts; needs SEED_* in .env, a built and migrated api (docker compose up --build); safe to rerun
+make seed                                           # loads the demo store and accounts; needs SEED_* in .env, a built and migrated api (docker compose up --build); safe to rerun; a first run enqueues a full reindex
+make reindex                                        # enqueues every product, its reviews and every policy; the worker embeds what changed (needs OPENAI_API_KEY, EMBEDDING_MODEL, PRICE_OPENAI_EMBEDDING_EUR_PER_1M_TOKENS in .env)
 # Planned: python evals/run_evals.py (P3, manual only); screenshots: Q-009
 ```
 
@@ -110,9 +111,10 @@ make seed                                           # loads the demo store and a
 Layout from brief §6. P0 skeleton exists (`backend/` app, worker, tests; `web/` shell;
 `docker-compose.yml`, `docker/db/init/`); P1a adds the database layer (GH-3); P1b adds
 authentication and roles (GH-4); P1c adds the catalog and seed (GH-5); P1d adds the admin product
-routes (GH-6); the other folders arrive with their phases.
+routes (GH-6); P2a adds the index outbox, worker, chunking and embeddings (GH-13); the
+other folders arrive with their phases.
 - `shopy_brief.md` — the project brief (the brief's §6 layout calls it `PROJECT_BRIEF.md`; this name is kept).
-- `backend/` — FastAPI app (`app/`; models in `app/models/`, engine and `get_session` in `app/db.py`, routers in `app/api/`, auth in `app/auth/`, Pydantic bodies in `app/schemas/`, the error envelope in `app/errors.py`), `worker/`, Alembic `migrations/` (`alembic.ini`), `seed/` (`catalog.json` and `users.json`, their Pydantic formats in `schema.py`, `validate_catalog.py`, the loader `seed.py`), `tests/`.
+- `backend/` — FastAPI app (`app/`; models in `app/models/`, engine and `get_session` in `app/db.py`, routers in `app/api/`, auth in `app/auth/`, Pydantic bodies in `app/schemas/`, the error envelope in `app/errors.py`, outbox enqueue, chunk text and the embedding provider in `app/indexing/`, the cost cap and usage ledger in `app/usage/`), `worker/` (`process.py` one outbox row, `__main__.py` the loop, `reindex_all.py`), Alembic `migrations/` (`alembic.ini`), `seed/` (`catalog.json` and `users.json`, their Pydantic formats in `schema.py`, `validate_catalog.py`, the loader `seed.py`), `tests/`.
 - `web/` — React PWA: `/app` (customer) and `/admin`.
 - `evals/` — real-LLM scenarios (manual).
 - `docs/agents/` — the ledger; `docs/design/` — design rules and mocks; `docs/API.md` — REST and WebSocket examples.

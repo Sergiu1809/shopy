@@ -18,6 +18,9 @@ TABLES = {
     "product_images",
     "reviews",
     "store_policies",
+    "kb_chunks",
+    "reindex_outbox",
+    "usage_ledger",
 }
 
 BIGINT = "bigint"
@@ -129,6 +132,39 @@ EXPECTED: dict[str, dict[str, Column]] = {
         "body": REQUIRED_TEXT,
         "version": VERSION,
     },
+    # GH-13 (P2a): the index, its outbox and the usage ledger.
+    "kb_chunks": {
+        "id": ID,
+        "store_id": FK,
+        "source_type": REQUIRED_TEXT,
+        "source_id": (BIGINT, False, NO_DEFAULT),
+        "chunk_index": (INT, False, NO_DEFAULT),
+        "text": REQUIRED_TEXT,
+        "embedding": ("USER-DEFINED", False, NO_DEFAULT),
+        "tsv": ("tsvector", True, NO_DEFAULT),
+        "source_version": (INT, True, NO_DEFAULT),
+        "content_hash": REQUIRED_TEXT,
+    },
+    "reindex_outbox": {
+        "id": ID,
+        "source_type": REQUIRED_TEXT,
+        "source_id": (BIGINT, False, NO_DEFAULT),
+        "reason": REQUIRED_TEXT,
+        "enqueued_at": NOW,
+        "locked_at": (TSTZ, True, NO_DEFAULT),
+        "attempts": (INT, False, "0"),
+        "last_error": NULL_TEXT,
+        "done_at": (TSTZ, True, NO_DEFAULT),
+    },
+    "usage_ledger": {
+        "id": ID,
+        "user_id": (BIGINT, True, NO_DEFAULT),
+        "provider": REQUIRED_TEXT,
+        "operation": REQUIRED_TEXT,
+        "units": (BIGINT, False, NO_DEFAULT),
+        "estimated_cost_eur": ("numeric", False, NO_DEFAULT),
+        "created_at": NOW,
+    },
 }
 
 # The only nullable columns (Q6).
@@ -139,10 +175,17 @@ NULLABLE = {
     ("products", "rating_avg"),
     ("products", "content_hash"),
     ("product_images", "alt_text"),
+    # GH-13: tsv is filled by GH-14 (B5); reviews have no source version (N2).
+    ("kb_chunks", "tsv"),
+    ("kb_chunks", "source_version"),
+    ("reindex_outbox", "locked_at"),
+    ("reindex_outbox", "last_error"),
+    ("reindex_outbox", "done_at"),
+    ("usage_ledger", "user_id"),
 }
 
 # (table, column, referenced table) -> pg_constraint.confdeltype (Q2).
-CASCADE, RESTRICT = "c", "r"
+CASCADE, RESTRICT, SET_NULL = "c", "r", "n"
 FK_DELETE_RULES = {
     ("refresh_tokens", "user_id", "users"): CASCADE,
     ("addresses", "user_id", "users"): CASCADE,
@@ -154,6 +197,9 @@ FK_DELETE_RULES = {
     ("products", "store_id", "stores"): RESTRICT,
     ("store_policies", "store_id", "stores"): RESTRICT,
     ("products", "category_id", "categories"): RESTRICT,
+    # GH-13: chunks belong to a store; ledger rows outlive a deleted user (N13).
+    ("kb_chunks", "store_id", "stores"): RESTRICT,
+    ("usage_ledger", "user_id", "users"): SET_NULL,
 }
 
 
@@ -278,6 +324,7 @@ async def test_store_id_only_on_catalog_parents(session: AsyncSession) -> None:
         "categories",
         "products",
         "store_policies",
+        "kb_chunks",
     }
 
 

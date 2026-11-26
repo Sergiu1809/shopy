@@ -27,6 +27,8 @@ then.
 - PATTERN-015 · API tests with the DB: httpx AsyncClient + ASGITransport · candidate
 - PATTERN-016 · Catalog attributes: one JSON type per key, whole units · candidate
 - PATTERN-017 · Row versions: lock, diff, increment in SQL · candidate
+- PATTERN-018 · Outbox worker row: claim with SKIP LOCKED; paid-call ledger and errors in their own transactions · candidate
+- PATTERN-019 · Tests guard against real provider clients · candidate
 
 ---
 
@@ -110,10 +112,9 @@ then.
 
 ## PATTERN-010 · Indexed changes enqueue in the same transaction
 - **Status:** approved
-- **Confirmed:** 2026-11-26
 - **Use when:** changing a product, its descriptive variant attributes, its reviews or a policy.
 - **How:** insert one `reindex_outbox` row for that source in the same transaction as the change; never call the embedding API from a request handler. Price and stock changes enqueue nothing.
-- **Example:** `shopy_brief.md` §11 (no code yet)
+- **Example:** `backend/app/indexing/outbox.py` (`enqueue`, `enqueue_full_reindex`), `backend/app/api/admin.py` (the six hooks), `backend/seed/seed.py` (`_insert_catalog`)
 - **Why:** the index never misses a change, and only the changed source is rebuilt (D-006).
 - **Source:** user (project brief) · confidence high
 
@@ -121,7 +122,7 @@ then.
 - **Status:** approved
 - **Use when:** any call to the LLM, STT, TTS or embeddings API.
 - **How:** check the global and per-user caps before the call; write a `usage_ledger` row with units and estimated EUR cost after it. Unit prices come from env (`PRICE_*`).
-- **Example:** `shopy_brief.md` §15 (no code yet)
+- **Example:** `backend/app/usage/ledger.py` (cap, prices, cost, `record`), `backend/worker/process.py` (`_embed`: gate before the call, ledger row after it)
 - **Why:** the budget is fixed, and a reached cap must stop every paid call (D-019, test 22).
 - **Source:** user (project brief) · confidence high
 
@@ -129,10 +130,9 @@ then.
 - **Status:** approved
 - **Use when:** code calls the LLM, STT, TTS, embeddings, Stripe, mail or object storage.
 - **How:** one small provider interface per service, chosen by config; tests use fakes (stub embeddings, mocked LLM). Model, voice and provider names come from env, never hard-coded.
-- **Example:** `shopy_brief.md` §5, §17 (no code yet)
+- **Example:** `backend/app/indexing/embeddings.py` (`EmbeddingProvider`, `OpenAIEmbeddingProvider`), `backend/tests/stubs.py` (`StubEmbeddingProvider`), `backend/tests/conftest.py` (`_no_real_openai_client`)
 - **Why:** CI runs without real API calls; providers can be swapped (Mailpit/Resend, MinIO/R2).
 - **Source:** user (project brief) · confidence high
-- **Confirmed:** 2026-11-18
 
 ## PATTERN-013 · Secrets only in .env
 - **Status:** approved
@@ -172,8 +172,25 @@ then.
 
 ## PATTERN-017 · Row versions: lock, diff, increment in SQL
 - **Status:** candidate
+- **Confirmed:** 2026-11-26
 - **Use when:** a write changes a row that has a `version` column.
 - **How:** lock the row `FOR UPDATE` (parent before child, so the lock order is the same everywhere); compare each submitted value with the row, JSON-dumped with sorted keys (so `1` ≠ `true` and key order does not count); write only what differs; if anything differs, set `obj.version = <Model>.version + 1` (a SQL expression: `version = version + 1`); `refresh` the row before building the response. An empty or unchanged body writes nothing.
 - **Example:** `backend/app/api/admin.py` (`update_product`, `update_variant`, `_changes`)
 - **Why:** D-014 and the P2 index status rely on versions moving exactly when the value moves; the row lock makes the comparison exact.
 - **Source:** GH-6 plan (approved at gate B, 2026-11-26) · confidence medium
+
+## PATTERN-018 · Outbox worker row: claim with SKIP LOCKED; paid-call ledger and errors in their own transactions
+- **Status:** candidate
+- **Use when:** a worker processes queued rows from a Postgres table and may make a paid call per row.
+- **How:** one row per transaction: `SELECT … WHERE due ORDER BY enqueued_at, id LIMIT 1 FOR UPDATE SKIP LOCKED`, set `locked_at`; keep that transaction (and the row lock) open through the work, and finish the work and `done_at` in one commit. A paid call writes its `usage_ledger` row in a separate session, committed at once, before the result is checked. Any failure rolls the row's transaction back and records `attempts + 1`, `locked_at`, `last_error` in a new transaction; due again at `locked_at + base × 2^(attempts−1)`, given up after a maximum. A reason not to call (config, cap) leaves the row pending without an attempt. The loop drains back to back and polls on an `asyncio.Event` wait when idle.
+- **Example:** `backend/worker/process.py` (`process_next`, `_claim`, `_embed`, `_record_failure`), `backend/worker/__main__.py` (`run`)
+- **Why:** claimed and done stay atomic; a paid call is never lost from the ledger by a later rollback (D-019); a failure never leaves half-replaced data.
+- **Source:** GH-13 plan (approved at gate B, 2026-11-26) · confidence medium
+
+## PATTERN-019 · Tests guard against real provider clients
+- **Status:** candidate
+- **Use when:** code can build a client of a paid external service (OpenAI now; Anthropic, Azure, Stripe later).
+- **How:** the provider class takes an optional injected client and builds the real one only when none is passed; `tests/conftest.py` removes the real key from `os.environ` at import and an autouse fixture monkeypatches the SDK client class (in the provider module and the SDK) with a function that calls `pytest.fail`. Tests inject a stub provider (`tests/stubs.py`) or a fake client; nothing selects the stub by env. One test proves the guard fires.
+- **Example:** `backend/tests/conftest.py` (`_no_real_openai_client`), `backend/tests/test_embeddings.py` (`test_real_client_is_guarded`, `test_request_shape`), `backend/app/indexing/embeddings.py`
+- **Why:** CI never calls a paid API, even when a developer's shell exports a real key (PATTERN-012, N12).
+- **Source:** GH-13 plan, N12 and A5 (approved at gate B, 2026-11-26) · confidence medium
