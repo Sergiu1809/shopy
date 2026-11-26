@@ -61,23 +61,24 @@ index status). Ticket: https://github.com/Sergiu1809/shopy/issues/13
   - PATTERN-015 (candidate) — API tests with httpx `AsyncClient` + `ASGITransport`.
   - PATTERN-017 (candidate) — enqueue exactly when the product version moves.
   - Q-013 — daily cap default 1 EUR until answered. Q-016, Q-017 — out of scope.
-- **Where the code is:** `backend/app/models/` (new models), `backend/migrations/versions/` (0002), `backend/app/api/admin.py` (hooks), `backend/app/indexing/` (chunking, embedding provider, outbox enqueue; brief §6), `backend/app/usage/` (cost ledger, cap), `backend/worker/` (loop, `reindex_all`), `backend/seed/seed.py`, `Makefile`, `.env.example`, `backend/pyproject.toml`, `backend/tests/`, `docs/agents/ARCHITECTURE.md`.
-- **Ownership:** integration owner: conductor · one builder (planner to confirm)
-- **Verify with:** `cd backend && uv sync && uv run ruff check . && uv run ruff format --check . && uv run mypy . && uv run pytest` · `python3 docs/agents/tools/ledger-lint.py` · MT-002 (below)
+- **Where the code is:** `backend/app/models/indexing.py`, `usage.py` (new models) · `backend/migrations/versions/0002_indexing_and_usage.py` · `backend/app/indexing/` (`outbox.py` enqueue + full reindex, `chunking.py` pure text rules, `embeddings.py` provider interface + OpenAI) · `backend/app/usage/ledger.py` (cap, prices, ledger row) · `backend/worker/` (`process.py` claim/rebuild/error, `__main__.py` loop, `reindex_all.py`) · `backend/app/api/admin.py` (six hooks) · `backend/seed/seed.py` · `Makefile` (`reindex`) · `.env.example` · `backend/pyproject.toml` + `uv.lock` · `backend/tests/` (`conftest.py` guard + `indexing_db`, `stubs.py`, new `test_*` files; extended sets in `test_migrations.py`, `test_schema.py`) · docs: `ARCHITECTURE.md`, `AGENTS.md` §2–§3, `PATTERNS.md`, `CONTRACTS.md` (External OpenAI evidence), `MANUAL-TESTS.md` (MT-002). Unchanged: `docker-compose.yml`, `docs/API.md`, C-001.
+- **Ownership:** integration owner: conductor · one builder (planner confirmed: parts share the models, migration, conftest and lock file; see PLAN.md Sequencing)
+- **Verify with:** `cd backend && uv sync && uv run ruff check . && uv run ruff format --check . && uv run mypy . && uv run python -m seed.validate_catalog && uv run pytest` (DB tests need Docker) · `python3 docs/agents/tools/ledger-lint.py` · MT-002 (below; manual, developer only)
 
 ## Resume here ⏯
-Gate A done (2026-11-26); branch and draft PR #16 open, links on GH-13. Next: `/plan` (planner completes this brief; PLAN.md) for gate B.
+Gate B approved (2026-11-26, plan with A1–A11). Next: test author (tests red, MT-002 entry), then one builder.
 
 ## Summary of work so far
 - 2026-11-26 — Product owner coverage report; gate A answered: every recommendation (B1–B6, N1–N14) accepted.
 
 ## Approach
-To be written by the planner (PLAN.md, TESTS.md).
+See `PLAN.md` (planner, 2026-11-26; awaiting gate B). Tests: `TESTS.md` (test author).
 
 ## Cumulative file manifest 📁
 | Action | Path | Purpose / what changed |
 |---|---|---|
 | add | docs/agents/tasks/GH-13/OVERVIEW.md | Context brief from gate A |
+| add | docs/agents/tasks/GH-13/PLAN.md | Plan for gate B |
 
 ## Manual verification 🔧
 - **MT-002 (approved at gate A, to be added to `docs/agents/MANUAL-TESTS.md` by the conductor or test author):** `docker compose up --build`, then `make seed` with a real `OPENAI_API_KEY` and `PRICE_OPENAI_EMBEDDING_EUR_PER_1M_TOKENS=0.02`: kb_chunks fill for the 200 products, their reviews and the 5 policies; usage_ledger rows appear; a second full reindex (`make reindex`) makes no new paid call. Environment: desktop (Windows, Docker Desktop + WSL2). Status: not run. Only the person who runs it reports the result.

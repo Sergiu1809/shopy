@@ -119,6 +119,7 @@ then.
 
 ## PATTERN-011 · Paid calls go through the cost ledger
 - **Status:** approved
+- **Confirmed:** 2026-11-26
 - **Use when:** any call to the LLM, STT, TTS or embeddings API.
 - **How:** check the global and per-user caps before the call; write a `usage_ledger` row with units and estimated EUR cost after it. Unit prices come from env (`PRICE_*`).
 - **Example:** `shopy_brief.md` §15 (no code yet)
@@ -172,6 +173,7 @@ then.
 
 ## PATTERN-017 · Row versions: lock, diff, increment in SQL
 - **Status:** candidate
+- **Confirmed:** 2026-11-26
 - **Use when:** a write changes a row that has a `version` column.
 - **How:** lock the row `FOR UPDATE` (parent before child, so the lock order is the same everywhere); compare each submitted value with the row, JSON-dumped with sorted keys (so `1` ≠ `true` and key order does not count); write only what differs; if anything differs, set `obj.version = <Model>.version + 1` (a SQL expression: `version = version + 1`); `refresh` the row before building the response. An empty or unchanged body writes nothing.
 - **Example:** `backend/app/api/admin.py` (`update_product`, `update_variant`, `_changes`)

@@ -15,7 +15,7 @@ P0 done (GH-1); P1a done (GH-3); P1b done (GH-4); P1c done (GH-5); P1d done (GH-
 ## In flight
 | Ticket | Title | Status | Branch | PR | Folder |
 |---|---|---|---|---|---|
-| GH-13 | P2a: Reindex outbox, worker, chunking and embeddings | full lane; gate A answered (B1–B6, N1–N14); next /plan | feat/reindex-worker-GH-13 | #16 | docs/agents/tasks/GH-13/ |
+| GH-13 | P2a: Reindex outbox, worker, chunking and embeddings | full lane; gate B approved (A1–A11); next: tests first, then one builder | feat/reindex-worker-GH-13 | #16 | docs/agents/tasks/GH-13/ |
 
 ## Recently done (last 10)
 | Ticket | Title | Done | PR |
