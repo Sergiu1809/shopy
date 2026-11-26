@@ -12,7 +12,7 @@ pr: https://github.com/Sergiu1809/shopy/pull/16
 design_refs: []
 summary: "kb_chunks, reindex_outbox, minimal usage_ledger; outbox rows from admin routes and the seed; async worker chunks and embeds changed sources only"
 created: 2026-11-26 21:35
-updated: 2026-11-26 21:35
+updated: 2026-11-26 21:30
 ---
 
 # GH-13 — P2a: Reindex outbox, worker, chunking and embeddings
@@ -66,10 +66,14 @@ index status). Ticket: https://github.com/Sergiu1809/shopy/issues/13
 - **Verify with:** `cd backend && uv sync && uv run ruff check . && uv run ruff format --check . && uv run mypy . && uv run python -m seed.validate_catalog && uv run pytest` (DB tests need Docker) · `python3 docs/agents/tools/ledger-lint.py` · MT-002 (below; manual, developer only)
 
 ## Resume here ⏯
-Gate B approved (2026-11-26, plan with A1–A11). Next: test author (tests red, MT-002 entry), then one builder.
+Built and reviewed (round 1: pass, nits only); 715 passed. At gate C: the user decides the nits, runs MT-002 (real OpenAI key), re-confirms PATTERN-010/011/012, and says when to mark PR #16 ready. See `log_2026-11-26_2130.md`.
 
 ## Summary of work so far
 - 2026-11-26 — Product owner coverage report; gate A answered: every recommendation (B1–B6, N1–N14) accepted.
+- 2026-11-26 — planner: PLAN.md (size L); gate B approved with A1–A11; D-019, PATTERN-011, PATTERN-017 confirmed.
+- 2026-11-26 — tests first: 111 tests, 168 cases, red; A11 additions to test_migrations/test_schema; MT-002 queued (b8a347f).
+- 2026-11-26 — builder: 0002, outbox hooks, chunking, provider, ledger, worker, make reindex, docs, PATTERN-018/019 (3884147..e60bcf2); 715 passed; 0 assertions changed; 2 mechanical test fixes (b1f4dde).
+- 2026-11-26 — review round 1: pass with 5 nits; images build in Docker; SIGTERM checked live.
 
 ## Approach
 See `PLAN.md` (planner, 2026-11-26; awaiting gate B). Tests: `TESTS.md` (test author).
@@ -78,7 +82,16 @@ See `PLAN.md` (planner, 2026-11-26; awaiting gate B). Tests: `TESTS.md` (test au
 | Action | Path | Purpose / what changed |
 |---|---|---|
 | add | docs/agents/tasks/GH-13/OVERVIEW.md | Context brief from gate A |
-| add | docs/agents/tasks/GH-13/PLAN.md | Plan for gate B |
+| add | docs/agents/tasks/GH-13/PLAN.md | Plan, approved at gate B |
+| add | docs/agents/tasks/GH-13/TESTS.md | acceptance points → tests |
+| add | backend/tests/test_chunking.py, test_embeddings.py, test_usage_ledger.py, test_indexing_schema.py, test_outbox_hooks.py, test_worker.py, test_reindex_all.py, stubs.py, indexing_data.py | tests first |
+| modify | backend/tests/conftest.py, test_seed_load.py, test_migrations.py, test_schema.py | fixtures, guard; A11 additions |
+| add | backend/app/models/indexing.py, usage.py; migrations/versions/0002_indexing_and_usage.py | three tables |
+| add | backend/app/indexing/ (outbox, chunking, embeddings), backend/app/usage/ledger.py | indexing and cost |
+| add/modify | backend/worker/process.py, __main__.py, reindex_all.py | the worker |
+| modify | backend/app/api/admin.py, backend/seed/seed.py | outbox hooks |
+| modify | backend/pyproject.toml, uv.lock, Makefile, .env.example | deps, `make reindex`, price name |
+| modify | AGENTS.md, docs/agents/ARCHITECTURE.md, PATTERNS.md, CONTRACTS.md, MANUAL-TESTS.md | docs, PATTERN-018/019, MT-002 |
 
 ## Manual verification 🔧
 - **MT-002 (approved at gate A, to be added to `docs/agents/MANUAL-TESTS.md` by the conductor or test author):** `docker compose up --build`, then `make seed` with a real `OPENAI_API_KEY` and `PRICE_OPENAI_EMBEDDING_EUR_PER_1M_TOKENS=0.02`: kb_chunks fill for the 200 products, their reviews and the 5 policies; usage_ledger rows appear; a second full reindex (`make reindex`) makes no new paid call. Environment: desktop (Windows, Docker Desktop + WSL2). Status: not run. Only the person who runs it reports the result.
