@@ -165,7 +165,7 @@ its 422 first). No images (Q-001), reviews or categories here.
   `attributes`; the bad key is never named. `{}` is valid.
 - **`price_minor`** (bani, VAT included) and **`stock`**: integers 0…2147483647.
   `"100"`, `1.5`, `100.0` and `true` are not integers (422).
-- **`sku`**: `^[A-Z0-9]+(-[A-Z0-9]+)*$`, unique across the store (409 `sku_taken`).
+- **`sku`**: `^[A-Z0-9]+(-[A-Z0-9]+)*$`, unique across all variants (409 `sku_taken`).
 - **PATCH** sends only the fields to change; `{}` is valid and changes nothing.
   `null` is rejected (422 `"must not be null"`), although `/docs` shows the PATCH
   fields as nullable. No `If-Match`: the last write wins.
