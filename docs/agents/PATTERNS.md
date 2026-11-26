@@ -35,6 +35,7 @@ then.
 - **Example:** `backend/app/models/catalog.py` (`ProductVariant.price_minor`)
 - **Why:** float rounding breaks totals, and the output guard compares exact amounts.
 - **Source:** user (project brief) · confidence high
+- **Confirmed:** 2026-11-26
 
 ## PATTERN-002 · Agent tools take IDs and quantities only
 - **Status:** approved
@@ -51,6 +52,7 @@ then.
 - **Example:** `shopy_brief.md` §10.6 (no code yet)
 - **Why:** reviews are user-written and can carry prompt injection (seed fixture).
 - **Source:** user (project brief) · confidence high
+- **Confirmed:** 2026-11-26
 
 ## PATTERN-004 · Every agent turn passes the output guard
 - **Status:** approved
@@ -153,3 +155,4 @@ then.
 - **Example:** `backend/tests/conftest.py` (`api_app`, `client_factory`, `make_user`, `auth_header`), `backend/tests/test_auth_refresh.py`
 - **Why:** one event loop for the app and asyncpg; nothing an API test writes survives it; cookie and rate-limit behaviour is testable.
 - **Source:** GH-4 plan, assumption A15 (approved at gate B, 2026-11-19) · confidence medium
+- **Confirmed:** 2026-11-26

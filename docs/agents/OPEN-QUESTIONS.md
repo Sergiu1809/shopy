@@ -25,6 +25,7 @@ Q-001 to Q-006 are the brief's OQ-01 to OQ-06 (`shopy_brief.md` §22), in order.
 - Q-012 · Which package and dependency tools? · _answered_
 - Q-013 · Does the 1 EUR daily cap fit the monthly budget?
 - Q-014 · Will the web app and the API share one site in production?
+- Q-015 · Who seeds the demo customers' Stripe test cards, and how?
 
 ---
 
@@ -109,3 +110,9 @@ Q-001 to Q-006 are the brief's OQ-01 to OQ-06 (`shopy_brief.md` §22), in order.
 - **Blocks:** P7 deploy (with Q-011). The refresh cookie is `SameSite=Strict; Path=/auth` (GH-4): if web and api are on different sites it needs `SameSite=None`, and Safari's tracking prevention may block it, breaking refresh. Per-IP auth rate limits (GH-4, in-process) also need the real client IP behind the host's proxy (uvicorn `--proxy-headers`, trusted forwarders), and a single api process.
 - **Who answers:** the developer, when choosing the host (Q-011)
 - **Proposed answer:** serve the api under the web app's site (same domain via a path prefix or reverse proxy, or a subdomain of it), trust only the platform proxy's forwarded headers, and run one api instance; revisit the cookie path if a prefix is added.
+
+## Q-015 · Who seeds the demo customers' Stripe test cards, and how?
+- **Status:** open
+- **Blocks:** P4 checkout demo. Brief §8 gives each seeded customer a saved Stripe test card (`pm_card_visa` style, attached to a test Customer); GH-5 left it out (gate A, 2026-11-25), so seeded customers have `stripe_customer_id` NULL and no `payment_methods` row. No ticket holds this yet.
+- **Who answers:** the developer, when the P4 tickets are written
+- **Proposed answer:** the P4 payments ticket extends the seed (insert only what is missing, as GH-5) to create a test-mode Stripe Customer and attach a test payment method per demo customer, behind the payments provider interface (PATTERN-012), skipped with a clear message when no Stripe test key is set.
