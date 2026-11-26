@@ -9,6 +9,8 @@ dependencies = [
     "asyncpg>=0.32,<0.33",
     "email-validator>=2.2,<3",
     "fastapi>=0.115",
+    "openai>=3.60,<4",
+    "pgvector>=0.4,<0.5",
     "pyjwt>=2.10,<3",
     "sqlalchemy[asyncio]>=2.1,<2.2",
     "uvicorn[standard]>=0.32",
@@ -38,3 +40,8 @@ strict = true
 testpaths = ["tests"]
 asyncio_mode = "auto"
 asyncio_default_fixture_loop_scope = "function"
+
+[[tool.mypy.overrides]]
+# pgvector ships no type information (no py.typed); its Vector type is used as is.
+module = ["pgvector.*"]
+ignore_missing_imports = true
