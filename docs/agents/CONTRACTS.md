@@ -24,13 +24,13 @@ the producer's `path:line` once it is written.
 
 ### C-001 · REST API
 - **Status:** approved
+- **Confirmed:** 2026-11-26
 - **Interface:** HTTP REST, OpenAPI at `/docs` and `/openapi.json`; examples in `docs/API.md`.
 - **Consumers:** the web client (`/app` and `/admin`).
 - **Shape:** routes listed in brief §14 (auth, me, payment methods, webauthn, proposals, orders, products, webhooks, health, admin). Errors: every error response (422, other 4xx, 429) uses one envelope, `{"error": {"code": "<machine code>", "message": "<English text>", "fields": [{"field": "<name>", "message": "<text>"}]}}`, with `fields` only when relevant; the submitted input is never sent back. 422 for invalid input, 403 for a customer on `/admin`.
 - **Rules:** JWT access token (15 min) in the Authorization header; rotating refresh token in an httpOnly Secure cookie. CORS restricted to `APP_ORIGIN`. Auth routes are rate limited.
-- **Evidence:** `backend/app/main.py` (`GET /health`, CORS, lifespan `JWT_SECRET` check), `backend/app/api/auth.py` and `backend/app/api/me.py` (auth routes, `GET /me`), `backend/app/api/admin.py` (`/admin` router), `backend/app/auth/` (tokens, cookie, rate limits, role dependencies), `backend/app/errors.py` (envelope), `docs/API.md` (examples); other routes: `shopy_brief.md` §14, §16 (not built yet)
+- **Evidence:** `backend/app/main.py` (`GET /health`, CORS, lifespan `JWT_SECRET` check), `backend/app/api/auth.py` and `backend/app/api/me.py` (auth routes, `GET /me`), `backend/app/api/admin.py` (`/admin` router; products and variants, GH-6), `backend/app/auth/` (tokens, cookie, rate limits, role dependencies), `backend/app/errors.py` (envelope), `docs/API.md` (examples); other routes: `shopy_brief.md` §14, §16 (not built yet)
 - **Source:** user (project brief) · confidence high
-- **Confirmed:** 2026-11-25
 
 ### C-002 · WebSocket assistant protocol
 - **Status:** approved

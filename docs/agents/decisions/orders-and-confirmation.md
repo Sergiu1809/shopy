@@ -29,6 +29,7 @@
 
 ## D-014 · Any price or stock change invalidates a proposal
 - **Status:** approved
+- **Confirmed:** 2026-11-26
 - **Date:** 2026-11-17
 - **Rule:** At confirmation, in one transaction with `SELECT ... FOR UPDATE`, any price change (up or down) or any stock change since the proposal makes it INVALIDATED. Proposals expire after 5 minutes.
 - **Why:** The user confirms exact values; the literal requirement counts any stock change.

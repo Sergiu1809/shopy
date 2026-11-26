@@ -9,10 +9,12 @@
 > an idle worker, an empty web shell, CI. P1a database layer (GH-3): async SQLAlchemy
 > models for 11 tables in `backend/app/models/`, Alembic revision `0001` in
 > `backend/migrations/`. P1b authentication and roles (GH-4): `/auth/*` and `GET /me`
-> in `backend/app/api/`, the empty `/admin` router with its admin dependency,
+> in `backend/app/api/`, the `/admin` router with its admin dependency,
 > `backend/app/auth/` (Argon2id, JWT, refresh cookie, in-process rate limits, role
 > dependencies), `backend/app/schemas/`, one error envelope in `backend/app/errors.py`,
-> CORS to `APP_ORIGIN`. Everything else on this page is still the
+> CORS to `APP_ORIGIN`. P1d admin product routes (GH-6): products and their variants
+> on the `/admin` router (`backend/app/api/admin.py`), bodies and responses in
+> `backend/app/schemas/catalog.py`. Everything else on this page is still the
 > target from `shopy_brief.md` §5–§6, §11, §12. Update it as each phase lands.
 
 ## Overview
