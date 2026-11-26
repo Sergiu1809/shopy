@@ -5,10 +5,10 @@ parent:
 covers: []
 delivered_in:
 title: "P1d: Admin product CRUD API"
-status: not-started
+status: in-progress
 lane: full
 branch: feat/admin-products-GH-6
-pr:
+pr: https://github.com/Sergiu1809/shopy/pull/12
 design_refs: []
 summary: "Admin CRUD for products and their variants under /admin, with version bumps, validation and docs/API.md examples"
 created: 2026-11-26 17:27
@@ -68,8 +68,7 @@ Ticket: https://github.com/Sergiu1809/shopy/issues/6
 - **Verify with:** `cd backend && uv run ruff check . && uv run ruff format --check . && uv run mypy . && uv run pytest`; `python3 docs/agents/tools/ledger-lint.py`
 
 ## Resume here ⏯
-Gate A done (2026-11-26). Next: the conductor creates the branch and draft PR, then
-`/plan` for gate B.
+Gate A done (2026-11-26); branch and draft PR #12 open, links on GH-6. Next: `/plan` (planner) for gate B.
 
 ## Summary of work so far
 - 2026-11-26 — Product owner coverage report; gate A answered (all recommendations accepted); Q-017 recorded.
@@ -97,4 +96,4 @@ none yet: the planner decides (API only; automated tests cover the AC).
 
 ## Links
 - Ticket: https://github.com/Sergiu1809/shopy/issues/6
-- PR: 
+- PR: https://github.com/Sergiu1809/shopy/pull/12
