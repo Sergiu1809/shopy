@@ -54,7 +54,7 @@
                 "color": "negru"
               },
               "price_minor": 24999,
-              "stock": 18
+              "stock": 17
             },
             {
               "sku": "CLO-001-NEGRU-M",
@@ -63,7 +63,7 @@
                 "color": "negru"
               },
               "price_minor": 24999,
-              "stock": 7
+              "stock": 21
             },
             {
               "sku": "CLO-001-NEGRU-L",
@@ -72,7 +72,7 @@
                 "color": "negru"
               },
               "price_minor": 24999,
-              "stock": 4
+              "stock": 46
             },
             {
               "sku": "CLO-001-NEGRU-XL",
@@ -81,7 +81,7 @@
                 "color": "negru"
               },
               "price_minor": 24999,
-              "stock": 15
+              "stock": 19
             },
             {
               "sku": "CLO-001-GRIMEL-S",
@@ -90,7 +90,7 @@
                 "color": "gri melanj"
               },
               "price_minor": 24999,
-              "stock": 22
+              "stock": 15
             },
             {
               "sku": "CLO-001-GRIMEL-M",
@@ -99,7 +99,7 @@
                 "color": "gri melanj"
               },
               "price_minor": 24999,
-              "stock": 9
+              "stock": 42
             },
             {
               "sku": "CLO-001-GRIMEL-L",
@@ -108,7 +108,7 @@
                 "color": "gri melanj"
               },
               "price_minor": 24999,
-              "stock": 3
+              "stock": 21
             },
             {
               "sku": "CLO-001-GRIMEL-XL",
@@ -117,7 +117,7 @@
                 "color": "gri melanj"
               },
               "price_minor": 24999,
-              "stock": 27
+              "stock": 14
             }
           ],
           "reviews": [
@@ -127,13 +127,6 @@
               "title": "Exact ce căutam",
               "body": "Moale pe interior și cald, îl port aproape zilnic de o lună. Logo-ul brodat arată bine și după spălări.",
               "created_at": "2024-04-01T01:44:39Z"
-            },
-            {
-              "author_display_name": "Lucian M.",
-              "rating": 4,
-              "title": "Mărimea vine puțin mare",
-              "body": "Am 1,78 m și 75 kg, am luat M și e ușor lejer. Dacă vrei să stea fix, ia o mărime mai mică.",
-              "created_at": "2024-05-21T18:56:33Z"
             },
             {
               "author_display_name": "Irina T.",
@@ -162,13 +155,6 @@
               "title": "Șnurul a ieșit din glugă",
               "body": "După trei săptămâni șnurul a ieșit complet pe o parte și nu l-am mai putut băga înapoi. Mă așteptam la mai mult la prețul ăsta.",
               "created_at": "2026-08-02T04:10:03Z"
-            },
-            {
-              "author_display_name": "Ciprian T.",
-              "rating": 5,
-              "title": "Cadou reușit",
-              "body": "L-am luat pentru fratele meu, a zis că e cel mai comod hanorac pe care l-a avut.",
-              "created_at": "2026-02-05T00:15:05Z"
             }
           ]
         },
@@ -191,7 +177,7 @@
                 "color": "negru"
               },
               "price_minor": 12999,
-              "stock": 15
+              "stock": 18
             },
             {
               "sku": "CLO-002-NEGRU-M",
@@ -200,7 +186,7 @@
                 "color": "negru"
               },
               "price_minor": 12999,
-              "stock": 22
+              "stock": 42
             },
             {
               "sku": "CLO-002-NEGRU-L",
@@ -209,7 +195,7 @@
                 "color": "negru"
               },
               "price_minor": 12999,
-              "stock": 9
+              "stock": 24
             },
             {
               "sku": "CLO-002-NEGRU-XL",
@@ -218,7 +204,7 @@
                 "color": "negru"
               },
               "price_minor": 12999,
-              "stock": 3
+              "stock": 24
             },
             {
               "sku": "CLO-002-ALBASTRU-S",
@@ -227,7 +213,7 @@
                 "color": "albastru"
               },
               "price_minor": 12999,
-              "stock": 27
+              "stock": 20
             },
             {
               "sku": "CLO-002-ALBASTRU-M",
@@ -236,7 +222,7 @@
                 "color": "albastru"
               },
               "price_minor": 12999,
-              "stock": 11
+              "stock": 2
             },
             {
               "sku": "CLO-002-ALBASTRU-L",
@@ -245,7 +231,7 @@
                 "color": "albastru"
               },
               "price_minor": 12999,
-              "stock": 8
+              "stock": 34
             },
             {
               "sku": "CLO-002-ALBASTRU-XL",
@@ -254,7 +240,7 @@
                 "color": "albastru"
               },
               "price_minor": 12999,
-              "stock": 14
+              "stock": 16
             },
             {
               "sku": "CLO-002-ALB-S",
@@ -263,7 +249,7 @@
                 "color": "alb"
               },
               "price_minor": 12999,
-              "stock": 6
+              "stock": 17
             },
             {
               "sku": "CLO-002-ALB-M",
@@ -272,7 +258,7 @@
                 "color": "alb"
               },
               "price_minor": 12999,
-              "stock": 19
+              "stock": 44
             },
             {
               "sku": "CLO-002-ALB-L",
@@ -281,7 +267,7 @@
                 "color": "alb"
               },
               "price_minor": 12999,
-              "stock": 12
+              "stock": 27
             },
             {
               "sku": "CLO-002-ALB-XL",
@@ -290,7 +276,7 @@
                 "color": "alb"
               },
               "price_minor": 12999,
-              "stock": 25
+              "stock": 3
             }
           ],
           "reviews": [
@@ -342,6 +328,41 @@
               "title": "Țesătura s-a agățat",
               "body": "S-a agățat de velcro-ul de la o geantă și a rămas un fir tras chiar pe față.",
               "created_at": "2024-09-19T22:05:29Z"
+            },
+            {
+              "author_display_name": "Andrei V.",
+              "rating": 4,
+              "title": "Bun și pe bandă",
+              "body": "Alerg iarna pe bandă la sală și nu mă mai simt ud după 40 de minute. Aș fi vrut un buzunar mic pentru cheie.",
+              "created_at": "2026-01-07T09:22:13Z"
+            },
+            {
+              "author_display_name": "Sorin M.",
+              "rating": 5,
+              "title": "Nu irită la subraț",
+              "body": "Am avut tricouri care mă roșeau la subraț după 10 km. Cu ăsta n-am avut nicio problemă, cusăturile chiar nu se simt.",
+              "created_at": "2025-11-22T01:38:37Z"
+            },
+            {
+              "author_display_name": "Cristian L.",
+              "rating": 3,
+              "title": "Puțin scurt",
+              "body": "Am 1,90 m și pe L tricoul se ridică peste curea când ridic brațele. Pe lățime e bun.",
+              "created_at": "2024-02-19T05:11:46Z"
+            },
+            {
+              "author_display_name": "Ionuț B.",
+              "rating": 4,
+              "title": "Albastrul ține culoarea",
+              "body": "L-am spălat de vreo 30 de ori la 30 de grade și albastrul nu s-a spălăcit. Logo-ul s-a crăpat puțin.",
+              "created_at": "2026-08-27T05:24:57Z"
+            },
+            {
+              "author_display_name": "Gheorghe T.",
+              "rating": 2,
+              "title": "Prea subțire pentru toamnă",
+              "body": "Pe 10 grade dimineața e prea subțire, trebuie neapărat ceva peste. E un tricou de vară, nu de tranziție.",
+              "created_at": "2024-05-05T20:49:17Z"
             }
           ]
         },
@@ -364,7 +385,7 @@
                 "color": "negru"
               },
               "price_minor": 21999,
-              "stock": 3
+              "stock": 13
             },
             {
               "sku": "CLO-003-NEGRU-M",
@@ -373,7 +394,7 @@
                 "color": "negru"
               },
               "price_minor": 21999,
-              "stock": 27
+              "stock": 36
             },
             {
               "sku": "CLO-003-NEGRU-L",
@@ -382,7 +403,7 @@
                 "color": "negru"
               },
               "price_minor": 21999,
-              "stock": 11
+              "stock": 30
             },
             {
               "sku": "CLO-003-NEGRU-XL",
@@ -391,7 +412,7 @@
                 "color": "negru"
               },
               "price_minor": 21999,
-              "stock": 8
+              "stock": 17
             },
             {
               "sku": "CLO-003-BLEUMARIN-S",
@@ -400,7 +421,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 21999,
-              "stock": 14
+              "stock": 18
             },
             {
               "sku": "CLO-003-BLEUMARIN-M",
@@ -409,7 +430,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 21999,
-              "stock": 6
+              "stock": 23
             },
             {
               "sku": "CLO-003-BLEUMARIN-L",
@@ -418,7 +439,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 21999,
-              "stock": 19
+              "stock": 33
             },
             {
               "sku": "CLO-003-BLEUMARIN-XL",
@@ -427,37 +448,16 @@
                 "color": "bleumarin"
               },
               "price_minor": 21999,
-              "stock": 12
+              "stock": 9
             }
           ],
           "reviews": [
-            {
-              "author_display_name": "Lucian I.",
-              "rating": 4,
-              "title": "Buzunarele cu fermoar contează",
-              "body": "Pentru mine e cel mai important detaliu, nu pierd cheile la sală. Materialul e plăcut.",
-              "created_at": "2026-02-11T14:13:55Z"
-            },
-            {
-              "author_display_name": "Tudor N.",
-              "rating": 5,
-              "title": "Lungime bună",
-              "body": "Am 1,85 m și pe L lungimea e perfectă, nu sunt scurți cum mă temeam.",
-              "created_at": "2024-12-10T00:50:21Z"
-            },
             {
               "author_display_name": "Tudor M.",
               "rating": 2,
               "title": "Dungile s-au cojit",
               "body": "După vreo cincisprezece spălări dungile albe au început să crape. Le-am spălat la 30 de grade, cum scrie pe etichetă.",
               "created_at": "2026-04-17T16:55:44Z"
-            },
-            {
-              "author_display_name": "Ștefan B.",
-              "rating": 4,
-              "title": "Comozi pentru acasă și sală",
-              "body": "Îi port și prin casă, și la antrenament. Talia nu strânge.",
-              "created_at": "2024-02-10T06:34:45Z"
             },
             {
               "author_display_name": "Corina N.",
@@ -479,13 +479,6 @@
               "title": "Raport calitate-preț corect",
               "body": "Nu sunt cei mai groși pantaloni, dar pentru preț sunt foarte buni.",
               "created_at": "2025-06-10T01:07:43Z"
-            },
-            {
-              "author_display_name": "Simona S.",
-              "rating": 1,
-              "title": "Cusătura s-a desfăcut",
-              "body": "S-a desfăcut cusătura din zona genunchiului după o lună de purtat normal. I-am returnat.",
-              "created_at": "2024-02-21T06:13:24Z"
             }
           ]
         },
@@ -517,7 +510,7 @@
                 "color": "albastru indigo"
               },
               "price_minor": 44999,
-              "stock": 14
+              "stock": 35
             },
             {
               "sku": "CLO-004-INDIGO-W34L32",
@@ -526,7 +519,7 @@
                 "color": "albastru indigo"
               },
               "price_minor": 44999,
-              "stock": 6
+              "stock": 39
             },
             {
               "sku": "CLO-004-INDIGO-W36L34",
@@ -535,7 +528,7 @@
                 "color": "albastru indigo"
               },
               "price_minor": 44999,
-              "stock": 19
+              "stock": 37
             },
             {
               "sku": "CLO-004-NEGRU-W30L32",
@@ -544,7 +537,7 @@
                 "color": "negru"
               },
               "price_minor": 46999,
-              "stock": 12
+              "stock": 21
             },
             {
               "sku": "CLO-004-NEGRU-W32L32",
@@ -553,7 +546,7 @@
                 "color": "negru"
               },
               "price_minor": 46999,
-              "stock": 25
+              "stock": 35
             },
             {
               "sku": "CLO-004-NEGRU-W34L32",
@@ -562,7 +555,7 @@
                 "color": "negru"
               },
               "price_minor": 46999,
-              "stock": 31
+              "stock": 1
             },
             {
               "sku": "CLO-004-NEGRU-W36L34",
@@ -571,7 +564,7 @@
                 "color": "negru"
               },
               "price_minor": 46999,
-              "stock": 18
+              "stock": 33
             }
           ],
           "reviews": [
@@ -637,6 +630,48 @@
               "title": "Bun pentru birou și weekend",
               "body": "Merg cu o cămașă la birou și cu tricou în weekend.",
               "created_at": "2024-02-11T11:20:26Z"
+            },
+            {
+              "author_display_name": "Mihai D.",
+              "rating": 5,
+              "title": "Se mulează frumos",
+              "body": "După o lună de purtat zilnic au luat forma picioarelor și au apărut cutele la genunchi. Exact ce îmi doream de la 501.",
+              "created_at": "2025-03-28T14:06:57Z"
+            },
+            {
+              "author_display_name": "Victor P.",
+              "rating": 4,
+              "title": "Lungimea L32 e ok",
+              "body": "Am 1,78 m și L32 cade fix pe pantof, fără să facă grămadă jos.",
+              "created_at": "2025-05-19T11:48:56Z"
+            },
+            {
+              "author_display_name": "Emil S.",
+              "rating": 3,
+              "title": "Rigizi cam mult",
+              "body": "Au trecut trei săptămâni și tot simt denimul tare la genunchi când stau pe scaun. Sper să se mai lase.",
+              "created_at": "2026-09-20T05:49:39Z"
+            },
+            {
+              "author_display_name": "Laurențiu G.",
+              "rating": 5,
+              "title": "Negrii merg la ieșiri",
+              "body": "Mi-am luat varianta neagră pentru ieșiri. Merge la fel de bine cu adidași și cu ghete.",
+              "created_at": "2024-12-15T09:39:21Z"
+            },
+            {
+              "author_display_name": "Costin A.",
+              "rating": 1,
+              "title": "Nasture căzut",
+              "body": "Perechea mea a venit cu un nasture de la prohab care se mișca și a căzut după a doua purtare. Am făcut retur.",
+              "created_at": "2026-09-09T04:27:37Z"
+            },
+            {
+              "author_display_name": "Răzvan M.",
+              "rating": 4,
+              "title": "Spălați-i rar",
+              "body": "I-am spălat doar de trei ori în patru luni, pe dos, la 30 de grade. Indigoul a rămas închis și arată foarte bine.",
+              "created_at": "2026-08-31T05:15:28Z"
             }
           ]
         },
@@ -659,7 +694,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 39999,
-              "stock": 19
+              "stock": 16
             },
             {
               "sku": "CLO-005-BLEUMARIN-M",
@@ -668,7 +703,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 39999,
-              "stock": 12
+              "stock": 15
             },
             {
               "sku": "CLO-005-BLEUMARIN-L",
@@ -677,7 +712,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 39999,
-              "stock": 25
+              "stock": 23
             },
             {
               "sku": "CLO-005-BLEUMARIN-XL",
@@ -686,7 +721,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 39999,
-              "stock": 31
+              "stock": 8
             },
             {
               "sku": "CLO-005-ALB-S",
@@ -695,7 +730,7 @@
                 "color": "alb"
               },
               "price_minor": 39999,
-              "stock": 18
+              "stock": 13
             },
             {
               "sku": "CLO-005-ALB-M",
@@ -704,7 +739,7 @@
                 "color": "alb"
               },
               "price_minor": 39999,
-              "stock": 7
+              "stock": 34
             },
             {
               "sku": "CLO-005-ALB-L",
@@ -713,7 +748,7 @@
                 "color": "alb"
               },
               "price_minor": 39999,
-              "stock": 4
+              "stock": 12
             },
             {
               "sku": "CLO-005-ALB-XL",
@@ -722,7 +757,7 @@
                 "color": "alb"
               },
               "price_minor": 39999,
-              "stock": 15
+              "stock": 17
             },
             {
               "sku": "CLO-005-ROSU-S",
@@ -731,7 +766,7 @@
                 "color": "roșu"
               },
               "price_minor": 39999,
-              "stock": 22
+              "stock": 17
             },
             {
               "sku": "CLO-005-ROSU-M",
@@ -740,7 +775,7 @@
                 "color": "roșu"
               },
               "price_minor": 39999,
-              "stock": 9
+              "stock": 22
             },
             {
               "sku": "CLO-005-ROSU-L",
@@ -749,7 +784,7 @@
                 "color": "roșu"
               },
               "price_minor": 39999,
-              "stock": 3
+              "stock": 12
             },
             {
               "sku": "CLO-005-ROSU-XL",
@@ -758,7 +793,7 @@
                 "color": "roșu"
               },
               "price_minor": 39999,
-              "stock": 27
+              "stock": 11
             }
           ],
           "reviews": [
@@ -789,13 +824,6 @@
               "title": "Roșul nu s-a decolorat",
               "body": "L-am spălat de multe ori la 40 de grade și culoarea arată ca nouă.",
               "created_at": "2026-10-24T23:04:52Z"
-            },
-            {
-              "author_display_name": "Georgiana I.",
-              "rating": 4,
-              "title": "Elegant",
-              "body": "Merge și la birou, cu sacou, și la terasă.",
-              "created_at": "2024-07-09T09:47:16Z"
             },
             {
               "author_display_name": "Cristian R.",
@@ -833,7 +861,7 @@
                 "color": "negru"
               },
               "price_minor": 54999,
-              "stock": 31
+              "stock": 10
             },
             {
               "sku": "CLO-006-NEGRU-M",
@@ -842,7 +870,7 @@
                 "color": "negru"
               },
               "price_minor": 54999,
-              "stock": 18
+              "stock": 9
             },
             {
               "sku": "CLO-006-NEGRU-L",
@@ -851,7 +879,7 @@
                 "color": "negru"
               },
               "price_minor": 54999,
-              "stock": 7
+              "stock": 14
             },
             {
               "sku": "CLO-006-NEGRU-XL",
@@ -860,7 +888,7 @@
                 "color": "negru"
               },
               "price_minor": 54999,
-              "stock": 4
+              "stock": 7
             },
             {
               "sku": "CLO-006-KAKI-S",
@@ -869,7 +897,7 @@
                 "color": "verde kaki"
               },
               "price_minor": 54999,
-              "stock": 15
+              "stock": 8
             },
             {
               "sku": "CLO-006-KAKI-M",
@@ -878,7 +906,7 @@
                 "color": "verde kaki"
               },
               "price_minor": 54999,
-              "stock": 22
+              "stock": 13
             },
             {
               "sku": "CLO-006-KAKI-L",
@@ -887,7 +915,7 @@
                 "color": "verde kaki"
               },
               "price_minor": 54999,
-              "stock": 9
+              "stock": 10
             },
             {
               "sku": "CLO-006-KAKI-XL",
@@ -896,31 +924,10 @@
                 "color": "verde kaki"
               },
               "price_minor": 54999,
-              "stock": 3
+              "stock": 6
             }
           ],
           "reviews": [
-            {
-              "author_display_name": "Alexandru D.",
-              "rating": 5,
-              "title": "A trecut testul în munți",
-              "body": "Am prins o ploaie de două ore în Bucegi și am rămas uscat pe dedesubt.",
-              "created_at": "2025-06-22T10:55:43Z"
-            },
-            {
-              "author_display_name": "Andreea D.",
-              "rating": 4,
-              "title": "Nu e caldă",
-              "body": "E doar o geacă de ploaie, deci trebuie un polar dedesubt toamna. Ca protecție la apă e foarte bună.",
-              "created_at": "2025-11-20T07:29:57Z"
-            },
-            {
-              "author_display_name": "Radu S.",
-              "rating": 5,
-              "title": "Se pliază în buzunar",
-              "body": "Ocupă cât o sticlă de apă în rucsac. O am mereu la mine.",
-              "created_at": "2026-06-16T07:41:25Z"
-            },
             {
               "author_display_name": "Gabriel P.",
               "rating": 3,
@@ -934,13 +941,6 @@
               "title": "Mărime generoasă",
               "body": "Port L la geci, aici M era suficient chiar și cu un polar dedesubt.",
               "created_at": "2025-04-24T23:18:11Z"
-            },
-            {
-              "author_display_name": "Marius Ș.",
-              "rating": 2,
-              "title": "Gluga e prea mică",
-              "body": "Gluga nu încape peste o cască de bicicletă și nici nu acoperă bine fruntea pe vânt.",
-              "created_at": "2024-04-19T10:51:15Z"
             },
             {
               "author_display_name": "Sorin A.",
@@ -970,7 +970,7 @@
                 "color": "negru"
               },
               "price_minor": 159999,
-              "stock": 4
+              "stock": 9
             },
             {
               "sku": "CLO-007-NEGRU-S",
@@ -979,7 +979,7 @@
                 "color": "negru"
               },
               "price_minor": 159999,
-              "stock": 15
+              "stock": 12
             },
             {
               "sku": "CLO-007-NEGRU-M",
@@ -988,7 +988,7 @@
                 "color": "negru"
               },
               "price_minor": 159999,
-              "stock": 22
+              "stock": 12
             },
             {
               "sku": "CLO-007-NEGRU-L",
@@ -997,7 +997,7 @@
                 "color": "negru"
               },
               "price_minor": 159999,
-              "stock": 9
+              "stock": 11
             },
             {
               "sku": "CLO-007-NEGRU-XL",
@@ -1006,7 +1006,7 @@
                 "color": "negru"
               },
               "price_minor": 159999,
-              "stock": 3
+              "stock": 12
             },
             {
               "sku": "CLO-007-MUSTAR-XS",
@@ -1015,7 +1015,7 @@
                 "color": "galben muștar"
               },
               "price_minor": 164999,
-              "stock": 27
+              "stock": 9
             },
             {
               "sku": "CLO-007-MUSTAR-S",
@@ -1024,7 +1024,7 @@
                 "color": "galben muștar"
               },
               "price_minor": 164999,
-              "stock": 11
+              "stock": 10
             },
             {
               "sku": "CLO-007-MUSTAR-M",
@@ -1033,7 +1033,7 @@
                 "color": "galben muștar"
               },
               "price_minor": 164999,
-              "stock": 8
+              "stock": 19
             },
             {
               "sku": "CLO-007-MUSTAR-L",
@@ -1051,7 +1051,7 @@
                 "color": "galben muștar"
               },
               "price_minor": 164999,
-              "stock": 6
+              "stock": 15
             }
           ],
           "reviews": [
@@ -1117,6 +1117,34 @@
               "title": "Fermoarul s-a blocat",
               "body": "După două luni fermoarul principal a început să se blocheze la mijloc. Am trimis-o în garanție.",
               "created_at": "2026-09-11T06:27:26Z"
+            },
+            {
+              "author_display_name": "Andreea M.",
+              "rating": 5,
+              "title": "Caldă și la stația de autobuz",
+              "body": "Aștept dimineața câte 20 de minute în frig și sunt singura care nu tremură. Am luat-o pe negru și se asortează cu orice.",
+              "created_at": "2025-04-02T15:09:30Z"
+            },
+            {
+              "author_display_name": "Sebastian R.",
+              "rating": 3,
+              "title": "Nu e pentru ploaie",
+              "body": "La lapoviță nailonul se udă la suprafață și puful se lasă puțin. Pentru zăpadă uscată e excelentă.",
+              "created_at": "2024-06-10T17:00:29Z"
+            },
+            {
+              "author_display_name": "Cristina N.",
+              "rating": 4,
+              "title": "XS e destul de larg",
+              "body": "Am 1,58 m și XS îmi vine lejer, cu loc de un pulover gros dedesubt. Mânecile sunt puțin lungi.",
+              "created_at": "2025-09-26T00:09:13Z"
+            },
+            {
+              "author_display_name": "Horia V.",
+              "rating": 2,
+              "title": "Foșnește tare",
+              "body": "Materialul foșnește la fiecare mișcare și se aude în liniștea de la birou. Căldura e foarte bună, dar zgomotul mă deranjează.",
+              "created_at": "2025-06-20T01:17:13Z"
             }
           ]
         },
@@ -1140,7 +1168,7 @@
                 "color": "alb"
               },
               "price_minor": 5999,
-              "stock": 9
+              "stock": 13
             },
             {
               "sku": "CLO-008-ALB-M",
@@ -1149,7 +1177,7 @@
                 "color": "alb"
               },
               "price_minor": 5999,
-              "stock": 3
+              "stock": 36
             },
             {
               "sku": "CLO-008-ALB-L",
@@ -1158,7 +1186,7 @@
                 "color": "alb"
               },
               "price_minor": 5999,
-              "stock": 27
+              "stock": 26
             },
             {
               "sku": "CLO-008-ALB-XL",
@@ -1167,7 +1195,7 @@
                 "color": "alb"
               },
               "price_minor": 5999,
-              "stock": 11
+              "stock": 9
             },
             {
               "sku": "CLO-008-ALB-XXL",
@@ -1185,7 +1213,7 @@
                 "color": "negru"
               },
               "price_minor": 5999,
-              "stock": 14
+              "stock": 16
             },
             {
               "sku": "CLO-008-NEGRU-M",
@@ -1194,7 +1222,7 @@
                 "color": "negru"
               },
               "price_minor": 5999,
-              "stock": 6
+              "stock": 31
             },
             {
               "sku": "CLO-008-NEGRU-L",
@@ -1203,7 +1231,7 @@
                 "color": "negru"
               },
               "price_minor": 5999,
-              "stock": 19
+              "stock": 26
             },
             {
               "sku": "CLO-008-NEGRU-XL",
@@ -1212,7 +1240,7 @@
                 "color": "negru"
               },
               "price_minor": 5999,
-              "stock": 12
+              "stock": 17
             },
             {
               "sku": "CLO-008-NEGRU-XXL",
@@ -1221,7 +1249,7 @@
                 "color": "negru"
               },
               "price_minor": 5999,
-              "stock": 25
+              "stock": 6
             }
           ],
           "reviews": [
@@ -1273,6 +1301,20 @@
               "title": "Negrul nu s-a decolorat",
               "body": "Am spălat varianta neagră de multe ori și nu a devenit gri.",
               "created_at": "2025-04-22T06:56:50Z"
+            },
+            {
+              "author_display_name": "Daniel F.",
+              "rating": 3,
+              "title": "Gulerul se lărgește",
+              "body": "După vreo zece spălări gulerul la unul dintre tricouri s-a lăsat puțin. Celălalt arată încă bine.",
+              "created_at": "2025-01-17T18:07:23Z"
+            },
+            {
+              "author_display_name": "Valentin C.",
+              "rating": 5,
+              "title": "XXL chiar e XXL",
+              "body": "Greu găsesc tricouri care să-mi vină bine pe burtă și pe umeri. Pe XXL am loc și nu sunt prea lungi.",
+              "created_at": "2026-04-24T20:23:05Z"
             }
           ]
         },
@@ -1295,7 +1337,7 @@
                 "color": "alb"
               },
               "price_minor": 19990,
-              "stock": 11
+              "stock": 6
             },
             {
               "sku": "CLO-009-ALB-M",
@@ -1304,7 +1346,7 @@
                 "color": "alb"
               },
               "price_minor": 19990,
-              "stock": 8
+              "stock": 13
             },
             {
               "sku": "CLO-009-ALB-L",
@@ -1313,7 +1355,7 @@
                 "color": "alb"
               },
               "price_minor": 19990,
-              "stock": 14
+              "stock": 4
             },
             {
               "sku": "CLO-009-ALB-XL",
@@ -1331,7 +1373,7 @@
                 "color": "bej"
               },
               "price_minor": 19990,
-              "stock": 19
+              "stock": 5
             },
             {
               "sku": "CLO-009-BEJ-M",
@@ -1340,7 +1382,7 @@
                 "color": "bej"
               },
               "price_minor": 19990,
-              "stock": 12
+              "stock": 10
             },
             {
               "sku": "CLO-009-BEJ-L",
@@ -1349,7 +1391,7 @@
                 "color": "bej"
               },
               "price_minor": 19990,
-              "stock": 25
+              "stock": 5
             },
             {
               "sku": "CLO-009-BEJ-XL",
@@ -1358,7 +1400,7 @@
                 "color": "bej"
               },
               "price_minor": 19990,
-              "stock": 31
+              "stock": 5
             },
             {
               "sku": "CLO-009-ALBDESCHIS-S",
@@ -1367,7 +1409,7 @@
                 "color": "albastru deschis"
               },
               "price_minor": 19990,
-              "stock": 18
+              "stock": 4
             },
             {
               "sku": "CLO-009-ALBDESCHIS-M",
@@ -1376,7 +1418,7 @@
                 "color": "albastru deschis"
               },
               "price_minor": 19990,
-              "stock": 7
+              "stock": 13
             },
             {
               "sku": "CLO-009-ALBDESCHIS-L",
@@ -1385,7 +1427,7 @@
                 "color": "albastru deschis"
               },
               "price_minor": 19990,
-              "stock": 4
+              "stock": 11
             },
             {
               "sku": "CLO-009-ALBDESCHIS-XL",
@@ -1394,7 +1436,7 @@
                 "color": "albastru deschis"
               },
               "price_minor": 19990,
-              "stock": 15
+              "stock": 2
             }
           ],
           "reviews": [
@@ -1420,25 +1462,11 @@
               "created_at": "2024-09-17T02:42:22Z"
             },
             {
-              "author_display_name": "Gabriel G.",
-              "rating": 4,
-              "title": "Cum se calcă",
-              "body": "Cel mai ușor se calcă puțin umedă, imediat după centrifugare. Uscată e greu de netezit.",
-              "created_at": "2025-01-04T23:00:18Z"
-            },
-            {
               "author_display_name": "Ioana D.",
               "rating": 2,
               "title": "Nasturii s-au desprins",
               "body": "Doi nasturi au căzut după primele spălări. Cusăturile par făcute în grabă.",
               "created_at": "2024-05-16T19:02:53Z"
-            },
-            {
-              "author_display_name": "Florin G.",
-              "rating": 4,
-              "title": "Arată bine și nedescheiată",
-              "body": "O port închisă peste blugi albi la cină, arată îngrijit chiar și puțin șifonată.",
-              "created_at": "2025-03-10T02:27:01Z"
             },
             {
               "author_display_name": "Florin R.",
@@ -1468,7 +1496,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 17999,
-              "stock": 6
+              "stock": 4
             },
             {
               "sku": "CLO-010-BLEUMARIN-S",
@@ -1477,7 +1505,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 17999,
-              "stock": 19
+              "stock": 16
             },
             {
               "sku": "CLO-010-BLEUMARIN-M",
@@ -1495,7 +1523,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 17999,
-              "stock": 25
+              "stock": 18
             },
             {
               "sku": "CLO-010-BLEUMARIN-XL",
@@ -1504,7 +1532,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 17999,
-              "stock": 31
+              "stock": 11
             },
             {
               "sku": "CLO-010-NEGRU-XS",
@@ -1513,7 +1541,7 @@
                 "color": "negru"
               },
               "price_minor": 17999,
-              "stock": 18
+              "stock": 5
             },
             {
               "sku": "CLO-010-NEGRU-S",
@@ -1522,7 +1550,7 @@
                 "color": "negru"
               },
               "price_minor": 17999,
-              "stock": 7
+              "stock": 22
             },
             {
               "sku": "CLO-010-NEGRU-M",
@@ -1531,7 +1559,7 @@
                 "color": "negru"
               },
               "price_minor": 17999,
-              "stock": 4
+              "stock": 28
             },
             {
               "sku": "CLO-010-NEGRU-L",
@@ -1549,7 +1577,7 @@
                 "color": "negru"
               },
               "price_minor": 17999,
-              "stock": 22
+              "stock": 14
             }
           ],
           "reviews": [
@@ -1608,6 +1636,20 @@
               "title": "Imprimeul arată bine de aproape",
               "body": "Florile sunt clare, nu imprimate neclar ca la rochiile ieftine.",
               "created_at": "2025-09-11T00:45:42Z"
+            },
+            {
+              "author_display_name": "Loredana S.",
+              "rating": 4,
+              "title": "Nu se șifonează mult",
+              "body": "Am stat cu ea patru ore în mașină și la coborâre aproape nu avea cute. Vâscoza e plăcută pe căldură.",
+              "created_at": "2024-07-18T10:14:52Z"
+            },
+            {
+              "author_display_name": "Simona P.",
+              "rating": 2,
+              "title": "Cordonul e prea scurt",
+              "body": "Pe mărimea L cordonul abia ajunge să-l leg în față într-o fundă mică. Rochia în sine e frumoasă.",
+              "created_at": "2026-04-12T12:48:20Z"
             }
           ]
         },
@@ -1630,7 +1672,7 @@
                 "color": "negru"
               },
               "price_minor": 16999,
-              "stock": 25
+              "stock": 1
             },
             {
               "sku": "CLO-011-NEGRU-M",
@@ -1639,7 +1681,7 @@
                 "color": "negru"
               },
               "price_minor": 16999,
-              "stock": 31
+              "stock": 19
             },
             {
               "sku": "CLO-011-NEGRU-L",
@@ -1648,7 +1690,7 @@
                 "color": "negru"
               },
               "price_minor": 16999,
-              "stock": 18
+              "stock": 19
             },
             {
               "sku": "CLO-011-NEGRU-XL",
@@ -1657,7 +1699,7 @@
                 "color": "negru"
               },
               "price_minor": 16999,
-              "stock": 7
+              "stock": 1
             }
           ],
           "reviews": [
@@ -1667,13 +1709,6 @@
               "title": "Buni pentru sală",
               "body": "Îi port sub pantaloni scurți la antrenament de picioare, susțin bine.",
               "created_at": "2025-07-23T23:47:53Z"
-            },
-            {
-              "author_display_name": "Adrian S.",
-              "rating": 5,
-              "title": "Iarna sub pantaloni",
-              "body": "Îi folosesc și la alergat iarna sub pantaloni de trening, nu fac cute.",
-              "created_at": "2025-10-05T10:25:40Z"
             },
             {
               "author_display_name": "Marius V.",
@@ -1688,20 +1723,6 @@
               "title": "Nu se transparentează",
               "body": "Nici la genuflexiuni adânci nu se vede prin ei, ceea ce nu pot spune despre alți colanți.",
               "created_at": "2025-11-18T16:04:55Z"
-            },
-            {
-              "author_display_name": "Bogdan N.",
-              "rating": 4,
-              "title": "Rezistenți",
-              "body": "Îi am de un an și jumătate, spălați săptămânal, elasticul e încă bun.",
-              "created_at": "2024-10-04T03:36:01Z"
-            },
-            {
-              "author_display_name": "Marius Ș.",
-              "rating": 4,
-              "title": "Nu se rulează la talie",
-              "body": "Brâul lat stă pe loc la genuflexiuni grele.",
-              "created_at": "2024-10-12T01:09:48Z"
             }
           ]
         },
@@ -1724,7 +1745,7 @@
                 "size": "S"
               },
               "price_minor": 22999,
-              "stock": 7
+              "stock": 12
             },
             {
               "sku": "CLO-012-M",
@@ -1732,7 +1753,7 @@
                 "size": "M"
               },
               "price_minor": 22999,
-              "stock": 4
+              "stock": 15
             },
             {
               "sku": "CLO-012-L",
@@ -1740,7 +1761,7 @@
                 "size": "L"
               },
               "price_minor": 22999,
-              "stock": 15
+              "stock": 11
             },
             {
               "sku": "CLO-012-XL",
@@ -1748,7 +1769,7 @@
                 "size": "XL"
               },
               "price_minor": 22999,
-              "stock": 22
+              "stock": 11
             }
           ],
           "reviews": [
@@ -1800,6 +1821,20 @@
               "title": "Nu lasă urme pe piele",
               "body": "Elasticul lat nu lasă urme roșii nici după o zi lungă la birou.",
               "created_at": "2026-01-05T05:14:42Z"
+            },
+            {
+              "author_display_name": "Adrian C.",
+              "rating": 4,
+              "title": "Mărimea L e corectă",
+              "body": "Am talia 92 cm și L stă bine, fără să strângă. Croiala scurtă pe picior mi se pare comodă sub blugi.",
+              "created_at": "2026-10-11T04:02:55Z"
+            },
+            {
+              "author_display_name": "Cezar D.",
+              "rating": 3,
+              "title": "Atenție la uscător",
+              "body": "O pereche am uscat-o în uscător la temperatură mare și brâul s-a încrețit. De atunci le usuc doar pe sârmă.",
+              "created_at": "2026-06-02T15:23:10Z"
             }
           ]
         },
@@ -1822,7 +1857,7 @@
                 "color": "albastru spălat"
               },
               "price_minor": 37999,
-              "stock": 22
+              "stock": 31
             },
             {
               "sku": "CLO-013-SPALAT-W32L32",
@@ -1831,7 +1866,7 @@
                 "color": "albastru spălat"
               },
               "price_minor": 37999,
-              "stock": 9
+              "stock": 23
             },
             {
               "sku": "CLO-013-SPALAT-W32L34",
@@ -1840,7 +1875,7 @@
                 "color": "albastru spălat"
               },
               "price_minor": 37999,
-              "stock": 3
+              "stock": 24
             },
             {
               "sku": "CLO-013-SPALAT-W34L34",
@@ -1849,17 +1884,10 @@
                 "color": "albastru spălat"
               },
               "price_minor": 37999,
-              "stock": 27
+              "stock": 18
             }
           ],
           "reviews": [
-            {
-              "author_display_name": "Marius T.",
-              "rating": 5,
-              "title": "Elastici și comozi",
-              "body": "Pot sta toată ziua la birou în ei fără să simt că strâng.",
-              "created_at": "2026-02-03T02:13:29Z"
-            },
             {
               "author_display_name": "Georgiana R.",
               "rating": 4,
@@ -1873,13 +1901,6 @@
               "title": "Se lasă la genunchi",
               "body": "Elastanul face ca după o zi întreagă să se formeze pungi la genunchi.",
               "created_at": "2024-02-12T04:23:12Z"
-            },
-            {
-              "author_display_name": "Ionuț D.",
-              "rating": 4,
-              "title": "L34 pentru oameni înalți",
-              "body": "L34 e numai bun pentru 1,88 m, fără să trebuiască să-i suflec.",
-              "created_at": "2024-03-27T08:48:50Z"
             },
             {
               "author_display_name": "Paul S.",
@@ -1916,7 +1937,7 @@
                 "color": "albastru indigo"
               },
               "price_minor": 34999,
-              "stock": 27
+              "stock": 25
             },
             {
               "sku": "CLO-014-INDIGO-W34L32",
@@ -1934,7 +1955,7 @@
                 "color": "albastru indigo"
               },
               "price_minor": 34999,
-              "stock": 8
+              "stock": 26
             },
             {
               "sku": "CLO-014-INDIGO-W38L34",
@@ -1943,7 +1964,7 @@
                 "color": "albastru indigo"
               },
               "price_minor": 34999,
-              "stock": 14
+              "stock": 28
             },
             {
               "sku": "CLO-014-NEGRU-W32L32",
@@ -1952,7 +1973,7 @@
                 "color": "negru"
               },
               "price_minor": 34999,
-              "stock": 6
+              "stock": 11
             },
             {
               "sku": "CLO-014-NEGRU-W34L32",
@@ -1961,7 +1982,7 @@
                 "color": "negru"
               },
               "price_minor": 34999,
-              "stock": 19
+              "stock": 28
             },
             {
               "sku": "CLO-014-NEGRU-W36L32",
@@ -1970,7 +1991,7 @@
                 "color": "negru"
               },
               "price_minor": 34999,
-              "stock": 12
+              "stock": 16
             },
             {
               "sku": "CLO-014-NEGRU-W38L34",
@@ -1979,7 +2000,7 @@
                 "color": "negru"
               },
               "price_minor": 34999,
-              "stock": 25
+              "stock": 16
             }
           ],
           "reviews": [
@@ -2053,7 +2074,7 @@
                 "color": "gri melanj"
               },
               "price_minor": 18999,
-              "stock": 14
+              "stock": 6
             },
             {
               "sku": "CLO-015-GRIMEL-S",
@@ -2062,7 +2083,7 @@
                 "color": "gri melanj"
               },
               "price_minor": 18999,
-              "stock": 6
+              "stock": 17
             },
             {
               "sku": "CLO-015-GRIMEL-M",
@@ -2071,7 +2092,7 @@
                 "color": "gri melanj"
               },
               "price_minor": 18999,
-              "stock": 19
+              "stock": 28
             },
             {
               "sku": "CLO-015-GRIMEL-L",
@@ -2080,7 +2101,7 @@
                 "color": "gri melanj"
               },
               "price_minor": 18999,
-              "stock": 12
+              "stock": 27
             },
             {
               "sku": "CLO-015-GRIMEL-XL",
@@ -2089,7 +2110,7 @@
                 "color": "gri melanj"
               },
               "price_minor": 18999,
-              "stock": 25
+              "stock": 8
             },
             {
               "sku": "CLO-015-BLEUMARIN-XS",
@@ -2098,7 +2119,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 18999,
-              "stock": 31
+              "stock": 11
             },
             {
               "sku": "CLO-015-BLEUMARIN-S",
@@ -2107,7 +2128,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 18999,
-              "stock": 18
+              "stock": 3
             },
             {
               "sku": "CLO-015-BLEUMARIN-M",
@@ -2116,7 +2137,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 18999,
-              "stock": 7
+              "stock": 24
             },
             {
               "sku": "CLO-015-BLEUMARIN-L",
@@ -2125,7 +2146,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 18999,
-              "stock": 4
+              "stock": 24
             },
             {
               "sku": "CLO-015-BLEUMARIN-XL",
@@ -2134,7 +2155,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 18999,
-              "stock": 15
+              "stock": 3
             }
           ],
           "reviews": [
@@ -2144,13 +2165,6 @@
               "title": "Bun pentru preț",
               "body": "Pentru mai puțin de 200 de lei e un hanorac solid și călduros.",
               "created_at": "2024-06-10T04:27:38Z"
-            },
-            {
-              "author_display_name": "Marius G.",
-              "rating": 5,
-              "title": "Unisex adevărat",
-              "body": "L-am luat în M și îl purtăm și eu, și prietenul meu.",
-              "created_at": "2026-03-24T05:41:45Z"
             },
             {
               "author_display_name": "Remus S.",
@@ -2201,7 +2215,7 @@
                 "color": "negru/alb"
               },
               "price_minor": 27999,
-              "stock": 12
+              "stock": 10
             },
             {
               "sku": "CLO-016-NEGRUALB-S",
@@ -2210,7 +2224,7 @@
                 "color": "negru/alb"
               },
               "price_minor": 27999,
-              "stock": 25
+              "stock": 20
             },
             {
               "sku": "CLO-016-NEGRUALB-M",
@@ -2219,7 +2233,7 @@
                 "color": "negru/alb"
               },
               "price_minor": 27999,
-              "stock": 31
+              "stock": 54
             },
             {
               "sku": "CLO-016-NEGRUALB-L",
@@ -2228,7 +2242,7 @@
                 "color": "negru/alb"
               },
               "price_minor": 27999,
-              "stock": 18
+              "stock": 20
             },
             {
               "sku": "CLO-016-NEGRUALB-XL",
@@ -2237,7 +2251,7 @@
                 "color": "negru/alb"
               },
               "price_minor": 27999,
-              "stock": 7
+              "stock": 30
             },
             {
               "sku": "CLO-016-BLEUMARIN-XS",
@@ -2246,7 +2260,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 27999,
-              "stock": 4
+              "stock": 20
             },
             {
               "sku": "CLO-016-BLEUMARIN-S",
@@ -2255,7 +2269,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 27999,
-              "stock": 15
+              "stock": 23
             },
             {
               "sku": "CLO-016-BLEUMARIN-M",
@@ -2264,7 +2278,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 27999,
-              "stock": 22
+              "stock": 2
             },
             {
               "sku": "CLO-016-BLEUMARIN-L",
@@ -2273,7 +2287,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 27999,
-              "stock": 9
+              "stock": 41
             },
             {
               "sku": "CLO-016-BLEUMARIN-XL",
@@ -2282,17 +2296,10 @@
                 "color": "bleumarin"
               },
               "price_minor": 27999,
-              "stock": 3
+              "stock": 1
             }
           ],
           "reviews": [
-            {
-              "author_display_name": "Roxana P.",
-              "rating": 5,
-              "title": "Retro adevărat",
-              "body": "Exact ca pantalonii pe care îi aveam în liceu. Capsele țin bine.",
-              "created_at": "2025-07-20T17:58:34Z"
-            },
             {
               "author_display_name": "Lucian C.",
               "rating": 3,
@@ -2306,20 +2313,6 @@
               "title": "Arată bine cu adidași albi",
               "body": "Îi port în oraș, nu doar la sală.",
               "created_at": "2026-09-26T04:58:47Z"
-            },
-            {
-              "author_display_name": "Ioana N.",
-              "rating": 2,
-              "title": "Fac electricitate statică",
-              "body": "Poliesterul se încarcă electrostatic iarna și se lipește de picioare.",
-              "created_at": "2026-02-04T14:44:40Z"
-            },
-            {
-              "author_display_name": "Anca R.",
-              "rating": 4,
-              "title": "S pentru 1,70 m",
-              "body": "Am 1,70 m și S e lungimea potrivită.",
-              "created_at": "2026-03-28T01:27:09Z"
             },
             {
               "author_display_name": "Ioana C.",
@@ -2349,7 +2342,7 @@
                 "color": "negru"
               },
               "price_minor": 9999,
-              "stock": 18
+              "stock": 4
             },
             {
               "sku": "CLO-017-NEGRU-M",
@@ -2358,7 +2351,7 @@
                 "color": "negru"
               },
               "price_minor": 9999,
-              "stock": 7
+              "stock": 3
             },
             {
               "sku": "CLO-017-NEGRU-L",
@@ -2367,7 +2360,7 @@
                 "color": "negru"
               },
               "price_minor": 9999,
-              "stock": 4
+              "stock": 8
             },
             {
               "sku": "CLO-017-NEGRU-XL",
@@ -2376,7 +2369,7 @@
                 "color": "negru"
               },
               "price_minor": 9999,
-              "stock": 15
+              "stock": 5
             },
             {
               "sku": "CLO-017-NEGRU-XXL",
@@ -2385,7 +2378,7 @@
                 "color": "negru"
               },
               "price_minor": 9999,
-              "stock": 22
+              "stock": 4
             },
             {
               "sku": "CLO-017-ALB-S",
@@ -2394,7 +2387,7 @@
                 "color": "alb"
               },
               "price_minor": 9999,
-              "stock": 9
+              "stock": 8
             },
             {
               "sku": "CLO-017-ALB-M",
@@ -2403,7 +2396,7 @@
                 "color": "alb"
               },
               "price_minor": 9999,
-              "stock": 3
+              "stock": 7
             },
             {
               "sku": "CLO-017-ALB-L",
@@ -2412,7 +2405,7 @@
                 "color": "alb"
               },
               "price_minor": 9999,
-              "stock": 27
+              "stock": 7
             },
             {
               "sku": "CLO-017-ALB-XL",
@@ -2421,7 +2414,7 @@
                 "color": "alb"
               },
               "price_minor": 9999,
-              "stock": 11
+              "stock": 5
             },
             {
               "sku": "CLO-017-ALB-XXL",
@@ -2430,7 +2423,7 @@
                 "color": "alb"
               },
               "price_minor": 9999,
-              "stock": 8
+              "stock": 4
             },
             {
               "sku": "CLO-017-ROSU-S",
@@ -2439,7 +2432,7 @@
                 "color": "roșu"
               },
               "price_minor": 9999,
-              "stock": 14
+              "stock": 7
             },
             {
               "sku": "CLO-017-ROSU-M",
@@ -2448,7 +2441,7 @@
                 "color": "roșu"
               },
               "price_minor": 9999,
-              "stock": 6
+              "stock": 12
             },
             {
               "sku": "CLO-017-ROSU-L",
@@ -2457,7 +2450,7 @@
                 "color": "roșu"
               },
               "price_minor": 9999,
-              "stock": 19
+              "stock": 11
             },
             {
               "sku": "CLO-017-ROSU-XL",
@@ -2466,7 +2459,7 @@
                 "color": "roșu"
               },
               "price_minor": 9999,
-              "stock": 12
+              "stock": 3
             },
             {
               "sku": "CLO-017-ROSU-XXL",
@@ -2475,17 +2468,10 @@
                 "color": "roșu"
               },
               "price_minor": 9999,
-              "stock": 25
+              "stock": 3
             }
           ],
           "reviews": [
-            {
-              "author_display_name": "Dragoș D.",
-              "rating": 4,
-              "title": "Simplu și bun",
-              "body": "Tricou de zi cu zi, bumbac de calitate decentă.",
-              "created_at": "2026-01-17T16:45:05Z"
-            },
             {
               "author_display_name": "Remus G.",
               "rating": 5,
@@ -2549,7 +2535,7 @@
                 "color": "negru"
               },
               "price_minor": 44999,
-              "stock": 15
+              "stock": 25
             },
             {
               "sku": "CLO-018-NEGRU-M",
@@ -2558,7 +2544,7 @@
                 "color": "negru"
               },
               "price_minor": 44999,
-              "stock": 22
+              "stock": 52
             },
             {
               "sku": "CLO-018-NEGRU-L",
@@ -2567,7 +2553,7 @@
                 "color": "negru"
               },
               "price_minor": 44999,
-              "stock": 9
+              "stock": 18
             },
             {
               "sku": "CLO-018-NEGRU-XL",
@@ -2576,7 +2562,7 @@
                 "color": "negru"
               },
               "price_minor": 44999,
-              "stock": 3
+              "stock": 16
             },
             {
               "sku": "CLO-018-BLEUMARIN-S",
@@ -2585,7 +2571,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 44999,
-              "stock": 27
+              "stock": 25
             },
             {
               "sku": "CLO-018-BLEUMARIN-M",
@@ -2594,7 +2580,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 44999,
-              "stock": 11
+              "stock": 50
             },
             {
               "sku": "CLO-018-BLEUMARIN-L",
@@ -2603,7 +2589,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 44999,
-              "stock": 8
+              "stock": 25
             },
             {
               "sku": "CLO-018-BLEUMARIN-XL",
@@ -2612,7 +2598,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 44999,
-              "stock": 14
+              "stock": 15
             },
             {
               "sku": "CLO-018-KAKI-S",
@@ -2621,7 +2607,7 @@
                 "color": "verde kaki"
               },
               "price_minor": 44999,
-              "stock": 6
+              "stock": 22
             },
             {
               "sku": "CLO-018-KAKI-M",
@@ -2630,7 +2616,7 @@
                 "color": "verde kaki"
               },
               "price_minor": 44999,
-              "stock": 19
+              "stock": 41
             },
             {
               "sku": "CLO-018-KAKI-L",
@@ -2639,7 +2625,7 @@
                 "color": "verde kaki"
               },
               "price_minor": 44999,
-              "stock": 12
+              "stock": 40
             },
             {
               "sku": "CLO-018-KAKI-XL",
@@ -2648,7 +2634,7 @@
                 "color": "verde kaki"
               },
               "price_minor": 44999,
-              "stock": 25
+              "stock": 19
             }
           ],
           "reviews": [
@@ -2729,7 +2715,7 @@
                 "color": "negru"
               },
               "price_minor": 23999,
-              "stock": 3
+              "stock": 15
             },
             {
               "sku": "CLO-019-NEGRU-M",
@@ -2738,7 +2724,7 @@
                 "color": "negru"
               },
               "price_minor": 23999,
-              "stock": 27
+              "stock": 44
             },
             {
               "sku": "CLO-019-NEGRU-L",
@@ -2747,7 +2733,7 @@
                 "color": "negru"
               },
               "price_minor": 23999,
-              "stock": 11
+              "stock": 50
             },
             {
               "sku": "CLO-019-NEGRU-XL",
@@ -2756,7 +2742,7 @@
                 "color": "negru"
               },
               "price_minor": 23999,
-              "stock": 8
+              "stock": 3
             },
             {
               "sku": "CLO-019-BLEUMARIN-S",
@@ -2765,7 +2751,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 23999,
-              "stock": 14
+              "stock": 2
             },
             {
               "sku": "CLO-019-BLEUMARIN-M",
@@ -2774,7 +2760,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 23999,
-              "stock": 6
+              "stock": 51
             },
             {
               "sku": "CLO-019-BLEUMARIN-L",
@@ -2783,7 +2769,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 23999,
-              "stock": 19
+              "stock": 34
             },
             {
               "sku": "CLO-019-BLEUMARIN-XL",
@@ -2792,7 +2778,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 23999,
-              "stock": 12
+              "stock": 32
             }
           ],
           "reviews": [
@@ -2811,25 +2797,11 @@
               "created_at": "2024-06-06T06:15:10Z"
             },
             {
-              "author_display_name": "Mădălina S.",
-              "rating": 5,
-              "title": "Calitate bună",
-              "body": "Fermoarele sunt solide, cusăturile curate.",
-              "created_at": "2026-08-05T11:30:50Z"
-            },
-            {
               "author_display_name": "Cristian V.",
               "rating": 3,
               "title": "Gulerul înțeapă",
               "body": "Eticheta de pe guler zgârie la gât, am tăiat-o.",
               "created_at": "2024-12-20T10:56:55Z"
-            },
-            {
-              "author_display_name": "Alexandru V.",
-              "rating": 4,
-              "title": "Rezistă la spălări dese",
-              "body": "O spăl după fiecare antrenament de două ori pe săptămână și arată încă bine.",
-              "created_at": "2025-01-22T09:12:00Z"
             },
             {
               "author_display_name": "Camelia M.",
@@ -2868,7 +2840,7 @@
                 "color": "negru"
               },
               "price_minor": 29999,
-              "stock": 14
+              "stock": 71
             },
             {
               "sku": "CLO-020-NEGRU-L",
@@ -2877,7 +2849,7 @@
                 "color": "negru"
               },
               "price_minor": 29999,
-              "stock": 6
+              "stock": 32
             },
             {
               "sku": "CLO-020-NEGRU-XL",
@@ -2886,7 +2858,7 @@
                 "color": "negru"
               },
               "price_minor": 29999,
-              "stock": 19
+              "stock": 15
             },
             {
               "sku": "CLO-020-NEGRU-XXL",
@@ -2895,7 +2867,7 @@
                 "color": "negru"
               },
               "price_minor": 29999,
-              "stock": 12
+              "stock": 16
             },
             {
               "sku": "CLO-020-GRI-S",
@@ -2904,7 +2876,7 @@
                 "color": "gri"
               },
               "price_minor": 29999,
-              "stock": 25
+              "stock": 38
             },
             {
               "sku": "CLO-020-GRI-M",
@@ -2913,7 +2885,7 @@
                 "color": "gri"
               },
               "price_minor": 29999,
-              "stock": 31
+              "stock": 33
             },
             {
               "sku": "CLO-020-GRI-L",
@@ -2922,7 +2894,7 @@
                 "color": "gri"
               },
               "price_minor": 29999,
-              "stock": 18
+              "stock": 3
             },
             {
               "sku": "CLO-020-GRI-XL",
@@ -2931,7 +2903,7 @@
                 "color": "gri"
               },
               "price_minor": 29999,
-              "stock": 7
+              "stock": 36
             },
             {
               "sku": "CLO-020-GRI-XXL",
@@ -2940,7 +2912,7 @@
                 "color": "gri"
               },
               "price_minor": 29999,
-              "stock": 4
+              "stock": 16
             },
             {
               "sku": "CLO-020-BLEUMARIN-S",
@@ -2949,7 +2921,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 29999,
-              "stock": 15
+              "stock": 32
             },
             {
               "sku": "CLO-020-BLEUMARIN-M",
@@ -2958,7 +2930,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 29999,
-              "stock": 22
+              "stock": 2
             },
             {
               "sku": "CLO-020-BLEUMARIN-L",
@@ -2967,7 +2939,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 29999,
-              "stock": 9
+              "stock": 38
             },
             {
               "sku": "CLO-020-BLEUMARIN-XL",
@@ -2976,7 +2948,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 29999,
-              "stock": 3
+              "stock": 38
             },
             {
               "sku": "CLO-020-BLEUMARIN-XXL",
@@ -2985,7 +2957,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 29999,
-              "stock": 27
+              "stock": 20
             }
           ],
           "reviews": [
@@ -3002,13 +2974,6 @@
               "title": "Face scame mici",
               "body": "După câteva spălări apar scame mici, dar nu deranjează.",
               "created_at": "2025-09-21T19:35:09Z"
-            },
-            {
-              "author_display_name": "Adrian R.",
-              "rating": 5,
-              "title": "L pentru 1,80 m",
-              "body": "Am 1,80 m și 85 kg, port L și e perfectă, mânecile sunt suficient de lungi.",
-              "created_at": "2025-04-04T08:51:34Z"
             },
             {
               "author_display_name": "Cătălin M.",
@@ -3060,7 +3025,7 @@
                 "color": "negru"
               },
               "price_minor": 57999,
-              "stock": 19
+              "stock": 10
             },
             {
               "sku": "CLO-021-NEGRU-S",
@@ -3069,7 +3034,7 @@
                 "color": "negru"
               },
               "price_minor": 57999,
-              "stock": 12
+              "stock": 17
             },
             {
               "sku": "CLO-021-NEGRU-M",
@@ -3078,7 +3043,7 @@
                 "color": "negru"
               },
               "price_minor": 57999,
-              "stock": 25
+              "stock": 35
             },
             {
               "sku": "CLO-021-NEGRU-L",
@@ -3087,7 +3052,7 @@
                 "color": "negru"
               },
               "price_minor": 57999,
-              "stock": 31
+              "stock": 39
             },
             {
               "sku": "CLO-021-NEGRU-XL",
@@ -3096,7 +3061,7 @@
                 "color": "negru"
               },
               "price_minor": 57999,
-              "stock": 18
+              "stock": 15
             },
             {
               "sku": "CLO-021-BORDO-XS",
@@ -3105,7 +3070,7 @@
                 "color": "bordo"
               },
               "price_minor": 57999,
-              "stock": 7
+              "stock": 9
             },
             {
               "sku": "CLO-021-BORDO-S",
@@ -3114,7 +3079,7 @@
                 "color": "bordo"
               },
               "price_minor": 57999,
-              "stock": 4
+              "stock": 23
             },
             {
               "sku": "CLO-021-BORDO-M",
@@ -3123,7 +3088,7 @@
                 "color": "bordo"
               },
               "price_minor": 57999,
-              "stock": 15
+              "stock": 32
             },
             {
               "sku": "CLO-021-BORDO-L",
@@ -3132,7 +3097,7 @@
                 "color": "bordo"
               },
               "price_minor": 57999,
-              "stock": 22
+              "stock": 15
             },
             {
               "sku": "CLO-021-BORDO-XL",
@@ -3141,7 +3106,7 @@
                 "color": "bordo"
               },
               "price_minor": 57999,
-              "stock": 9
+              "stock": 13
             },
             {
               "sku": "CLO-021-MASLINIU-XS",
@@ -3150,7 +3115,7 @@
                 "color": "verde măsliniu"
               },
               "price_minor": 57999,
-              "stock": 3
+              "stock": 14
             },
             {
               "sku": "CLO-021-MASLINIU-S",
@@ -3159,7 +3124,7 @@
                 "color": "verde măsliniu"
               },
               "price_minor": 57999,
-              "stock": 27
+              "stock": 20
             },
             {
               "sku": "CLO-021-MASLINIU-M",
@@ -3168,7 +3133,7 @@
                 "color": "verde măsliniu"
               },
               "price_minor": 57999,
-              "stock": 11
+              "stock": 23
             },
             {
               "sku": "CLO-021-MASLINIU-L",
@@ -3177,7 +3142,7 @@
                 "color": "verde măsliniu"
               },
               "price_minor": 57999,
-              "stock": 8
+              "stock": 28
             },
             {
               "sku": "CLO-021-MASLINIU-XL",
@@ -3186,7 +3151,7 @@
                 "color": "verde măsliniu"
               },
               "price_minor": 57999,
-              "stock": 14
+              "stock": 10
             }
           ],
           "reviews": [
@@ -3231,6 +3196,20 @@
               "title": "Ușor de împachetat",
               "body": "Se rulează mic și încape în geanta de umăr, o iau la orice drum.",
               "created_at": "2024-01-11T19:16:26Z"
+            },
+            {
+              "author_display_name": "Alexandra B.",
+              "rating": 5,
+              "title": "Bună pe munte",
+              "body": "Am urcat pe Piatra Craiului pe burniță și vânt și am rămas uscată pe dedesubt. Gluga se strânge bine și nu-mi intră în ochi.",
+              "created_at": "2025-09-21T23:24:56Z"
+            },
+            {
+              "author_display_name": "Daniela T.",
+              "rating": 3,
+              "title": "Nu ține de cald",
+              "body": "E doar o coajă subțire, așa că toamna târziu trebuie un polar pe dedesubt. Am luat M ca să încapă stratul în plus.",
+              "created_at": "2025-09-03T16:13:44Z"
             }
           ]
         },
@@ -3253,7 +3232,7 @@
                 "color": "crem"
               },
               "price_minor": 12999,
-              "stock": 31
+              "stock": 3
             },
             {
               "sku": "CLO-022-CREM-S",
@@ -3262,7 +3241,7 @@
                 "color": "crem"
               },
               "price_minor": 12999,
-              "stock": 18
+              "stock": 5
             },
             {
               "sku": "CLO-022-CREM-M",
@@ -3271,7 +3250,7 @@
                 "color": "crem"
               },
               "price_minor": 12999,
-              "stock": 7
+              "stock": 20
             },
             {
               "sku": "CLO-022-CREM-L",
@@ -3280,7 +3259,7 @@
                 "color": "crem"
               },
               "price_minor": 12999,
-              "stock": 4
+              "stock": 10
             },
             {
               "sku": "CLO-022-CREM-XL",
@@ -3289,7 +3268,7 @@
                 "color": "crem"
               },
               "price_minor": 12999,
-              "stock": 15
+              "stock": 2
             },
             {
               "sku": "CLO-022-NEGRU-XS",
@@ -3298,7 +3277,7 @@
                 "color": "negru"
               },
               "price_minor": 12999,
-              "stock": 22
+              "stock": 4
             },
             {
               "sku": "CLO-022-NEGRU-S",
@@ -3307,7 +3286,7 @@
                 "color": "negru"
               },
               "price_minor": 12999,
-              "stock": 9
+              "stock": 6
             },
             {
               "sku": "CLO-022-NEGRU-M",
@@ -3316,7 +3295,7 @@
                 "color": "negru"
               },
               "price_minor": 12999,
-              "stock": 3
+              "stock": 14
             },
             {
               "sku": "CLO-022-NEGRU-L",
@@ -3325,7 +3304,7 @@
                 "color": "negru"
               },
               "price_minor": 12999,
-              "stock": 27
+              "stock": 8
             },
             {
               "sku": "CLO-022-NEGRU-XL",
@@ -3334,7 +3313,7 @@
                 "color": "negru"
               },
               "price_minor": 12999,
-              "stock": 11
+              "stock": 6
             },
             {
               "sku": "CLO-022-ROZ-XS",
@@ -3343,7 +3322,7 @@
                 "color": "roz pudrat"
               },
               "price_minor": 12999,
-              "stock": 8
+              "stock": 6
             },
             {
               "sku": "CLO-022-ROZ-S",
@@ -3352,7 +3331,7 @@
                 "color": "roz pudrat"
               },
               "price_minor": 12999,
-              "stock": 14
+              "stock": 11
             },
             {
               "sku": "CLO-022-ROZ-M",
@@ -3361,7 +3340,7 @@
                 "color": "roz pudrat"
               },
               "price_minor": 12999,
-              "stock": 6
+              "stock": 10
             },
             {
               "sku": "CLO-022-ROZ-L",
@@ -3370,7 +3349,7 @@
                 "color": "roz pudrat"
               },
               "price_minor": 12999,
-              "stock": 19
+              "stock": 16
             },
             {
               "sku": "CLO-022-ROZ-XL",
@@ -3379,17 +3358,10 @@
                 "color": "roz pudrat"
               },
               "price_minor": 12999,
-              "stock": 12
+              "stock": 11
             }
           ],
           "reviews": [
-            {
-              "author_display_name": "Irina R.",
-              "rating": 4,
-              "title": "Drăguț și ieftin",
-              "body": "Un pulover simplu care merge cu orice. Pentru preț e bun.",
-              "created_at": "2024-07-24T17:04:02Z"
-            },
             {
               "author_display_name": "Cristian Ș.",
               "rating": 2,
@@ -3446,7 +3418,7 @@
                 "color": "negru"
               },
               "price_minor": 34990,
-              "stock": 4
+              "stock": 19
             },
             {
               "sku": "CLO-023-NEGRU-S",
@@ -3455,7 +3427,7 @@
                 "color": "negru"
               },
               "price_minor": 34990,
-              "stock": 15
+              "stock": 35
             },
             {
               "sku": "CLO-023-NEGRU-M",
@@ -3464,7 +3436,7 @@
                 "color": "negru"
               },
               "price_minor": 34990,
-              "stock": 22
+              "stock": 38
             },
             {
               "sku": "CLO-023-NEGRU-L",
@@ -3473,7 +3445,7 @@
                 "color": "negru"
               },
               "price_minor": 34990,
-              "stock": 9
+              "stock": 49
             },
             {
               "sku": "CLO-023-NEGRU-XL",
@@ -3482,7 +3454,7 @@
                 "color": "negru"
               },
               "price_minor": 34990,
-              "stock": 3
+              "stock": 21
             },
             {
               "sku": "CLO-023-BEJ-XS",
@@ -3491,7 +3463,7 @@
                 "color": "bej"
               },
               "price_minor": 34990,
-              "stock": 27
+              "stock": 19
             },
             {
               "sku": "CLO-023-BEJ-S",
@@ -3500,7 +3472,7 @@
                 "color": "bej"
               },
               "price_minor": 34990,
-              "stock": 11
+              "stock": 41
             },
             {
               "sku": "CLO-023-BEJ-M",
@@ -3509,7 +3481,7 @@
                 "color": "bej"
               },
               "price_minor": 34990,
-              "stock": 8
+              "stock": 61
             },
             {
               "sku": "CLO-023-BEJ-L",
@@ -3518,7 +3490,7 @@
                 "color": "bej"
               },
               "price_minor": 34990,
-              "stock": 14
+              "stock": 47
             },
             {
               "sku": "CLO-023-BEJ-XL",
@@ -3527,7 +3499,7 @@
                 "color": "bej"
               },
               "price_minor": 34990,
-              "stock": 6
+              "stock": 20
             }
           ],
           "reviews": [
@@ -3601,7 +3573,7 @@
                 "color": "bej"
               },
               "price_minor": 14999,
-              "stock": 9
+              "stock": 31
             },
             {
               "sku": "CLO-024-BEJ-32",
@@ -3610,7 +3582,7 @@
                 "color": "bej"
               },
               "price_minor": 14999,
-              "stock": 3
+              "stock": 2
             },
             {
               "sku": "CLO-024-BEJ-34",
@@ -3619,7 +3591,7 @@
                 "color": "bej"
               },
               "price_minor": 14999,
-              "stock": 27
+              "stock": 33
             },
             {
               "sku": "CLO-024-BEJ-36",
@@ -3628,7 +3600,7 @@
                 "color": "bej"
               },
               "price_minor": 14999,
-              "stock": 11
+              "stock": 30
             },
             {
               "sku": "CLO-024-BLEUMARIN-30",
@@ -3646,7 +3618,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 14999,
-              "stock": 14
+              "stock": 27
             },
             {
               "sku": "CLO-024-BLEUMARIN-34",
@@ -3655,7 +3627,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 14999,
-              "stock": 6
+              "stock": 26
             },
             {
               "sku": "CLO-024-BLEUMARIN-36",
@@ -3664,7 +3636,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 14999,
-              "stock": 19
+              "stock": 41
             },
             {
               "sku": "CLO-024-MASLINIU-30",
@@ -3673,7 +3645,7 @@
                 "color": "verde măsliniu"
               },
               "price_minor": 14999,
-              "stock": 12
+              "stock": 33
             },
             {
               "sku": "CLO-024-MASLINIU-32",
@@ -3682,7 +3654,7 @@
                 "color": "verde măsliniu"
               },
               "price_minor": 14999,
-              "stock": 25
+              "stock": 31
             },
             {
               "sku": "CLO-024-MASLINIU-34",
@@ -3691,7 +3663,7 @@
                 "color": "verde măsliniu"
               },
               "price_minor": 14999,
-              "stock": 31
+              "stock": 20
             },
             {
               "sku": "CLO-024-MASLINIU-36",
@@ -3700,7 +3672,7 @@
                 "color": "verde măsliniu"
               },
               "price_minor": 14999,
-              "stock": 18
+              "stock": 17
             }
           ],
           "reviews": [
@@ -3717,13 +3689,6 @@
               "title": "Cei mai ieftini chino buni",
               "body": "La 150 de lei nu am găsit chino mai buni.",
               "created_at": "2025-08-27T22:55:16Z"
-            },
-            {
-              "author_display_name": "Horia N.",
-              "rating": 3,
-              "title": "Lungi",
-              "body": "Sunt foarte lungi, am dat la croitorie să-i scurteze. Am 1,75 m.",
-              "created_at": "2026-03-18T10:52:46Z"
             },
             {
               "author_display_name": "Cătălin V.",
@@ -3745,13 +3710,6 @@
               "title": "Elastanul face diferența",
               "body": "Pot sta pe vine fără să simt că se rup.",
               "created_at": "2024-05-29T03:46:34Z"
-            },
-            {
-              "author_display_name": "Maria M.",
-              "rating": 4,
-              "title": "Nu se decolorează",
-              "body": "Bejul arată la fel după multe spălări.",
-              "created_at": "2025-08-28T02:32:22Z"
             },
             {
               "author_display_name": "Vlad D.",
@@ -3781,7 +3739,7 @@
                 "color": "alb"
               },
               "price_minor": 44999,
-              "stock": 11
+              "stock": 2
             },
             {
               "sku": "CLO-025-ALB-M",
@@ -3790,7 +3748,7 @@
                 "color": "alb"
               },
               "price_minor": 44999,
-              "stock": 8
+              "stock": 10
             },
             {
               "sku": "CLO-025-ALB-L",
@@ -3799,7 +3757,7 @@
                 "color": "alb"
               },
               "price_minor": 44999,
-              "stock": 14
+              "stock": 5
             },
             {
               "sku": "CLO-025-ALB-XL",
@@ -3808,7 +3766,7 @@
                 "color": "alb"
               },
               "price_minor": 44999,
-              "stock": 6
+              "stock": 5
             },
             {
               "sku": "CLO-025-ALB-XXL",
@@ -3817,7 +3775,7 @@
                 "color": "alb"
               },
               "price_minor": 44999,
-              "stock": 19
+              "stock": 3
             },
             {
               "sku": "CLO-025-ALBDESCHIS-S",
@@ -3826,7 +3784,7 @@
                 "color": "albastru deschis"
               },
               "price_minor": 44999,
-              "stock": 12
+              "stock": 7
             },
             {
               "sku": "CLO-025-ALBDESCHIS-M",
@@ -3835,7 +3793,7 @@
                 "color": "albastru deschis"
               },
               "price_minor": 44999,
-              "stock": 25
+              "stock": 6
             },
             {
               "sku": "CLO-025-ALBDESCHIS-L",
@@ -3844,7 +3802,7 @@
                 "color": "albastru deschis"
               },
               "price_minor": 44999,
-              "stock": 31
+              "stock": 6
             },
             {
               "sku": "CLO-025-ALBDESCHIS-XL",
@@ -3853,7 +3811,7 @@
                 "color": "albastru deschis"
               },
               "price_minor": 44999,
-              "stock": 18
+              "stock": 5
             },
             {
               "sku": "CLO-025-ALBDESCHIS-XXL",
@@ -3862,7 +3820,7 @@
                 "color": "albastru deschis"
               },
               "price_minor": 44999,
-              "stock": 7
+              "stock": 2
             }
           ],
           "reviews": [
@@ -3895,13 +3853,6 @@
               "created_at": "2025-05-05T22:14:43Z"
             },
             {
-              "author_display_name": "Teodora T.",
-              "rating": 4,
-              "title": "Arată scump",
-              "body": "Textura Oxford și broderia arată foarte bine de aproape.",
-              "created_at": "2024-07-29T19:16:56Z"
-            },
-            {
               "author_display_name": "Maria I.",
               "rating": 1,
               "title": "Decolorată după spălare",
@@ -3914,13 +3865,6 @@
               "title": "Am cumpărat-o din nou",
               "body": "Prima a ținut patru ani, am luat exact același model.",
               "created_at": "2026-05-22T12:55:39Z"
-            },
-            {
-              "author_display_name": "Bogdan B.",
-              "rating": 4,
-              "title": "Albul e alb",
-              "body": "Nu e crem, nu e gri, e un alb curat.",
-              "created_at": "2025-04-10T17:44:05Z"
             },
             {
               "author_display_name": "Andreea R.",
@@ -3950,7 +3894,7 @@
                 "color": "negru"
               },
               "price_minor": 17999,
-              "stock": 6
+              "stock": 12
             },
             {
               "sku": "CLO-026-NEGRU-M",
@@ -3959,7 +3903,7 @@
                 "color": "negru"
               },
               "price_minor": 17999,
-              "stock": 19
+              "stock": 24
             },
             {
               "sku": "CLO-026-NEGRU-L",
@@ -3968,7 +3912,7 @@
                 "color": "negru"
               },
               "price_minor": 17999,
-              "stock": 12
+              "stock": 17
             },
             {
               "sku": "CLO-026-NEGRU-XL",
@@ -3977,7 +3921,7 @@
                 "color": "negru"
               },
               "price_minor": 17999,
-              "stock": 25
+              "stock": 15
             },
             {
               "sku": "CLO-026-ALB-S",
@@ -3986,7 +3930,7 @@
                 "color": "alb"
               },
               "price_minor": 17999,
-              "stock": 31
+              "stock": 1
             },
             {
               "sku": "CLO-026-ALB-M",
@@ -4004,7 +3948,7 @@
                 "color": "alb"
               },
               "price_minor": 17999,
-              "stock": 7
+              "stock": 15
             },
             {
               "sku": "CLO-026-ALB-XL",
@@ -4013,7 +3957,7 @@
                 "color": "alb"
               },
               "price_minor": 17999,
-              "stock": 4
+              "stock": 3
             }
           ],
           "reviews": [
@@ -4058,6 +4002,27 @@
               "title": "Nu se șifonează",
               "body": "Îl scot din mașina de spălat, îl scutur și îl întind, nu trebuie călcat.",
               "created_at": "2026-08-24T03:42:03Z"
+            },
+            {
+              "author_display_name": "Ciprian A.",
+              "rating": 4,
+              "title": "Monograma a rezistat",
+              "body": "L-am spălat pe dos de multe ori și monograma nu s-a crăpat. Bumbacul s-a înmuiat puțin, dar a rămas gros.",
+              "created_at": "2025-07-26T06:39:04Z"
+            },
+            {
+              "author_display_name": "Marian Ț.",
+              "rating": 5,
+              "title": "Merge și cu sacou",
+              "body": "Îl port cu un sacou la evenimente mai puțin formale și arată foarte îngrijit.",
+              "created_at": "2025-07-30T20:00:32Z"
+            },
+            {
+              "author_display_name": "Nicolae B.",
+              "rating": 2,
+              "title": "S-a strâns în lungime",
+              "body": "După prima spălare la 30 de grade s-a scurtat vreo doi centimetri și acum îmi iese din pantaloni când mă aplec.",
+              "created_at": "2024-11-13T08:51:50Z"
             }
           ]
         },
@@ -4080,7 +4045,7 @@
                 "color": "albastru spălat"
               },
               "price_minor": 49999,
-              "stock": 25
+              "stock": 19
             },
             {
               "sku": "CLO-027-SPALAT-M",
@@ -4089,7 +4054,7 @@
                 "color": "albastru spălat"
               },
               "price_minor": 49999,
-              "stock": 31
+              "stock": 26
             },
             {
               "sku": "CLO-027-SPALAT-L",
@@ -4098,7 +4063,7 @@
                 "color": "albastru spălat"
               },
               "price_minor": 49999,
-              "stock": 18
+              "stock": 35
             },
             {
               "sku": "CLO-027-SPALAT-XL",
@@ -4107,7 +4072,7 @@
                 "color": "albastru spălat"
               },
               "price_minor": 49999,
-              "stock": 7
+              "stock": 9
             },
             {
               "sku": "CLO-027-NEGRU-S",
@@ -4116,7 +4081,7 @@
                 "color": "negru"
               },
               "price_minor": 49999,
-              "stock": 4
+              "stock": 2
             },
             {
               "sku": "CLO-027-NEGRU-M",
@@ -4125,7 +4090,7 @@
                 "color": "negru"
               },
               "price_minor": 49999,
-              "stock": 15
+              "stock": 29
             },
             {
               "sku": "CLO-027-NEGRU-L",
@@ -4134,7 +4099,7 @@
                 "color": "negru"
               },
               "price_minor": 49999,
-              "stock": 22
+              "stock": 17
             },
             {
               "sku": "CLO-027-NEGRU-XL",
@@ -4143,7 +4108,7 @@
                 "color": "negru"
               },
               "price_minor": 49999,
-              "stock": 9
+              "stock": 15
             }
           ],
           "reviews": [
@@ -4176,13 +4141,6 @@
               "created_at": "2025-09-30T08:58:18Z"
             },
             {
-              "author_display_name": "Corina Ș.",
-              "rating": 5,
-              "title": "Calitate",
-              "body": "Nasturii și cusăturile sunt excelente, nimic nu s-a desfăcut după un an.",
-              "created_at": "2024-02-29T23:58:47Z"
-            },
-            {
               "author_display_name": "Alexandru T.",
               "rating": 5,
               "title": "Merge cu orice",
@@ -4210,7 +4168,7 @@
                 "color": "negru"
               },
               "price_minor": 25999,
-              "stock": 7
+              "stock": 33
             },
             {
               "sku": "CLO-028-NEGRU-M",
@@ -4219,7 +4177,7 @@
                 "color": "negru"
               },
               "price_minor": 25999,
-              "stock": 4
+              "stock": 55
             },
             {
               "sku": "CLO-028-NEGRU-L",
@@ -4228,7 +4186,7 @@
                 "color": "negru"
               },
               "price_minor": 25999,
-              "stock": 15
+              "stock": 1
             },
             {
               "sku": "CLO-028-NEGRU-XL",
@@ -4237,7 +4195,7 @@
                 "color": "negru"
               },
               "price_minor": 25999,
-              "stock": 22
+              "stock": 24
             },
             {
               "sku": "CLO-028-NEGRU-XXL",
@@ -4246,7 +4204,7 @@
                 "color": "negru"
               },
               "price_minor": 25999,
-              "stock": 9
+              "stock": 12
             },
             {
               "sku": "CLO-028-GRIMEL-S",
@@ -4255,7 +4213,7 @@
                 "color": "gri melanj"
               },
               "price_minor": 25999,
-              "stock": 3
+              "stock": 18
             },
             {
               "sku": "CLO-028-GRIMEL-M",
@@ -4264,7 +4222,7 @@
                 "color": "gri melanj"
               },
               "price_minor": 25999,
-              "stock": 27
+              "stock": 22
             },
             {
               "sku": "CLO-028-GRIMEL-L",
@@ -4273,7 +4231,7 @@
                 "color": "gri melanj"
               },
               "price_minor": 25999,
-              "stock": 11
+              "stock": 27
             },
             {
               "sku": "CLO-028-GRIMEL-XL",
@@ -4291,7 +4249,7 @@
                 "color": "gri melanj"
               },
               "price_minor": 25999,
-              "stock": 14
+              "stock": 16
             },
             {
               "sku": "CLO-028-ROSU-S",
@@ -4300,7 +4258,7 @@
                 "color": "roșu"
               },
               "price_minor": 25999,
-              "stock": 6
+              "stock": 2
             },
             {
               "sku": "CLO-028-ROSU-M",
@@ -4309,7 +4267,7 @@
                 "color": "roșu"
               },
               "price_minor": 25999,
-              "stock": 19
+              "stock": 22
             },
             {
               "sku": "CLO-028-ROSU-L",
@@ -4318,7 +4276,7 @@
                 "color": "roșu"
               },
               "price_minor": 25999,
-              "stock": 12
+              "stock": 20
             },
             {
               "sku": "CLO-028-ROSU-XL",
@@ -4327,7 +4285,7 @@
                 "color": "roșu"
               },
               "price_minor": 25999,
-              "stock": 25
+              "stock": 15
             },
             {
               "sku": "CLO-028-ROSU-XXL",
@@ -4336,7 +4294,7 @@
                 "color": "roșu"
               },
               "price_minor": 25999,
-              "stock": 31
+              "stock": 7
             }
           ],
           "reviews": [
@@ -4410,7 +4368,7 @@
                 "color": "negru"
               },
               "price_minor": 8999,
-              "stock": 22
+              "stock": 12
             },
             {
               "sku": "CLO-029-NEGRU-M",
@@ -4419,7 +4377,7 @@
                 "color": "negru"
               },
               "price_minor": 8999,
-              "stock": 9
+              "stock": 21
             },
             {
               "sku": "CLO-029-NEGRU-L",
@@ -4428,7 +4386,7 @@
                 "color": "negru"
               },
               "price_minor": 8999,
-              "stock": 3
+              "stock": 21
             },
             {
               "sku": "CLO-029-NEGRU-XL",
@@ -4437,7 +4395,7 @@
                 "color": "negru"
               },
               "price_minor": 8999,
-              "stock": 27
+              "stock": 9
             },
             {
               "sku": "CLO-029-BLEUMARIN-S",
@@ -4446,7 +4404,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 8999,
-              "stock": 11
+              "stock": 10
             },
             {
               "sku": "CLO-029-BLEUMARIN-M",
@@ -4455,7 +4413,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 8999,
-              "stock": 8
+              "stock": 25
             },
             {
               "sku": "CLO-029-BLEUMARIN-L",
@@ -4464,7 +4422,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 8999,
-              "stock": 14
+              "stock": 22
             },
             {
               "sku": "CLO-029-BLEUMARIN-XL",
@@ -4473,7 +4431,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 8999,
-              "stock": 6
+              "stock": 13
             }
           ],
           "reviews": [
@@ -4497,27 +4455,6 @@
               "title": "Preț mic, calitate bună",
               "body": "La sub 100 de lei nu am ce să le reproșez.",
               "created_at": "2026-04-10T03:59:53Z"
-            },
-            {
-              "author_display_name": "Dragoș G.",
-              "rating": 2,
-              "title": "Slipul interior strânge",
-              "body": "Slipul din plasă e foarte strâmt și jenant la genuflexiuni. L-am tăiat.",
-              "created_at": "2026-02-25T09:53:24Z"
-            },
-            {
-              "author_display_name": "Bianca Ș.",
-              "rating": 4,
-              "title": "Talie de 82 cm, M",
-              "body": "M e potrivit pentru talie de 82 cm.",
-              "created_at": "2025-08-09T08:01:02Z"
-            },
-            {
-              "author_display_name": "Bogdan P.",
-              "rating": 5,
-              "title": "Se usucă pe sârmă în zece minute",
-              "body": "Îi spăl seara și dimineața sunt uscați complet.",
-              "created_at": "2025-06-01T04:26:38Z"
             }
           ]
         },
@@ -4540,7 +4477,7 @@
                 "color": "alb"
               },
               "price_minor": 13999,
-              "stock": 27
+              "stock": 16
             },
             {
               "sku": "CLO-030-ALB-S",
@@ -4549,7 +4486,7 @@
                 "color": "alb"
               },
               "price_minor": 13999,
-              "stock": 11
+              "stock": 22
             },
             {
               "sku": "CLO-030-ALB-M",
@@ -4558,7 +4495,7 @@
                 "color": "alb"
               },
               "price_minor": 13999,
-              "stock": 8
+              "stock": 39
             },
             {
               "sku": "CLO-030-ALB-L",
@@ -4567,7 +4504,7 @@
                 "color": "alb"
               },
               "price_minor": 13999,
-              "stock": 14
+              "stock": 49
             },
             {
               "sku": "CLO-030-NEGRU-XS",
@@ -4576,7 +4513,7 @@
                 "color": "negru"
               },
               "price_minor": 13999,
-              "stock": 6
+              "stock": 18
             },
             {
               "sku": "CLO-030-NEGRU-S",
@@ -4585,7 +4522,7 @@
                 "color": "negru"
               },
               "price_minor": 13999,
-              "stock": 19
+              "stock": 28
             },
             {
               "sku": "CLO-030-NEGRU-M",
@@ -4594,7 +4531,7 @@
                 "color": "negru"
               },
               "price_minor": 13999,
-              "stock": 12
+              "stock": 26
             },
             {
               "sku": "CLO-030-NEGRU-L",
@@ -4603,7 +4540,7 @@
                 "color": "negru"
               },
               "price_minor": 13999,
-              "stock": 25
+              "stock": 52
             },
             {
               "sku": "CLO-030-ROZ-XS",
@@ -4612,7 +4549,7 @@
                 "color": "roz pudrat"
               },
               "price_minor": 13999,
-              "stock": 31
+              "stock": 11
             },
             {
               "sku": "CLO-030-ROZ-S",
@@ -4621,7 +4558,7 @@
                 "color": "roz pudrat"
               },
               "price_minor": 13999,
-              "stock": 18
+              "stock": 33
             },
             {
               "sku": "CLO-030-ROZ-M",
@@ -4630,7 +4567,7 @@
                 "color": "roz pudrat"
               },
               "price_minor": 13999,
-              "stock": 7
+              "stock": 38
             },
             {
               "sku": "CLO-030-ROZ-L",
@@ -4639,7 +4576,7 @@
                 "color": "roz pudrat"
               },
               "price_minor": 13999,
-              "stock": 4
+              "stock": 29
             }
           ],
           "reviews": [
@@ -4691,6 +4628,20 @@
               "title": "A venit cu o pată",
               "body": "Tricoul alb a venit cu o pată galbenă lângă logo, l-am trimis înapoi.",
               "created_at": "2025-02-20T03:07:30Z"
+            },
+            {
+              "author_display_name": "Ana-Maria L.",
+              "rating": 5,
+              "title": "Moale și după spălare",
+              "body": "L-am spălat pe dos de multe ori și bumbacul a rămas moale. Îl port cu o fustă plisată și arată foarte bine.",
+              "created_at": "2026-02-05T09:56:09Z"
+            },
+            {
+              "author_display_name": "Alina V.",
+              "rating": 3,
+              "title": "Logo-ul s-a crăpat",
+              "body": "După câteva luni logo-ul mare a început să se crape pe margini. Tricoul în sine e încă în stare bună.",
+              "created_at": "2024-04-26T11:01:08Z"
             }
           ]
         },
@@ -4713,7 +4664,7 @@
                 "color": "negru"
               },
               "price_minor": 22999,
-              "stock": 14
+              "stock": 11
             },
             {
               "sku": "CLO-031-NEGRU-S",
@@ -4722,7 +4673,7 @@
                 "color": "negru"
               },
               "price_minor": 22999,
-              "stock": 6
+              "stock": 35
             },
             {
               "sku": "CLO-031-NEGRU-M",
@@ -4731,7 +4682,7 @@
                 "color": "negru"
               },
               "price_minor": 22999,
-              "stock": 19
+              "stock": 2
             },
             {
               "sku": "CLO-031-NEGRU-L",
@@ -4740,7 +4691,7 @@
                 "color": "negru"
               },
               "price_minor": 22999,
-              "stock": 12
+              "stock": 45
             },
             {
               "sku": "CLO-031-NEGRU-XL",
@@ -4749,7 +4700,7 @@
                 "color": "negru"
               },
               "price_minor": 22999,
-              "stock": 25
+              "stock": 14
             },
             {
               "sku": "CLO-031-BORDO-XS",
@@ -4758,7 +4709,7 @@
                 "color": "bordo"
               },
               "price_minor": 22999,
-              "stock": 31
+              "stock": 19
             },
             {
               "sku": "CLO-031-BORDO-S",
@@ -4767,7 +4718,7 @@
                 "color": "bordo"
               },
               "price_minor": 22999,
-              "stock": 18
+              "stock": 36
             },
             {
               "sku": "CLO-031-BORDO-M",
@@ -4776,7 +4727,7 @@
                 "color": "bordo"
               },
               "price_minor": 22999,
-              "stock": 7
+              "stock": 31
             },
             {
               "sku": "CLO-031-BORDO-L",
@@ -4785,7 +4736,7 @@
                 "color": "bordo"
               },
               "price_minor": 22999,
-              "stock": 4
+              "stock": 39
             },
             {
               "sku": "CLO-031-BORDO-XL",
@@ -4794,7 +4745,7 @@
                 "color": "bordo"
               },
               "price_minor": 22999,
-              "stock": 15
+              "stock": 35
             }
           ],
           "reviews": [
@@ -4846,6 +4797,55 @@
               "title": "Cei mai buni colanți",
               "body": "Am încercat multe mărci, aceștia sunt cei mai confortabili.",
               "created_at": "2024-01-15T10:36:18Z"
+            },
+            {
+              "author_display_name": "Ioana G.",
+              "rating": 5,
+              "title": "Perfecți pentru yoga",
+              "body": "Fac yoga de trei ori pe săptămână și nu trebuie să-i ajustez la nicio poziție. Talia înaltă nu se rulează.",
+              "created_at": "2026-06-08T16:41:11Z"
+            },
+            {
+              "author_display_name": "Elena V.",
+              "rating": 4,
+              "title": "M pentru 68 kg",
+              "body": "Am 68 kg și 1,70 m și M mi se potrivește bine. Lungimea e puțin peste gleznă.",
+              "created_at": "2025-01-02T06:12:25Z"
+            },
+            {
+              "author_display_name": "Patricia D.",
+              "rating": 3,
+              "title": "Prea calzi vara",
+              "body": "La sală vara, pe 30 de grade, mi se par cam groși. Toamna și iarna sunt numai buni.",
+              "created_at": "2024-06-13T02:37:08Z"
+            },
+            {
+              "author_display_name": "Gabriela N.",
+              "rating": 5,
+              "title": "Arată bine și pe stradă",
+              "body": "Îi port și la cumpărături cu un hanorac lung. Negrul nu s-a decolorat după multe spălări.",
+              "created_at": "2025-06-30T09:20:00Z"
+            },
+            {
+              "author_display_name": "Monica R.",
+              "rating": 2,
+              "title": "Cusătura s-a desfăcut",
+              "body": "După patru luni s-a desfăcut cusătura de pe interiorul coapsei. Îi purtam de două ori pe săptămână.",
+              "created_at": "2026-07-24T16:27:33Z"
+            },
+            {
+              "author_display_name": "Adina F.",
+              "rating": 4,
+              "title": "Buzunarul e mic",
+              "body": "În buzunarul din brâu încape cheia, dar nu și un card de acces. În rest, foarte buni la alergare.",
+              "created_at": "2025-09-10T12:40:38Z"
+            },
+            {
+              "author_display_name": "Carmen Ș.",
+              "rating": 1,
+              "title": "Transparenți pe XS",
+              "body": "Pe XS țesătura se întinde atât de mult încât se vede lenjeria când mă aplec. Am făcut retur.",
+              "created_at": "2025-02-01T21:37:42Z"
             }
           ]
         },
@@ -4867,7 +4867,7 @@
                 "color": "negru"
               },
               "price_minor": 15999,
-              "stock": 12
+              "stock": 28
             },
             {
               "sku": "CLO-032-NEGRU-M",
@@ -4876,7 +4876,7 @@
                 "color": "negru"
               },
               "price_minor": 15999,
-              "stock": 25
+              "stock": 31
             },
             {
               "sku": "CLO-032-NEGRU-L",
@@ -4885,7 +4885,7 @@
                 "color": "negru"
               },
               "price_minor": 15999,
-              "stock": 31
+              "stock": 27
             },
             {
               "sku": "CLO-032-NEGRU-XL",
@@ -4894,7 +4894,7 @@
                 "color": "negru"
               },
               "price_minor": 15999,
-              "stock": 18
+              "stock": 22
             },
             {
               "sku": "CLO-032-KAKI-S",
@@ -4903,7 +4903,7 @@
                 "color": "verde kaki"
               },
               "price_minor": 15999,
-              "stock": 7
+              "stock": 24
             },
             {
               "sku": "CLO-032-KAKI-M",
@@ -4912,7 +4912,7 @@
                 "color": "verde kaki"
               },
               "price_minor": 15999,
-              "stock": 4
+              "stock": 40
             },
             {
               "sku": "CLO-032-KAKI-L",
@@ -4921,7 +4921,7 @@
                 "color": "verde kaki"
               },
               "price_minor": 15999,
-              "stock": 15
+              "stock": 42
             },
             {
               "sku": "CLO-032-KAKI-XL",
@@ -4934,13 +4934,6 @@
             }
           ],
           "reviews": [
-            {
-              "author_display_name": "Mădălina M.",
-              "rating": 4,
-              "title": "Practică",
-              "body": "O port peste hanorac în martie și aprilie, ține de cald cât trebuie.",
-              "created_at": "2025-08-23T18:28:13Z"
-            },
             {
               "author_display_name": "Ștefan D.",
               "rating": 3,
@@ -4968,13 +4961,6 @@
               "title": "Kaki arată bine",
               "body": "Culoarea kaki e caldă, merge cu blugi și cu chino.",
               "created_at": "2024-01-26T23:34:11Z"
-            },
-            {
-              "author_display_name": "Teodora G.",
-              "rating": 5,
-              "title": "Bună pentru plimbările cu câinele",
-              "body": "Dimineața devreme o iau peste pijama și hanorac, e exact cât trebuie.",
-              "created_at": "2024-10-04T20:08:52Z"
             }
           ],
           "fixture": "missing_attribute"
@@ -4999,7 +4985,7 @@
                 "color": "bej"
               },
               "price_minor": 32999,
-              "stock": 18
+              "stock": 34
             },
             {
               "sku": "CLO-033-BEJ-M",
@@ -5008,7 +4994,7 @@
                 "color": "bej"
               },
               "price_minor": 32999,
-              "stock": 7
+              "stock": 55
             },
             {
               "sku": "CLO-033-BEJ-L",
@@ -5017,7 +5003,7 @@
                 "color": "bej"
               },
               "price_minor": 32999,
-              "stock": 4
+              "stock": 56
             },
             {
               "sku": "CLO-033-BEJ-XL",
@@ -5026,7 +5012,7 @@
                 "color": "bej"
               },
               "price_minor": 32999,
-              "stock": 15
+              "stock": 26
             },
             {
               "sku": "CLO-033-GRI-S",
@@ -5035,7 +5021,7 @@
                 "color": "gri"
               },
               "price_minor": 32999,
-              "stock": 22
+              "stock": 42
             },
             {
               "sku": "CLO-033-GRI-M",
@@ -5044,7 +5030,7 @@
                 "color": "gri"
               },
               "price_minor": 32999,
-              "stock": 9
+              "stock": 29
             },
             {
               "sku": "CLO-033-GRI-L",
@@ -5053,7 +5039,7 @@
                 "color": "gri"
               },
               "price_minor": 32999,
-              "stock": 3
+              "stock": 29
             },
             {
               "sku": "CLO-033-GRI-XL",
@@ -5062,7 +5048,7 @@
                 "color": "gri"
               },
               "price_minor": 32999,
-              "stock": 27
+              "stock": 23
             }
           ],
           "reviews": [
@@ -5072,13 +5058,6 @@
               "title": "Ideali pentru munte",
               "body": "Dimineața lungi, la prânz scurți. Am făcut Piatra Craiului cu ei.",
               "created_at": "2026-09-29T10:05:08Z"
-            },
-            {
-              "author_display_name": "Tudor B.",
-              "rating": 4,
-              "title": "Se usucă repede",
-              "body": "Am traversat un pârâu și în jumătate de oră erau uscați.",
-              "created_at": "2025-02-27T07:33:34Z"
             },
             {
               "author_display_name": "Elena S.",
@@ -5135,7 +5114,7 @@
                 "color": "negru"
               },
               "price_minor": 14999,
-              "stock": 15
+              "stock": 45
             },
             {
               "sku": "CLO-034-BLEUMARIN-UNIC",
@@ -5144,7 +5123,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 14999,
-              "stock": 22
+              "stock": 52
             },
             {
               "sku": "CLO-034-MUSTAR-UNIC",
@@ -5153,7 +5132,7 @@
                 "color": "galben muștar"
               },
               "price_minor": 14999,
-              "stock": 9
+              "stock": 22
             }
           ],
           "reviews": [
@@ -5163,13 +5142,6 @@
               "title": "Caldă și nu mâncărime",
               "body": "Banda de fleece de pe interior face toată diferența, lâna mă irită de obicei.",
               "created_at": "2024-02-28T16:38:53Z"
-            },
-            {
-              "author_display_name": "Roxana B.",
-              "rating": 4,
-              "title": "Mărime unică ok",
-              "body": "Am cap mare (60 cm) și încape fără să strângă.",
-              "created_at": "2024-05-27T20:01:01Z"
             },
             {
               "author_display_name": "Roxana V.",
@@ -5186,13 +5158,6 @@
               "created_at": "2024-12-24T20:51:26Z"
             },
             {
-              "author_display_name": "Mihai C.",
-              "rating": 5,
-              "title": "Spălată de mână",
-              "body": "Am spălat-o de mână cu apă rece și am uscat-o pe un prosop. Nu s-a lărgit.",
-              "created_at": "2025-05-21T12:12:34Z"
-            },
-            {
               "author_display_name": "Teodora R.",
               "rating": 2,
               "title": "S-a lărgit",
@@ -5205,13 +5170,6 @@
               "title": "Cadou de Crăciun",
               "body": "Am luat trei, pentru toată familia. Toți o poartă.",
               "created_at": "2025-12-11T22:50:08Z"
-            },
-            {
-              "author_display_name": "Ciprian C.",
-              "rating": 4,
-              "title": "Ține urechile la cald",
-              "body": "Pe vânt la malul mării, manșeta întoarsă a acoperit bine urechile.",
-              "created_at": "2025-06-19T16:11:31Z"
             }
           ]
         },
@@ -5234,7 +5192,7 @@
                 "color": "albastru deschis"
               },
               "price_minor": 24999,
-              "stock": 3
+              "stock": 13
             },
             {
               "sku": "CLO-035-ALBDESCHIS-M",
@@ -5243,7 +5201,7 @@
                 "color": "albastru deschis"
               },
               "price_minor": 24999,
-              "stock": 27
+              "stock": 24
             },
             {
               "sku": "CLO-035-ALBDESCHIS-L",
@@ -5252,7 +5210,7 @@
                 "color": "albastru deschis"
               },
               "price_minor": 24999,
-              "stock": 11
+              "stock": 16
             },
             {
               "sku": "CLO-035-ALBDESCHIS-XL",
@@ -5261,7 +5219,7 @@
                 "color": "albastru deschis"
               },
               "price_minor": 24999,
-              "stock": 8
+              "stock": 3
             },
             {
               "sku": "CLO-035-INDIGO-S",
@@ -5270,7 +5228,7 @@
                 "color": "albastru indigo"
               },
               "price_minor": 24999,
-              "stock": 14
+              "stock": 11
             },
             {
               "sku": "CLO-035-INDIGO-M",
@@ -5279,7 +5237,7 @@
                 "color": "albastru indigo"
               },
               "price_minor": 24999,
-              "stock": 6
+              "stock": 14
             },
             {
               "sku": "CLO-035-INDIGO-L",
@@ -5288,7 +5246,7 @@
                 "color": "albastru indigo"
               },
               "price_minor": 24999,
-              "stock": 19
+              "stock": 20
             },
             {
               "sku": "CLO-035-INDIGO-XL",
@@ -5297,7 +5255,7 @@
                 "color": "albastru indigo"
               },
               "price_minor": 24999,
-              "stock": 12
+              "stock": 10
             }
           ],
           "reviews": [
@@ -5321,20 +5279,6 @@
               "title": "Mânecile sunt scurte",
               "body": "La XL mânecile sunt un pic scurte pentru brațe lungi.",
               "created_at": "2024-03-18T09:39:10Z"
-            },
-            {
-              "author_display_name": "Simona G.",
-              "rating": 4,
-              "title": "Indigo adevărat",
-              "body": "Indigoul e un albastru închis, exact ce înțeleg prin indigo.",
-              "created_at": "2026-03-11T22:12:22Z"
-            },
-            {
-              "author_display_name": "Mădălina A.",
-              "rating": 5,
-              "title": "Capsele nu se desfac",
-              "body": "Spre deosebire de alte cămăși cu capse, acestea țin bine închise.",
-              "created_at": "2025-04-22T06:51:25Z"
             },
             {
               "author_display_name": "Adrian I.",
@@ -5373,7 +5317,7 @@
                 "color": "gri melanj"
               },
               "price_minor": 22999,
-              "stock": 14
+              "stock": 49
             },
             {
               "sku": "CLO-036-GRIMEL-L",
@@ -5382,7 +5326,7 @@
                 "color": "gri melanj"
               },
               "price_minor": 22999,
-              "stock": 6
+              "stock": 17
             },
             {
               "sku": "CLO-036-GRIMEL-XL",
@@ -5391,7 +5335,7 @@
                 "color": "gri melanj"
               },
               "price_minor": 22999,
-              "stock": 19
+              "stock": 14
             },
             {
               "sku": "CLO-036-BLEUMARIN-S",
@@ -5400,7 +5344,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 22999,
-              "stock": 12
+              "stock": 16
             },
             {
               "sku": "CLO-036-BLEUMARIN-M",
@@ -5409,7 +5353,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 22999,
-              "stock": 25
+              "stock": 29
             },
             {
               "sku": "CLO-036-BLEUMARIN-L",
@@ -5418,7 +5362,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 22999,
-              "stock": 31
+              "stock": 25
             },
             {
               "sku": "CLO-036-BLEUMARIN-XL",
@@ -5436,7 +5380,7 @@
                 "color": "verde"
               },
               "price_minor": 22999,
-              "stock": 7
+              "stock": 30
             },
             {
               "sku": "CLO-036-VERDE-M",
@@ -5445,7 +5389,7 @@
                 "color": "verde"
               },
               "price_minor": 22999,
-              "stock": 4
+              "stock": 23
             },
             {
               "sku": "CLO-036-VERDE-L",
@@ -5454,7 +5398,7 @@
                 "color": "verde"
               },
               "price_minor": 22999,
-              "stock": 15
+              "stock": 37
             },
             {
               "sku": "CLO-036-VERDE-XL",
@@ -5463,7 +5407,7 @@
                 "color": "verde"
               },
               "price_minor": 22999,
-              "stock": 22
+              "stock": 21
             }
           ],
           "reviews": [
@@ -5503,7 +5447,7 @@
               "created_at": "2026-08-21T16:57:14Z"
             },
             {
-              "author_display_name": "Bianca I.",
+              "author_display_name": "Cosmin I.",
               "rating": 3,
               "title": "Logo-ul brodat e mic",
               "body": "Mi-ar fi plăcut ca logo-ul să fie puțin mai vizibil, abia se vede.",
@@ -5530,7 +5474,7 @@
                 "color": "negru"
               },
               "price_minor": 16999,
-              "stock": 19
+              "stock": 10
             },
             {
               "sku": "CLO-037-NEGRU-S",
@@ -5539,7 +5483,7 @@
                 "color": "negru"
               },
               "price_minor": 16999,
-              "stock": 12
+              "stock": 19
             },
             {
               "sku": "CLO-037-NEGRU-M",
@@ -5548,7 +5492,7 @@
                 "color": "negru"
               },
               "price_minor": 16999,
-              "stock": 25
+              "stock": 15
             },
             {
               "sku": "CLO-037-NEGRU-L",
@@ -5557,7 +5501,7 @@
                 "color": "negru"
               },
               "price_minor": 16999,
-              "stock": 31
+              "stock": 15
             },
             {
               "sku": "CLO-037-GRIMEL-XS",
@@ -5566,7 +5510,7 @@
                 "color": "gri melanj"
               },
               "price_minor": 16999,
-              "stock": 18
+              "stock": 9
             },
             {
               "sku": "CLO-037-GRIMEL-S",
@@ -5575,7 +5519,7 @@
                 "color": "gri melanj"
               },
               "price_minor": 16999,
-              "stock": 7
+              "stock": 22
             },
             {
               "sku": "CLO-037-GRIMEL-M",
@@ -5584,7 +5528,7 @@
                 "color": "gri melanj"
               },
               "price_minor": 16999,
-              "stock": 4
+              "stock": 17
             },
             {
               "sku": "CLO-037-GRIMEL-L",
@@ -5593,7 +5537,7 @@
                 "color": "gri melanj"
               },
               "price_minor": 16999,
-              "stock": 15
+              "stock": 14
             },
             {
               "sku": "CLO-037-ALB-XS",
@@ -5602,7 +5546,7 @@
                 "color": "alb"
               },
               "price_minor": 16999,
-              "stock": 22
+              "stock": 10
             },
             {
               "sku": "CLO-037-ALB-S",
@@ -5611,7 +5555,7 @@
                 "color": "alb"
               },
               "price_minor": 16999,
-              "stock": 9
+              "stock": 14
             },
             {
               "sku": "CLO-037-ALB-M",
@@ -5620,7 +5564,7 @@
                 "color": "alb"
               },
               "price_minor": 16999,
-              "stock": 3
+              "stock": 14
             },
             {
               "sku": "CLO-037-ALB-L",
@@ -5674,6 +5618,48 @@
               "title": "Arată bine sub cămașă descheiată",
               "body": "Brâul cu logo vizibil arată bine sub o cămașă lejeră.",
               "created_at": "2024-01-01T17:04:42Z"
+            },
+            {
+              "author_display_name": "Larisa M.",
+              "rating": 5,
+              "title": "Cea mai comodă pentru acasă",
+              "body": "Lucrez de acasă și o port toată ziua. Nu are nimic care să apese sau să zgârie.",
+              "created_at": "2026-03-27T19:37:05Z"
+            },
+            {
+              "author_display_name": "Anca D.",
+              "rating": 4,
+              "title": "Gri melanj frumos",
+              "body": "Am luat gri melanj și arată bine și după multe spălări în săculeț. Brâul e puțin strâns pe XS.",
+              "created_at": "2025-07-22T04:24:40Z"
+            },
+            {
+              "author_display_name": "Florentina P.",
+              "rating": 3,
+              "title": "Prea subțire pe M",
+              "body": "Pe M materialul e moale, dar se întinde mult pe bust și nu ține nimic. Pentru dormit e bună.",
+              "created_at": "2025-02-08T06:53:19Z"
+            },
+            {
+              "author_display_name": "Iulia D.",
+              "rating": 5,
+              "title": "Bună la pilates",
+              "body": "Merg la pilates de două ori pe săptămână și nu trebuie s-o trag la loc. Spatele în U nu se vede de sub maiou.",
+              "created_at": "2024-02-26T14:41:40Z"
+            },
+            {
+              "author_display_name": "Sorina T.",
+              "rating": 2,
+              "title": "S-a scămoșat",
+              "body": "După trei luni materialul s-a scămoșat pe părți, unde se freacă de brațe.",
+              "created_at": "2025-10-08T23:13:40Z"
+            },
+            {
+              "author_display_name": "Denisa C.",
+              "rating": 4,
+              "title": "Mărime fidelă",
+              "body": "Port S la bluze și S e potrivit și aici. Brâul nu se rulează dacă o port la pantaloni cu talie înaltă.",
+              "created_at": "2025-04-05T00:21:39Z"
             }
           ]
         },
@@ -5696,7 +5682,7 @@
                 "color": "negru"
               },
               "price_minor": 49999,
-              "stock": 31
+              "stock": 8
             },
             {
               "sku": "CLO-038-NEGRU-S",
@@ -5705,7 +5691,7 @@
                 "color": "negru"
               },
               "price_minor": 49999,
-              "stock": 18
+              "stock": 24
             },
             {
               "sku": "CLO-038-NEGRU-M",
@@ -5714,7 +5700,7 @@
                 "color": "negru"
               },
               "price_minor": 49999,
-              "stock": 7
+              "stock": 26
             },
             {
               "sku": "CLO-038-NEGRU-L",
@@ -5723,7 +5709,7 @@
                 "color": "negru"
               },
               "price_minor": 49999,
-              "stock": 4
+              "stock": 33
             },
             {
               "sku": "CLO-038-NEGRU-XL",
@@ -5732,7 +5718,7 @@
                 "color": "negru"
               },
               "price_minor": 49999,
-              "stock": 15
+              "stock": 25
             },
             {
               "sku": "CLO-038-MOV-XS",
@@ -5741,7 +5727,7 @@
                 "color": "mov"
               },
               "price_minor": 49999,
-              "stock": 22
+              "stock": 15
             },
             {
               "sku": "CLO-038-MOV-S",
@@ -5750,7 +5736,7 @@
                 "color": "mov"
               },
               "price_minor": 49999,
-              "stock": 9
+              "stock": 20
             },
             {
               "sku": "CLO-038-MOV-M",
@@ -5759,7 +5745,7 @@
                 "color": "mov"
               },
               "price_minor": 49999,
-              "stock": 3
+              "stock": 41
             },
             {
               "sku": "CLO-038-MOV-L",
@@ -5768,7 +5754,7 @@
                 "color": "mov"
               },
               "price_minor": 49999,
-              "stock": 27
+              "stock": 29
             },
             {
               "sku": "CLO-038-MOV-XL",
@@ -5777,7 +5763,7 @@
                 "color": "mov"
               },
               "price_minor": 49999,
-              "stock": 11
+              "stock": 13
             },
             {
               "sku": "CLO-038-CREM-XS",
@@ -5786,7 +5772,7 @@
                 "color": "crem"
               },
               "price_minor": 49999,
-              "stock": 8
+              "stock": 16
             },
             {
               "sku": "CLO-038-CREM-S",
@@ -5795,7 +5781,7 @@
                 "color": "crem"
               },
               "price_minor": 49999,
-              "stock": 14
+              "stock": 36
             },
             {
               "sku": "CLO-038-CREM-M",
@@ -5804,7 +5790,7 @@
                 "color": "crem"
               },
               "price_minor": 49999,
-              "stock": 6
+              "stock": 22
             },
             {
               "sku": "CLO-038-CREM-L",
@@ -5813,7 +5799,7 @@
                 "color": "crem"
               },
               "price_minor": 49999,
-              "stock": 19
+              "stock": 20
             },
             {
               "sku": "CLO-038-CREM-XL",
@@ -5822,7 +5808,7 @@
                 "color": "crem"
               },
               "price_minor": 49999,
-              "stock": 12
+              "stock": 2
             }
           ],
           "reviews": [
@@ -5832,13 +5818,6 @@
               "title": "Ușoară și caldă",
               "body": "Am luat-o pentru o excursie în Norvegia, s-a pliat în rucsac și m-a salvat seara.",
               "created_at": "2024-06-24T12:31:49Z"
-            },
-            {
-              "author_display_name": "Larisa I.",
-              "rating": 4,
-              "title": "M pentru 1,70 m",
-              "body": "Am 1,70 m și port M, mânecile au lungimea potrivită.",
-              "created_at": "2024-08-20T11:40:24Z"
             },
             {
               "author_display_name": "Alexandru N.",
@@ -5860,13 +5839,6 @@
               "title": "Iese puful",
               "body": "Ies fulgi mici prin cusături, iar pe hainele negre se vede.",
               "created_at": "2024-03-05T01:37:28Z"
-            },
-            {
-              "author_display_name": "Cristian Ș.",
-              "rating": 4,
-              "title": "Săculețul e practic",
-              "body": "Se pliază în săculeț cât o sticlă de apă de 0,5 l.",
-              "created_at": "2025-02-17T00:16:28Z"
             },
             {
               "author_display_name": "Elena M.",
@@ -5903,7 +5875,7 @@
                 "color": "negru"
               },
               "price_minor": 6999,
-              "stock": 4
+              "stock": 30
             },
             {
               "sku": "CLO-039-NEGRU-40-44",
@@ -5912,7 +5884,7 @@
                 "color": "negru"
               },
               "price_minor": 6999,
-              "stock": 15
+              "stock": 37
             },
             {
               "sku": "CLO-039-NEGRU-44-47",
@@ -5921,7 +5893,7 @@
                 "color": "negru"
               },
               "price_minor": 6999,
-              "stock": 22
+              "stock": 32
             },
             {
               "sku": "CLO-039-ALB-36-40",
@@ -5930,7 +5902,7 @@
                 "color": "alb"
               },
               "price_minor": 6999,
-              "stock": 9
+              "stock": 27
             },
             {
               "sku": "CLO-039-ALB-40-44",
@@ -5939,7 +5911,7 @@
                 "color": "alb"
               },
               "price_minor": 6999,
-              "stock": 3
+              "stock": 31
             },
             {
               "sku": "CLO-039-ALB-44-47",
@@ -5948,7 +5920,7 @@
                 "color": "alb"
               },
               "price_minor": 6999,
-              "stock": 27
+              "stock": 35
             }
           ],
           "reviews": [
@@ -6000,6 +5972,20 @@
               "title": "Elasticul slăbește",
               "body": "După jumătate de an elasticul de la gleznă e moale și șosetele se strâng în pantof.",
               "created_at": "2026-03-16T16:41:20Z"
+            },
+            {
+              "author_display_name": "Ovidiu M.",
+              "rating": 5,
+              "title": "Bune la fotbal",
+              "body": "Le port la fotbal de două ori pe săptămână, sub jambiere. Nu alunecă și nu fac bășici.",
+              "created_at": "2024-02-13T16:47:09Z"
+            },
+            {
+              "author_display_name": "Raluca N.",
+              "rating": 3,
+              "title": "Mărimea mică e la limită",
+              "body": "Port 40 și 36–40 abia acoperă călcâiul, iar 40–44 e mare. Ar trebui o mărime intermediară.",
+              "created_at": "2024-10-02T01:12:40Z"
             }
           ]
         },
@@ -6022,7 +6008,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 54999,
-              "stock": 9
+              "stock": 7
             },
             {
               "sku": "CLO-040-BLEUMARIN-M",
@@ -6031,7 +6017,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 54999,
-              "stock": 3
+              "stock": 2
             },
             {
               "sku": "CLO-040-BLEUMARIN-L",
@@ -6040,7 +6026,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 54999,
-              "stock": 27
+              "stock": 10
             },
             {
               "sku": "CLO-040-BLEUMARIN-XL",
@@ -6049,7 +6035,7 @@
                 "color": "bleumarin"
               },
               "price_minor": 54999,
-              "stock": 11
+              "stock": 10
             },
             {
               "sku": "CLO-040-BLEUMARIN-XXL",
@@ -6067,7 +6053,7 @@
                 "color": "crem"
               },
               "price_minor": 54999,
-              "stock": 14
+              "stock": 7
             },
             {
               "sku": "CLO-040-CREM-M",
@@ -6076,7 +6062,7 @@
                 "color": "crem"
               },
               "price_minor": 54999,
-              "stock": 6
+              "stock": 9
             },
             {
               "sku": "CLO-040-CREM-L",
@@ -6085,7 +6071,7 @@
                 "color": "crem"
               },
               "price_minor": 54999,
-              "stock": 19
+              "stock": 10
             },
             {
               "sku": "CLO-040-CREM-XL",
@@ -6094,7 +6080,7 @@
                 "color": "crem"
               },
               "price_minor": 54999,
-              "stock": 12
+              "stock": 2
             },
             {
               "sku": "CLO-040-CREM-XXL",
@@ -6103,7 +6089,7 @@
                 "color": "crem"
               },
               "price_minor": 54999,
-              "stock": 25
+              "stock": 4
             },
             {
               "sku": "CLO-040-BORDO-S",
@@ -6112,7 +6098,7 @@
                 "color": "bordo"
               },
               "price_minor": 54999,
-              "stock": 31
+              "stock": 7
             },
             {
               "sku": "CLO-040-BORDO-M",
@@ -6121,7 +6107,7 @@
                 "color": "bordo"
               },
               "price_minor": 54999,
-              "stock": 18
+              "stock": 16
             },
             {
               "sku": "CLO-040-BORDO-L",
@@ -6130,7 +6116,7 @@
                 "color": "bordo"
               },
               "price_minor": 54999,
-              "stock": 7
+              "stock": 6
             },
             {
               "sku": "CLO-040-BORDO-XL",
@@ -6139,7 +6125,7 @@
                 "color": "bordo"
               },
               "price_minor": 54999,
-              "stock": 4
+              "stock": 8
             },
             {
               "sku": "CLO-040-BORDO-XXL",
@@ -6148,7 +6134,7 @@
                 "color": "bordo"
               },
               "price_minor": 54999,
-              "stock": 15
+              "stock": 4
             }
           ],
           "reviews": [
@@ -6158,13 +6144,6 @@
               "title": "Extrem de moale",
               "body": "Cașmirul se simte, e foarte moale și nu înțeapă deloc.",
               "created_at": "2025-04-18T07:36:01Z"
-            },
-            {
-              "author_display_name": "Cătălin Ș.",
-              "rating": 4,
-              "title": "Perfect la birou",
-              "body": "Peste o cămașă albă arată foarte bine la birou.",
-              "created_at": "2024-12-30T23:30:37Z"
             },
             {
               "author_display_name": "Andreea V.",
@@ -6188,32 +6167,11 @@
               "created_at": "2025-04-19T23:46:42Z"
             },
             {
-              "author_display_name": "Vlad S.",
-              "rating": 4,
-              "title": "Puțin scurt pe trunchi",
-              "body": "Port L și e potrivit, dar e puțin scurt dacă ai trunchi lung.",
-              "created_at": "2024-09-28T20:04:54Z"
-            },
-            {
-              "author_display_name": "Oana D.",
-              "rating": 5,
-              "title": "Crem perfect",
-              "body": "Nuanța crem e caldă și elegantă, exact ce căutam.",
-              "created_at": "2025-08-09T04:04:49Z"
-            },
-            {
               "author_display_name": "Diana V.",
               "rating": 4,
               "title": "Cadou",
               "body": "I l-am cumpărat soțului de ziua lui și îl poartă des.",
               "created_at": "2025-07-31T09:57:41Z"
-            },
-            {
-              "author_display_name": "Tudor I.",
-              "rating": 5,
-              "title": "Două ierni fără deformări",
-              "body": "L-am purtat două ierni și nu s-a deformat la gât.",
-              "created_at": "2026-03-22T05:49:05Z"
             }
           ]
         }
