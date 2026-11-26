@@ -1,0 +1,72 @@
+{
+  "users": [
+    {
+      "email": "admin@example.com",
+      "role": "admin",
+      "addresses": [],
+      "preferences": null
+    },
+    {
+      "email": "customer1@example.com",
+      "role": "customer",
+      "addresses": [
+        {
+          "label": "Acasă",
+          "full_name": "Elena Dobre",
+          "phone": "0700 000 001",
+          "street": "Strada Teilor nr. 14, ap. 5",
+          "city": "Cluj-Napoca",
+          "county": "Cluj",
+          "postal_code": "400123",
+          "is_default": true
+        },
+        {
+          "label": "Birou",
+          "full_name": "Elena Dobre",
+          "phone": "0700 000 002",
+          "street": "Bulevardul Eroilor nr. 27, etaj 2",
+          "city": "Cluj-Napoca",
+          "county": "Cluj",
+          "postal_code": "400129",
+          "is_default": false
+        }
+      ],
+      "preferences": {
+        "sizes": {
+          "clothing": "M"
+        },
+        "preferred_brands": [
+          "Nike",
+          "Nivea"
+        ]
+      }
+    },
+    {
+      "email": "customer2@example.com",
+      "role": "customer",
+      "addresses": [
+        {
+          "label": "Părinți",
+          "full_name": "Andrei Stan",
+          "phone": "0700 000 003",
+          "street": "Strada Morii nr. 45",
+          "city": "Brașov",
+          "county": "Brașov",
+          "postal_code": "500152",
+          "is_default": false
+        },
+        {
+          "label": "Acasă",
+          "full_name": "Andrei Stan",
+          "phone": "0700 000 004",
+          "street": "Strada Lalelelor nr. 8, bl. A2, ap. 14",
+          "city": "București",
+          "county": "București",
+          "postal_code": "030167",
+          "is_default": true
+        }
+      ],
+      "preferences": null
+    }
+  ]
+}

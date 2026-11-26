@@ -1,0 +1,34 @@
+{
+  "store": {
+    "name": "Shopy",
+    "currency": "RON"
+  },
+  "policies": [
+    {
+      "kind": "shipping",
+      "title": "Livrare",
+      "body": "Livrăm prin curier în toată România. Livrarea costă 19,99 lei pentru comenzile sub 200 lei și este gratuită pentru comenzile de cel puțin 200 lei. Coletul ajunge, de regulă, în 2–4 zile lucrătoare de la plasarea comenzii."
+    },
+    {
+      "kind": "returns",
+      "title": "Retur",
+      "body": "Poți returna produsele în termen de 14 zile de la primire, fără să ne spui motivul. Produsele trebuie să fie nefolosite, în ambalajul original și cu etichetele intacte. Îți returnăm banii pe cardul cu care ai plătit, în cel mult 14 zile de la primirea returului."
+    },
+    {
+      "kind": "warranty",
+      "title": "Garanție",
+      "body": "Toate produsele au garanția legală de conformitate de 2 ani de la livrare. Dacă un produs nu funcționează cum ar trebui în această perioadă, scrie-ne și îl reparăm, îl înlocuim sau îți returnăm banii, conform legii."
+    },
+    {
+      "kind": "payment",
+      "title": "Plată",
+      "body": "Plata se face doar online, cu cardul, în momentul plasării comenzii. Nu acceptăm plata ramburs la livrare și nici transferul bancar."
+    },
+    {
+      "kind": "size_guide",
+      "title": "Ghid de mărimi",
+      "body": "Mărimile la îmbrăcăminte, după circumferința bustului și a taliei (în cm): XS – bust 80–84, talie 62–66; S – bust 85–89, talie 67–71; M – bust 90–95, talie 72–77; L – bust 96–101, talie 78–83; XL – bust 102–107, talie 84–89; XXL – bust 108–113, talie 90–95. Dacă ești între două mărimi, alege mărimea mai mare. Croiala diferă ușor de la o marcă la alta, așa că verifică și descrierea produsului."
+    }
+  ],
+  "categories": []
+}
