@@ -101,15 +101,18 @@ python3 docs/agents/tools/ledger-lint.py            # --fix rebuilds indexes, --
 uvx pre-commit install                              # once per clone: gitleaks on every commit
 uvx pre-commit run --all-files                      # gitleaks over the working tree
 PREFIX=GH python3 .github/scripts/team-checks.py --branch <branch> --base main
-# Planned: make seed (P1), python evals/run_evals.py (P3, manual only); screenshots: Q-009
+cd backend && uv run python -m seed.validate_catalog    # checks seed/catalog.json and seed/users.json (also in CI)
+make seed                                           # loads the demo store and accounts; needs SEED_* in .env, a built and migrated api (docker compose up --build); safe to rerun
+# Planned: python evals/run_evals.py (P3, manual only); screenshots: Q-009
 ```
 
 ## 3. Layout
 Layout from brief §6. P0 skeleton exists (`backend/` app, worker, tests; `web/` shell;
 `docker-compose.yml`, `docker/db/init/`); P1a adds the database layer (GH-3); P1b adds
-authentication and roles (GH-4); the other folders arrive with their phases.
+authentication and roles (GH-4); P1c adds the catalog and seed (GH-5); the other
+folders arrive with their phases.
 - `shopy_brief.md` — the project brief (the brief's §6 layout calls it `PROJECT_BRIEF.md`; this name is kept).
-- `backend/` — FastAPI app (`app/`; models in `app/models/`, engine and `get_session` in `app/db.py`, routers in `app/api/`, auth in `app/auth/`, Pydantic bodies in `app/schemas/`, the error envelope in `app/errors.py`), `worker/`, Alembic `migrations/` (`alembic.ini`), `seed/`, `tests/`.
+- `backend/` — FastAPI app (`app/`; models in `app/models/`, engine and `get_session` in `app/db.py`, routers in `app/api/`, auth in `app/auth/`, Pydantic bodies in `app/schemas/`, the error envelope in `app/errors.py`), `worker/`, Alembic `migrations/` (`alembic.ini`), `seed/` (`catalog.json` and `users.json`, their Pydantic formats in `schema.py`, `validate_catalog.py`, the loader `seed.py`), `tests/`.
 - `web/` — React PWA: `/app` (customer) and `/admin`.
 - `evals/` — real-LLM scenarios (manual).
 - `docs/agents/` — the ledger; `docs/design/` — design rules and mocks; `docs/API.md` — REST and WebSocket examples.
