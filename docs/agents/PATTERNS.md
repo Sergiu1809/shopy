@@ -109,6 +109,7 @@ then.
 
 ## PATTERN-010 · Indexed changes enqueue in the same transaction
 - **Status:** approved
+- **Confirmed:** 2026-11-26
 - **Use when:** changing a product, its descriptive variant attributes, its reviews or a policy.
 - **How:** insert one `reindex_outbox` row for that source in the same transaction as the change; never call the embedding API from a request handler. Price and stock changes enqueue nothing.
 - **Example:** `shopy_brief.md` §11 (no code yet)
@@ -143,6 +144,7 @@ then.
 
 ## PATTERN-014 · Schema changes: models, one reviewed revision, drift test
 - **Status:** candidate
+- **Confirmed:** 2026-11-26
 - **Use when:** adding or changing a table, column, constraint or index.
 - **How:** change the models in `backend/app/models/` first; then `alembic revision --autogenerate` and review the revision by hand (extensions, constraint names, `server_default`, `ondelete`, downgrade order). `bigint` identity keys (D-024); `text` + a CHECK instead of native ENUMs; names come from the `Base` naming convention; every foreign key column leads an index. `tests/test_migrations.py::test_models_match_migration` (drift) must stay green.
 - **Example:** `backend/app/models/base.py`, `backend/migrations/versions/0001_initial_schema.py`, `backend/tests/test_migrations.py`
@@ -160,6 +162,7 @@ then.
 
 ## PATTERN-016 · Catalog attributes: one JSON type per key, whole units
 - **Status:** candidate
+- **Confirmed:** 2026-11-26
 - **Use when:** adding or editing product or variant `attributes` in `backend/seed/catalog.json` (and later, admin-edited attributes).
 - **How:** an attribute key has the same JSON type in every product. English snake_case keys that name the unit (`capacity_ml`, `power_w`, `width_cm`). No decimal strings: use a smaller whole unit (`capacity_ml: 1700`, `power_mw: 4200`). Ranges become two ints (`width_min_cm`, `width_max_cm`). Multi-valued keys are always lists (`surface`, `connectivity`). Booleans stay booleans; descriptive text goes in its own key (`lid: true`, `lid_material: "…"`). Values in Romanian.
 - **Example:** `backend/seed/catalog.json` (ELE-001 `capacity_ml`, HOM-038 `width_min_cm`/`width_max_cm`, LAU-017 `surface` + `washing_method`)

@@ -64,26 +64,28 @@ Ticket: https://github.com/Sergiu1809/shopy/issues/6
   - Schemas: `backend/app/schemas/` (only `auth.py` today). Reusable shapes: `backend/seed/schema.py` (`Key`, `Sku`, `AttributeValue`, `Text`).
   - Tests: `backend/tests/conftest.py` (`client_factory`, `make_user`, `auth_header`), `backend/tests/test_admin_access.py`.
   - Docs: `docs/API.md`.
-- **Ownership:** integration owner: conductor · one builder
-- **Verify with:** `cd backend && uv run ruff check . && uv run ruff format --check . && uv run mypy . && uv run pytest`; `python3 docs/agents/tools/ledger-lint.py`
+  - Planned (PLAN.md): routes in `backend/app/api/admin.py`; bodies, responses and the shared field types (moved from `seed/schema.py`, which then imports them) in a new `backend/app/schemas/catalog.py`; tests in a new `backend/tests/test_admin_products.py`; `test_admin_access.py` unchanged (its matrix enumerates the routes). Nearest example: `register` in `backend/app/api/auth.py` (body model, `IntegrityError` → 409).
+- **Ownership:** integration owner: conductor · test author (`backend/tests/test_admin_products.py`) → one builder (all other files; the parts share `app/schemas/catalog.py` and `app/api/admin.py`, so no parallel workers)
+- **Verify with:** `cd backend && uv run ruff check . && uv run ruff format --check . && uv run mypy . && uv run pytest` (Docker needed; quick loop: `uv run pytest tests/test_admin_products.py tests/test_admin_access.py tests/test_seed_validate.py`); `cd backend && uv run python -m seed.validate_catalog` (the type move touches `seed/schema.py`); `python3 docs/agents/tools/ledger-lint.py`
 
 ## Resume here ⏯
-Gate A done (2026-11-26); branch and draft PR #12 open, links on GH-6. Next: `/plan` (planner) for gate B.
+Gate B approved (2026-11-26, plan as written, A1–A8). Next: test author writes `test_admin_products.py` (red), then one builder.
 
 ## Summary of work so far
 - 2026-11-26 — Product owner coverage report; gate A answered (all recommendations accepted); Q-017 recorded.
 
 ## Approach
-<Planner: PLAN.md and TESTS.md.>
+See `PLAN.md` (awaiting gate B): routes on the existing `/admin` router; shared field types moved from `seed/schema.py` to `app/schemas/catalog.py`; versions by row lock + diff + `version = version + 1`; SKU 409 from the unique constraint. TESTS.md: test author, after gate B.
 
 ## Cumulative file manifest 📁
 | Action | Path | Purpose / what changed |
 |---|---|---|
 | modified | docs/agents/OPEN-QUESTIONS.md | Q-017 (archive or 409 once P4 references variants) |
 | added | docs/agents/tasks/GH-6/OVERVIEW.md | this file |
+| added | docs/agents/tasks/GH-6/PLAN.md | the plan for gate B |
 
 ## Manual verification 🔧
-none yet: the planner decides (API only; automated tests cover the AC).
+none: API only, no manual-test path; every point is automated except the `docs/API.md` review at gate C.
 
 ## Decisions log 🧭
 - **2026-11-26 — Hard delete, no migration; the last variant may be deleted** — Why: matches the AC and the current schema; no table references a variant yet. Rejected: soft delete (migration plus unspecified read-path filtering); 409 on reference (moot until P4). Follow-up: Q-017. (gate A Q1)
