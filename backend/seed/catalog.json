@@ -4771,14 +4771,14 @@
               "created_at": "2024-03-12T12:02:53Z"
             },
             {
-              "author_display_name": "Tudor V.",
+              "author_display_name": "Simona V.",
               "rating": 3,
               "title": "Fac scame între coapse",
               "body": "După câteva luni au apărut scame pe interiorul coapselor.",
               "created_at": "2025-03-04T21:40:28Z"
             },
             {
-              "author_display_name": "Tudor I.",
+              "author_display_name": "Diana I.",
               "rating": 4,
               "title": "Buzunarul e util",
               "body": "Buzunarul din talie ține cheia de la vestiar.",
@@ -5599,7 +5599,7 @@
               "created_at": "2024-01-29T16:07:48Z"
             },
             {
-              "author_display_name": "Remus D.",
+              "author_display_name": "Oana D.",
               "rating": 5,
               "title": "Albul nu s-a îngălbenit",
               "body": "O spăl în săculeț la 30 de grade și arată ca nouă după un an.",
@@ -9268,7 +9268,8 @@
           "attributes": {
             "type": "lavete",
             "material": "microfibră",
-            "size_cm": "30 × 30",
+            "width_cm": 30,
+            "length_cm": 30,
             "machine_washable": true,
             "max_wash_temperature_c": 60
           },
@@ -10971,7 +10972,7 @@
               "created_at": "2025-03-15T22:21:00Z"
             },
             {
-              "author_display_name": "Andrei D.",
+              "author_display_name": "Cristina D.",
               "rating": 5,
               "title": "Perfect sub machiaj",
               "body": "Fondul de ten se întinde mult mai uniform de când folosesc booster-ul înainte.",
@@ -12227,7 +12228,7 @@
               "ulei de jojoba",
               "vitamina E"
             ],
-            "weight": "4,8 g",
+            "weight_mg": 4800,
             "usage": "buze"
           },
           "variants": [
@@ -13623,7 +13624,8 @@
             "charge_time_hours": 4,
             "corded_cordless": true,
             "comb_count": 8,
-            "cut_length_mm": "1,5–25",
+            "min_cut_length_um": 1500,
+            "max_cut_length_um": 25000,
             "warranty_months": 24
           },
           "variants": [
@@ -13691,7 +13693,7 @@
             "heat_settings": 3,
             "speed_settings": 2,
             "ionic": true,
-            "cable_length_m": "1,8",
+            "cable_length_cm": 180,
             "accessories": [
               "concentrator",
               "difuzor"
@@ -13792,7 +13794,7 @@
             "speed_settings": 2,
             "ionic": true,
             "ceramic_grille": true,
-            "cable_length_m": "1,8",
+            "cable_length_cm": 180,
             "accessories": [
               "concentrator"
             ],
@@ -13859,9 +13861,10 @@
           "description": "Placă de îndreptat cu plăci ceramice cu turmalină de 25 x 105 mm, care se încălzesc în 60 de secunde. Are temperatură reglabilă de la 160 la 230 °C, afișaj digital și funcție ionică. Se oprește automat după 60 de minute de nefolosire, iar cablul rotativ are 1,8 m.",
           "attributes": {
             "plate_material": "ceramică cu turmalină",
-            "plate_size_mm": "25 x 105",
-            "temperature_min_c": 160,
-            "temperature_max_c": 230,
+            "plate_width_mm": 25,
+            "plate_length_mm": 105,
+            "min_temperature_c": 160,
+            "max_temperature_c": 230,
             "heat_up_seconds": 60,
             "ionic": true,
             "auto_shutoff": true,
@@ -16248,8 +16251,8 @@
           "name": "Ondulator automat Babyliss Curl Secret Optimum",
           "description": "Ondulator automat care trage șuvița în camera de ceramică și formează bucla singur, la apăsarea unui buton. Are două temperaturi, 210 și 230 °C, trei setări de timp pentru bucle lejere sau definite și două direcții de rotație. Funcția de abur ajută la bucle mai rezistente, iar camera se curăță cu accesoriul inclus.",
           "attributes": {
-            "temperature_min_c": 210,
-            "temperature_max_c": 230,
+            "min_temperature_c": 210,
+            "max_temperature_c": 230,
             "temperature_settings": 2,
             "curl_time_settings": 3,
             "steam": true,
@@ -17609,7 +17612,7 @@
             "material": "oțel cu găleată interioară din plastic",
             "soft_close": true,
             "removable_bucket": true,
-            "warranty_years": 10
+            "warranty_months": 120
           },
           "variants": [
             {
@@ -18571,7 +18574,7 @@
           "attributes": {
             "material": "100% poliester",
             "dimensions_cm": "145 × 250 per panou",
-            "blackout": true,
+            "room_darkening": true,
             "pieces": 2,
             "washing_temperature_c": 40
           },
@@ -18605,8 +18608,8 @@
             {
               "author_display_name": "Paula R.",
               "rating": 5,
-              "title": "Întuneric total",
-              "body": "Lucrez în ture de noapte și dorm ziua. Cu draperiile astea camera e întunecată la amiază.",
+              "title": "Aproape întuneric",
+              "body": "Lucrez în ture de noapte și dorm ziua. Cu draperiile astea camera e aproape întunecată la amiază.",
               "created_at": "2024-05-12T14:38:00Z"
             },
             {
@@ -18620,7 +18623,7 @@
               "author_display_name": "Cătălina I.",
               "rating": 3,
               "title": "Lumină pe margini",
-              "body": "Prin mijloc nu trece nimic, dar pe laterale intră lumină dacă nu le prinzi bine de perete.",
+              "body": "Prin mijloc trece foarte puțină lumină, dar pe laterale intră lumină dacă nu le prinzi bine de perete.",
               "created_at": "2025-04-30T18:03:00Z"
             },
             {
@@ -18653,7 +18656,8 @@
           "attributes": {
             "material": "plastic, cap din microfibră",
             "bucket_capacity_l": 10,
-            "handle_length_cm": "75–130",
+            "min_handle_length_cm": 75,
+            "max_handle_length_cm": 130,
             "machine_washable_head": true
           },
           "variants": [
@@ -18994,7 +18998,8 @@
           "attributes": {
             "material": "plastic, cap din microfibră",
             "bucket_capacity_l": 6,
-            "handle_length_cm": "88–140",
+            "min_handle_length_cm": 88,
+            "max_handle_length_cm": 140,
             "machine_washable_head": true
           },
           "variants": [
@@ -19184,7 +19189,7 @@
             "material": "aluminiu",
             "steps": 3,
             "max_load_kg": 150,
-            "weight_kg": 3,
+            "weight_g": 3000,
             "folded_thickness_cm": 8
           },
           "variants": [
@@ -19778,12 +19783,11 @@
         {
           "brand": "IKEA",
           "name": "Umerașe BUMERANG din lemn, set de 8 bucăți",
-          "description": "Umerașe din lemn masiv lăcuit, cu bară pentru pantaloni și crestături la umeri pentru rochii cu bretele. Cârligul metalic se rotește, ca să le agăți din orice parte. Sunt potrivite pentru sacouri și paltoane, pe care nu le deformează la umeri.",
+          "description": "Umerașe din lemn masiv lăcuit, cu bară pentru pantaloni și crestături la umeri pentru rochii cu bretele. Sunt potrivite pentru sacouri și paltoane, pe care nu le deformează la umeri.",
           "attributes": {
             "material": "lemn masiv lăcuit, cârlig metalic",
             "pieces": 8,
-            "width_cm": 44,
-            "rotating_hook": true
+            "width_cm": 44
           },
           "variants": [
             {
