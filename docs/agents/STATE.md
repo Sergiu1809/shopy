@@ -6,24 +6,25 @@
 > Updated by every session that starts, pauses or finishes a ticket.
 <!-- graffino-agentic:team:end -->
 
-Updated 2026-11-25.
+Updated 2026-11-26.
 
 ## The product
 Shopy: a Romanian voice shopping assistant (iPhone PWA + admin) for one demo store.
-P0 done (GH-1); P1a done (GH-3); P1b in flight (GH-4); then P1c–P1d (GH-5, GH-6). Structure: `docs/agents/ARCHITECTURE.md`.
+P0 done (GH-1); P1a done (GH-3); P1b done (GH-4); P1c in flight (GH-5); then P1d (GH-6). Structure: `docs/agents/ARCHITECTURE.md`.
 
 ## In flight
 | Ticket | Title | Status | Branch | PR | Folder |
 |---|---|---|---|---|---|
-| GH-4 | P1b: Authentication and roles | gate C: review passed, 249 green, C-001/PATTERN-006/007 re-confirmed; awaiting ready + merge | feat/auth-GH-4 | #10 | docs/agents/tasks/GH-4/ |
+| GH-5 | P1c: Catalog and seed | in review: gate C done (seed run twice, logins ok; Q-016 deferred); waiting on the merge | feat/catalog-seed-GH-5 | #11 | docs/agents/tasks/GH-5/ |
 
 ## Recently done (last 10)
 | Ticket | Title | Done | PR |
 |---|---|---|---|
+| GH-4 | P1b: Authentication and roles | 2026-11-25 | #10 |
 | GH-8 | Design: phone mockups, Assistant home and Settings | 2026-11-19 | #9 |
 | GH-3 | P1a: Database models and migrations | 2026-11-18 | #7 |
 | GH-1 | P0 Setup: Compose skeleton, CI, .env.example, gitleaks | 2026-11-18 | #2 |
 
 ## Knowledge
-- Ledger: 24 decisions (1 superseded) · 15 patterns (2 candidates) · 5 contracts · 14 open questions.
+- Ledger: 24 decisions (1 superseded) · 15 patterns (2 candidates) · 5 contracts · 15 open questions.
 - Backfill: none (new repo, seeded from the brief on 2026-11-17).

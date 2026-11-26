@@ -61,7 +61,7 @@ holds everything. Locally all runs in Docker Compose; production is Railway or F
 | auth | `backend/app/auth/` | passwords (Argon2id), tokens (JWT, refresh cookie), rate limits (in-process, one api process: Q-014), dependencies (current user, admin); WebAuthn (P4) | db |
 | usage | `backend/app/usage/` | cost ledger, caps | db |
 | worker | `backend/worker/` | polls the outbox, rebuilds chunks | db, embeddings |
-| seed | `backend/seed/` | `catalog.json` (written once, D-023), `validate_catalog.py`, `seed.py` | db |
+| seed | `backend/seed/` | `catalog.json` (written once, D-023) and `users.json` (demo accounts), their Pydantic formats in `schema.py`, `validate_catalog.py` (CI), `seed.py` (`make seed`: inserts only what is missing, one transaction) | db |
 | evals | `evals/` | real-LLM scenarios, manual | api / agent |
 
 ## Data flow
@@ -117,7 +117,7 @@ creation, mailpit; `docker-compose.yml`; the api runs `alembic upgrade head` bef
 uvicorn), then `make seed` (P1); an HTTPS tunnel (e.g.
 `cloudflared`) for the iPhone. Local S3 is the archived `bitnamilegacy/minio` image,
 pinned (no web console); production uses R2. CI: GitHub Actions — `ci.yml` on every
-push (backend ruff/mypy/pytest, web oxlint/typecheck/vitest, ledger lint, gitleaks)
+push (backend ruff/mypy/catalog validator/pytest, web oxlint/typecheck/vitest, ledger lint, gitleaks)
 and `team-checks.yml`. Production: api, worker and static web on
 Railway or Fly.io; Neon, R2, Resend, Langfuse. Commands: AGENTS.md section 2; release:
 section 5.

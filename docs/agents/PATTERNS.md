@@ -25,6 +25,7 @@ then.
 - PATTERN-013 · Secrets only in .env · approved
 - PATTERN-014 · Schema changes: models, one reviewed revision, drift test · candidate
 - PATTERN-015 · API tests with the DB: httpx AsyncClient + ASGITransport · candidate
+- PATTERN-016 · Catalog attributes: one JSON type per key, whole units · candidate
 
 ---
 
@@ -35,6 +36,7 @@ then.
 - **Example:** `backend/app/models/catalog.py` (`ProductVariant.price_minor`)
 - **Why:** float rounding breaks totals, and the output guard compares exact amounts.
 - **Source:** user (project brief) · confidence high
+- **Confirmed:** 2026-11-26
 
 ## PATTERN-002 · Agent tools take IDs and quantities only
 - **Status:** approved
@@ -51,6 +53,7 @@ then.
 - **Example:** `shopy_brief.md` §10.6 (no code yet)
 - **Why:** reviews are user-written and can carry prompt injection (seed fixture).
 - **Source:** user (project brief) · confidence high
+- **Confirmed:** 2026-11-26
 
 ## PATTERN-004 · Every agent turn passes the output guard
 - **Status:** approved
@@ -153,3 +156,12 @@ then.
 - **Example:** `backend/tests/conftest.py` (`api_app`, `client_factory`, `make_user`, `auth_header`), `backend/tests/test_auth_refresh.py`
 - **Why:** one event loop for the app and asyncpg; nothing an API test writes survives it; cookie and rate-limit behaviour is testable.
 - **Source:** GH-4 plan, assumption A15 (approved at gate B, 2026-11-19) · confidence medium
+- **Confirmed:** 2026-11-26
+
+## PATTERN-016 · Catalog attributes: one JSON type per key, whole units
+- **Status:** candidate
+- **Use when:** adding or editing product or variant `attributes` in `backend/seed/catalog.json` (and later, admin-edited attributes).
+- **How:** an attribute key has the same JSON type in every product. English snake_case keys that name the unit (`capacity_ml`, `power_w`, `width_cm`). No decimal strings: use a smaller whole unit (`capacity_ml: 1700`, `power_mw: 4200`). Ranges become two ints (`width_min_cm`, `width_max_cm`). Multi-valued keys are always lists (`surface`, `connectivity`). Booleans stay booleans; descriptive text goes in its own key (`lid: true`, `lid_material: "…"`). Values in Romanian.
+- **Example:** `backend/seed/catalog.json` (ELE-001 `capacity_ml`, HOM-038 `width_min_cm`/`width_max_cm`, LAU-017 `surface` + `washing_method`)
+- **Why:** P2 chunking and P3 tool filters read attributes by key; one type per key means no per-product parsing (GH-5 review round 1, F4).
+- **Source:** GH-5 review round 1, finding F4 (user chose to fix it, 2026-11-26) · confidence medium
