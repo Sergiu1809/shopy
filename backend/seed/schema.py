@@ -25,6 +25,7 @@ from pydantic import (
 )
 
 from app.schemas.auth import Email
+from app.schemas.catalog import AttributeValue, Key, Sku, Text
 
 SEED_DIR = Path(__file__).resolve().parent
 CATALOG_PATH = SEED_DIR / "catalog.json"
@@ -42,11 +43,7 @@ PRODUCT_FIXTURES = ("out_of_stock", "missing_attribute")
 REVIEW_FIXTURES = ("prompt_injection", "xss")
 MIN_PRODUCTS, MAX_PRODUCTS = 190, 210
 
-Text = Annotated[StrictStr, StringConstraints(strip_whitespace=True, min_length=1)]
-Key = Annotated[StrictStr, StringConstraints(pattern=r"^[a-z][a-z0-9_]*$")]
 Slug = Annotated[StrictStr, StringConstraints(pattern=r"^[a-z0-9]+(-[a-z0-9]+)*$")]
-Sku = Annotated[StrictStr, StringConstraints(pattern=r"^[A-Z0-9]+(-[A-Z0-9]+)*$")]
-AttributeValue = StrictStr | StrictInt | StrictBool | list[StrictStr]
 
 
 def _utc(value: datetime) -> datetime:
