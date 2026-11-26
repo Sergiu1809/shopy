@@ -27,6 +27,7 @@ Q-001 to Q-006 are the brief's OQ-01 to OQ-06 (`shopy_brief.md` §22), in order.
 - Q-014 · Will the web app and the API share one site in production?
 - Q-015 · Who seeds the demo customers' Stripe test cards, and how?
 - Q-016 · How should the attribute values the seed schema keeps as text become typed? · _deferred_
+- Q-017 · When orders or carts reference a variant, does DELETE become archive, or 409?
 
 ---
 
@@ -123,3 +124,8 @@ Q-001 to Q-006 are the brief's OQ-01 to OQ-06 (`shopy_brief.md` §22), in order.
 - **Blocks:** nothing today. P2/P3 structured filters on these attributes. Under the approved GH-5 schema some values cannot follow PATTERN-016: `capacities_l` and comb lengths are `list[str]`; variant attributes are text only (`spf` is "SPF 30" at variant level, an int at product level); `dimensions_cm` is free text on 10 home products. Related: the same measure under different unit keys (`battery_hours` / `battery_days`, `charge_time_hours` / `_minutes`, `burn_time_h`).
 - **Who answers:** the developer, when the P2 search ticket is planned
 - **Proposed answer:** the P2 ticket allows typed variant attributes and numeric lists in `seed/schema.py`, converts these values to whole units (one key per measure), and adds validator checks for them.
+
+## Q-017 · When orders or carts reference a variant, does DELETE become archive, or 409?
+- **Status:** open
+- **Blocks:** the foreign keys from `cart_items`, `proposal_items` and `order_items` to `product_variants` (P4), and then the admin DELETE routes. Until then GH-6 hard-deletes products and variants (gate A, 2026-11-26): no table references a variant yet, and a product delete cascades to its variants, images and reviews.
+- **Who answers:** the developer, when the P4 tickets are written
