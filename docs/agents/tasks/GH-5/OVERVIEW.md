@@ -12,7 +12,7 @@ pr: https://github.com/Sergiu1809/shopy/pull/11
 design_refs: []
 summary: "Romanian demo catalog (catalog.json, validator in CI), store policies and demo accounts, loaded by make seed"
 created: 2026-11-25 00:00
-updated: 2026-11-26 14:09
+updated: 2026-11-26 16:30
 ---
 
 # GH-5 — P1c: Catalog and seed
@@ -70,7 +70,7 @@ Ticket: https://github.com/Sergiu1809/shopy/issues/5
   - When Docker Compose and a real `.env` are available: `docker compose up --build -d api`, then `make seed` twice. The second run prints "already seeded".
 
 ## Resume here ⏯
-Built and reviewed (round 1: pass with findings, 2026-11-26). Next: the builder's F3 fix (review author names) is checked and pushed; the user decides on PR #11's draft state, nits F4–F7 and point 26 (`make seed` twice, needs real `SEED_*` in `.env`); then gate C. See `log_2026-11-26_1409.md`.
+Review done (2 rounds, pass with findings; every fix in, 159620d). At gate C: the user decides the PATTERN-016 leftovers that need a schema change, runs point 26 (`make seed` twice with real `SEED_*` passwords), and says when to mark PR #11 ready. See `log_2026-11-26_1409.md`.
 
 ## Summary of work so far
 - 2026-11-25 — product owner: coverage report, gate A answered by the user (Q1–Q11); Q-015 recorded for the P4 Stripe test cards.
@@ -78,6 +78,8 @@ Built and reviewed (round 1: pass with findings, 2026-11-26). Next: the builder'
 - 2026-11-26 — gate B: plan approved as written; PATTERN-001, PATTERN-003, PATTERN-015 confirmed.
 - 2026-11-26 — tests first (121, red; 0c3d04c); code (abe96c3, 090f502); five content workers; catalog assembled (843555d): 200 products, 744 variants, 1412 reviews; 370 passed.
 - 2026-11-26 — review round 1: pass with findings (F1 PR draft/body, F2 journal, F3 author names; nits F4–F8).
+- 2026-11-26 — PR back to draft; F3 (2b89fd1) and F4–F7 (2ed6c12, b4694be) fixed; candidate PATTERN-016 (c399ca8).
+- 2026-11-26 — review round 2: pass with findings; key naming and leftovers fixed (159620d). Final: 200 products, 744 variants, 1406 reviews; 370 passed.
 
 ## Approach
 See `PLAN.md`. In short:
@@ -93,7 +95,7 @@ See `PLAN.md`. In short:
 | create | `docs/agents/tasks/GH-5/PLAN.md` | plan for gate B |
 | create | `docs/agents/tasks/GH-5/TESTS.md` | acceptance points → tests |
 | create | `docs/agents/tasks/GH-5/log_2026-11-26_1409.md` | session log |
-| modify | `docs/agents/PATTERNS.md` | Confirmed 2026-11-26 on PATTERN-001, -003, -015 |
+| modify | `docs/agents/PATTERNS.md` | Confirmed 2026-11-26 on PATTERN-001, -003, -015; candidate PATTERN-016 |
 | modify | `docs/agents/STATE.md` | GH-5 row |
 | create | `backend/seed/__init__.py`, `schema.py`, `validate_catalog.py`, `seed.py` | formats, validator, loader |
 | create | `backend/seed/catalog.json` | store, five policies, 200 products in five categories |

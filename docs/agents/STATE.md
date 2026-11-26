@@ -15,7 +15,7 @@ P0 done (GH-1); P1a done (GH-3); P1b done (GH-4); P1c in flight (GH-5); then P1d
 ## In flight
 | Ticket | Title | Status | Branch | PR | Folder |
 |---|---|---|---|---|---|
-| GH-5 | P1c: Catalog and seed | full lane; built (370 passed); review round 1 pass with findings; fixes then gate C | feat/catalog-seed-GH-5 | #11 | docs/agents/tasks/GH-5/ |
+| GH-5 | P1c: Catalog and seed | full lane; built, 2 review rounds passed, fixes in (370 passed); at gate C | feat/catalog-seed-GH-5 | #11 | docs/agents/tasks/GH-5/ |
 
 ## Recently done (last 10)
 | Ticket | Title | Done | PR |
