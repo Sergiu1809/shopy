@@ -16,6 +16,7 @@ from decimal import Decimal
 from typing import Any
 
 import pytest
+
 from app.indexing.chunking import (
     MAX_CHUNK_CHARS,
     content_hash,
@@ -23,7 +24,6 @@ from app.indexing.chunking import (
     product_text,
     review_chunks,
 )
-
 from app.models import Product, ProductVariant, Review
 
 MODEL = "text-embedding-3-small"

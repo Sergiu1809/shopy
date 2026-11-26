@@ -10,8 +10,8 @@ from __future__ import annotations
 from collections import Counter
 
 import pytest
-from app.indexing.outbox import enqueue, enqueue_full_reindex
 
+from app.indexing.outbox import enqueue, enqueue_full_reindex
 from tests.conftest import fetch
 from tests.indexing_data import (
     Sessionmaker,

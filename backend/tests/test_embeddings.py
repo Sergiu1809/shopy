@@ -10,9 +10,10 @@ import os
 from types import SimpleNamespace
 from typing import Any, cast
 
-import httpx
+import httpx2
 import openai
 import pytest
+
 from app.indexing import embeddings
 from app.indexing.embeddings import (
     EMBEDDING_DIM,
@@ -22,7 +23,6 @@ from app.indexing.embeddings import (
     OpenAIEmbeddingProvider,
     check_vectors,
 )
-
 from tests.stubs import StubEmbeddingProvider
 
 MODEL = "text-embedding-3-small"
@@ -67,8 +67,8 @@ def provider_with(client: Any) -> OpenAIEmbeddingProvider:
 
 
 def status_error(cls: type[openai.APIStatusError], status: int) -> BaseException:
-    request = httpx.Request("POST", "https://api.openai.com/v1/embeddings")
-    response = httpx.Response(status, request=request)
+    request = httpx2.Request("POST", "https://api.openai.com/v1/embeddings")
+    response = httpx2.Response(status, request=request)
     return cls(SDK_MESSAGE, response=response, body=None)
 
 
@@ -118,7 +118,7 @@ async def test_sdk_error_becomes_embedding_error(
 
 
 async def test_connection_error_becomes_embedding_error() -> None:
-    request = httpx.Request("POST", "https://api.openai.com/v1/embeddings")
+    request = httpx2.Request("POST", "https://api.openai.com/v1/embeddings")
     provider = provider_with(
         fake_client(error=openai.APIConnectionError(request=request))
     )

@@ -376,6 +376,7 @@ def _no_real_openai_client(monkeypatch: pytest.MonkeyPatch) -> Iterator[None]:
     """N12: building the real client in any test fails it (A5); tests inject a stub."""
     try:
         import openai
+
         from app.indexing import embeddings
     except ModuleNotFoundError as exc:
         # Only before GH-13 is built: the earlier tests must keep running on their own.

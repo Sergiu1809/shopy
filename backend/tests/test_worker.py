@@ -20,22 +20,14 @@ from typing import Any
 
 import pytest
 from alembic import command
-from app.indexing.chunking import content_hash
-from app.indexing.embeddings import EmbeddingError
-from app.indexing.outbox import enqueue_full_reindex
 from sqlalchemy import text
 from sqlalchemy.exc import DBAPIError
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
-from worker.process import (
-    BACKOFF_BASE_SECONDS,
-    IDLE_SECONDS,
-    MAX_ATTEMPTS,
-    IndexingConfig,
-    Outcome,
-    process_next,
-)
 
 from app.db import create_engine, create_sessionmaker
+from app.indexing.chunking import content_hash
+from app.indexing.embeddings import EmbeddingError
+from app.indexing.outbox import enqueue_full_reindex
 from tests.conftest import alembic_config
 from tests.indexing_data import (
     ENV,
@@ -59,6 +51,14 @@ from tests.indexing_data import (
 )
 from tests.stubs import StubEmbeddingProvider, stub_vector
 from worker.__main__ import run
+from worker.process import (
+    BACKOFF_BASE_SECONDS,
+    IDLE_SECONDS,
+    MAX_ATTEMPTS,
+    IndexingConfig,
+    Outcome,
+    process_next,
+)
 
 Sessionmaker = async_sessionmaker[AsyncSession]
 MISSING_ID = 9_000_000_000  # a source id no row has

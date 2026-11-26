@@ -9,6 +9,9 @@ from __future__ import annotations
 from decimal import Decimal
 
 import pytest
+from sqlalchemy import text
+from sqlalchemy.ext.asyncio import AsyncSession
+
 from app.usage.ledger import (
     ConfigError,
     daily_cap_eur,
@@ -16,8 +19,6 @@ from app.usage.ledger import (
     spent_today_eur,
     unit_price_eur,
 )
-from sqlalchemy import text
-from sqlalchemy.ext.asyncio import AsyncSession
 
 CAP = "DAILY_COST_CAP_EUR"
 PRICE = "PRICE_OPENAI_EMBEDDING_EUR_PER_1M_TOKENS"
